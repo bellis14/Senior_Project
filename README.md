@@ -1,1 +1,9 @@
 # Senior_Project
+
+
+# Useful Links
+
+* [Pan and Tilt](https://www.adafruit.com/product/1967?gclid=CjwKCAiA24SPBhB0EiwAjBgkhjcO1Z_VOuI1ouA2wNaIh1mqrrtdMC4OLi7vo56Ayy5MvTpooqE8exoCF2wQAvD_BwE)
+* [Arduino Nano](https://www.amazon.com/ATmega328P-Microcontroller-Board-Cable-Arduino/dp/B00NLAMS9C/ref=asc_df_B00NLAMS9C/?tag=hyprod-20&linkCode=df0&hvadid=309776868400&hvpos=&hvnetw=g&hvrand=13599866055012805235&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9029499&hvtargid=pla-593018008274&psc=1)
+* [Bluetooth Module](https://www.amazon.com/HiLetgo-Wireless-Bluetooth-Transceiver-Arduino/dp/B071YJG8DR)
+* 
