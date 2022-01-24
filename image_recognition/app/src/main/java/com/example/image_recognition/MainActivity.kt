@@ -3,9 +3,11 @@ package com.example.image_recognition
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -119,5 +121,10 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    fun openSelectDeviceActivity(view: View) {
+        val intent = Intent(this, SelectDevice::class.java)
+        startActivity(intent)
     }
 }
