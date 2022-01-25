@@ -1,4 +1,4 @@
-# Senior Project - Personal Camerabot
+# Senior Project - Personal <del>Cameraman</del> Camerabot
 
 ## [Project Requirements](https://github.com/bellis14/Senior_Project/blob/main/ProjectRequirements.md)
 
