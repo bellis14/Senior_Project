@@ -1,6 +1,6 @@
 # Senior Project - Personal Camerabot
 
-## [Project Requirements]()
+## [Project Requirements](https://github.com/bellis14/Senior_Project/blob/main/ProjectRequirements.md)
 
 # Useful Links
 
