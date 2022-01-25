@@ -1,4 +1,4 @@
-# Senior Project - Robotic Cameraman
+# Senior Project - Personal Camerabot
 
 
 ## Project Requirements:
