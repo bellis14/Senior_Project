@@ -7,12 +7,13 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/9a2e2bd9e2d06804c531c1b64327a73c/transformed/jetified-text-recognition-chinese-16.0.0-beta2/res" />
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/df4a3be85152d8a88567d3560e1d0aa2/transformed/jetified-text-recognition-chinese-16.0.0-beta2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df4a3be85152d8a88567d3560e1d0aa2/transformed/jetified-text-recognition-chinese-16.0.0-beta2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/26cf31c049cc953d82e1b662a96ebebf/transformed/jetified-text-recognition-chinese-16.0.0-beta2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/26cf31c049cc953d82e1b662a96ebebf/transformed/jetified-text-recognition-chinese-16.0.0-beta2/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/26cf31c049cc953d82e1b662a96ebebf/transformed/jetified-text-recognition-chinese-16.0.0-beta2/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/13ef16856aefcb40c377ce854c0451e9/transformed/jetified-text-recognition-chinese-16.0.0-beta2/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/13ef16856aefcb40c377ce854c0451e9/transformed/jetified-text-recognition-chinese-16.0.0-beta2/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/13ef16856aefcb40c377ce854c0451e9/transformed/jetified-text-recognition-chinese-16.0.0-beta2/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/text-recognition-chinese/16.0.0-beta2/6437db8ac38cbffb370b0a57364eaa41920b4981/text-recognition-chinese-16.0.0-beta2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.mlkit/text-recognition-chinese/16.0.0-beta2/6437db8ac38cbffb370b0a57364eaa41920b4981/text-recognition-chinese-16.0.0-beta2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

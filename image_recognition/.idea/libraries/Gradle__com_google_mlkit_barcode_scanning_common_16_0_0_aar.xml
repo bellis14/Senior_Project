@@ -7,12 +7,13 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/fbd1709bf3cc9627693f392a68cba15e/transformed/jetified-barcode-scanning-common-16.0.0/res" />
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/03497e297624c1afda385e98392a27b3/transformed/jetified-barcode-scanning-common-16.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/03497e297624c1afda385e98392a27b3/transformed/jetified-barcode-scanning-common-16.0.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c72ee0fb287d481af540ebb196fa57c1/transformed/jetified-barcode-scanning-common-16.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c72ee0fb287d481af540ebb196fa57c1/transformed/jetified-barcode-scanning-common-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c72ee0fb287d481af540ebb196fa57c1/transformed/jetified-barcode-scanning-common-16.0.0/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0eb400c1fbdc9813fc80e1adf470397a/transformed/jetified-barcode-scanning-common-16.0.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0eb400c1fbdc9813fc80e1adf470397a/transformed/jetified-barcode-scanning-common-16.0.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0eb400c1fbdc9813fc80e1adf470397a/transformed/jetified-barcode-scanning-common-16.0.0/res" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/barcode-scanning-common/16.0.0/7a09bc495dc9fd2384bd8decc3fa0034eab489df/barcode-scanning-common-16.0.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.mlkit/barcode-scanning-common/16.0.0/7a09bc495dc9fd2384bd8decc3fa0034eab489df/barcode-scanning-common-16.0.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

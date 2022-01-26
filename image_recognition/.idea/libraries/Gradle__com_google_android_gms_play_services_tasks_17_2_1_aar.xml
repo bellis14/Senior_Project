@@ -7,12 +7,13 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/d3f01a0615229bc12d56e46b2829d234/transformed/jetified-play-services-tasks-17.2.1/res" />
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/c3bce9d0a304de7287ab66daf9d0a93a/transformed/jetified-play-services-tasks-17.2.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c3bce9d0a304de7287ab66daf9d0a93a/transformed/jetified-play-services-tasks-17.2.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28fe63dff431ff11b0b9d5e2720258df/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/28fe63dff431ff11b0b9d5e2720258df/transformed/jetified-play-services-tasks-17.2.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28fe63dff431ff11b0b9d5e2720258df/transformed/jetified-play-services-tasks-17.2.1/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/63396417d8e5d6f6a322b32ff2989ceb/transformed/jetified-play-services-tasks-17.2.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/63396417d8e5d6f6a322b32ff2989ceb/transformed/jetified-play-services-tasks-17.2.1/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/63396417d8e5d6f6a322b32ff2989ceb/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.gms/play-services-tasks/17.2.1/ef19d8e16a762897c399d10edef4ef3772200155/play-services-tasks-17.2.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.android.gms/play-services-tasks/17.2.1/ef19d8e16a762897c399d10edef4ef3772200155/play-services-tasks-17.2.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

@@ -7,12 +7,13 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/523724ccdd1d5fdd1110cf1abd6aef62/transformed/jetified-transport-backend-cct-2.3.3/res" />
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/b4e36610d9c1a4dbc5cb1c9885d4659c/transformed/jetified-transport-backend-cct-2.3.3/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b4e36610d9c1a4dbc5cb1c9885d4659c/transformed/jetified-transport-backend-cct-2.3.3/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6b762848f29b32898997086b1d51bdeb/transformed/jetified-transport-backend-cct-2.3.3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6b762848f29b32898997086b1d51bdeb/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6b762848f29b32898997086b1d51bdeb/transformed/jetified-transport-backend-cct-2.3.3/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/8b3bf57360fc644979fe10dbb29bce63/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/8b3bf57360fc644979fe10dbb29bce63/transformed/jetified-transport-backend-cct-2.3.3/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/8b3bf57360fc644979fe10dbb29bce63/transformed/jetified-transport-backend-cct-2.3.3/res" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.datatransport/transport-backend-cct/2.3.3/9fa8e4ca037ec96af8366608c0fe6ee01ee96b40/transport-backend-cct-2.3.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.android.datatransport/transport-backend-cct/2.3.3/9fa8e4ca037ec96af8366608c0fe6ee01ee96b40/transport-backend-cct-2.3.3-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

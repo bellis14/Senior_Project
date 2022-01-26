@@ -7,12 +7,13 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/fe73ed21c67932d0af36c4fd72ad1a5c/transformed/jetified-image-labeling-custom-common-16.0.1/res" />
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/950948d09e8dc7372abd53a0f197e6fb/transformed/jetified-image-labeling-custom-common-16.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/950948d09e8dc7372abd53a0f197e6fb/transformed/jetified-image-labeling-custom-common-16.0.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/61fcf7fc6b34a14bc85cb4c0987e0f07/transformed/jetified-image-labeling-custom-common-16.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/61fcf7fc6b34a14bc85cb4c0987e0f07/transformed/jetified-image-labeling-custom-common-16.0.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/61fcf7fc6b34a14bc85cb4c0987e0f07/transformed/jetified-image-labeling-custom-common-16.0.1/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/c28d553c7960dfa54bf792d815d36c46/transformed/jetified-image-labeling-custom-common-16.0.1/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/c28d553c7960dfa54bf792d815d36c46/transformed/jetified-image-labeling-custom-common-16.0.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/c28d553c7960dfa54bf792d815d36c46/transformed/jetified-image-labeling-custom-common-16.0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/image-labeling-custom-common/16.0.1/487f7610841849635ec723b641d4e106f8572d10/image-labeling-custom-common-16.0.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.mlkit/image-labeling-custom-common/16.0.1/487f7610841849635ec723b641d4e106f8572d10/image-labeling-custom-common-16.0.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

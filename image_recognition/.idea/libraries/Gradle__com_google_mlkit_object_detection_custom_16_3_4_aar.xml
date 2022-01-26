@@ -8,11 +8,12 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/e56df4606e82e6e61e9de689f0005ce3/transformed/jetified-object-detection-custom-16.3.4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e56df4606e82e6e61e9de689f0005ce3/transformed/jetified-object-detection-custom-16.3.4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5248b5dda6503865941c9c1f83121a76/transformed/jetified-object-detection-custom-16.3.4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5248b5dda6503865941c9c1f83121a76/transformed/jetified-object-detection-custom-16.3.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5248b5dda6503865941c9c1f83121a76/transformed/jetified-object-detection-custom-16.3.4/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/880cd34c9be44cc00951034e1562aaad/transformed/jetified-object-detection-custom-16.3.4/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/880cd34c9be44cc00951034e1562aaad/transformed/jetified-object-detection-custom-16.3.4/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/880cd34c9be44cc00951034e1562aaad/transformed/jetified-object-detection-custom-16.3.4/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/object-detection-custom/16.3.4/9073d245bfc3dad20008424ad3d1d53553a64410/object-detection-custom-16.3.4-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.mlkit/object-detection-custom/16.3.4/9073d245bfc3dad20008424ad3d1d53553a64410/object-detection-custom-16.3.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

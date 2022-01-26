@@ -7,12 +7,13 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/f84bebda96533267bb51bdbdd4ed1393/transformed/jetified-camera-16.0.0-beta2/res" />
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0a6b3968955d682e0efe8a9e7050990f/transformed/jetified-camera-16.0.0-beta2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0a6b3968955d682e0efe8a9e7050990f/transformed/jetified-camera-16.0.0-beta2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/22eba83b0659af7774c1ddc0b956ae68/transformed/jetified-camera-16.0.0-beta2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/22eba83b0659af7774c1ddc0b956ae68/transformed/jetified-camera-16.0.0-beta2/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/22eba83b0659af7774c1ddc0b956ae68/transformed/jetified-camera-16.0.0-beta2/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/4b77f424b7955c45bc7034d57acd6293/transformed/jetified-camera-16.0.0-beta2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/4b77f424b7955c45bc7034d57acd6293/transformed/jetified-camera-16.0.0-beta2/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/4b77f424b7955c45bc7034d57acd6293/transformed/jetified-camera-16.0.0-beta2/res" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/camera/16.0.0-beta2/e27b1179f6b873139a6a0d1570f4fdbd3c83425c/camera-16.0.0-beta2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.mlkit/camera/16.0.0-beta2/e27b1179f6b873139a6a0d1570f4fdbd3c83425c/camera-16.0.0-beta2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

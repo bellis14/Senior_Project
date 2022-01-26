@@ -8,11 +8,12 @@
       <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/6e4539abd9b8d7c816070f8cf2590935/transformed/jetified-mediapipe-internal-17.0.0-beta5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6e4539abd9b8d7c816070f8cf2590935/transformed/jetified-mediapipe-internal-17.0.0-beta5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d78260cef41d35e4df05598826c4f985/transformed/jetified-mediapipe-internal-17.0.0-beta5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d78260cef41d35e4df05598826c4f985/transformed/jetified-mediapipe-internal-17.0.0-beta5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d78260cef41d35e4df05598826c4f985/transformed/jetified-mediapipe-internal-17.0.0-beta5/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0ebd31c98989646169d10ebf3fbc1b9c/transformed/jetified-mediapipe-internal-17.0.0-beta5/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0ebd31c98989646169d10ebf3fbc1b9c/transformed/jetified-mediapipe-internal-17.0.0-beta5/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/0ebd31c98989646169d10ebf3fbc1b9c/transformed/jetified-mediapipe-internal-17.0.0-beta5/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/mediapipe-internal/17.0.0-beta5/ace98f39b262c59be4be4d52b871d1ba5dfff723/mediapipe-internal-17.0.0-beta5-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.mlkit/mediapipe-internal/17.0.0-beta5/ace98f39b262c59be4be4d52b871d1ba5dfff723/mediapipe-internal-17.0.0-beta5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

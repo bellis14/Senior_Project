@@ -4,12 +4,12 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f6139f5efc3fa9b59e608bc27e6237c2/transformed/jetified-play-services-base-17.6.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f6139f5efc3fa9b59e608bc27e6237c2/transformed/jetified-play-services-base-17.6.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f6139f5efc3fa9b59e608bc27e6237c2/transformed/jetified-play-services-base-17.6.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55cda81cdd2e1563a27c6ba438095003/transformed/jetified-play-services-base-17.6.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/55cda81cdd2e1563a27c6ba438095003/transformed/jetified-play-services-base-17.6.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55cda81cdd2e1563a27c6ba438095003/transformed/jetified-play-services-base-17.6.0/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/276bc655dca9147c0ce00c148dd15456/transformed/jetified-play-services-base-17.6.0/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/276bc655dca9147c0ce00c148dd15456/transformed/jetified-play-services-base-17.6.0/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/transforms-3/276bc655dca9147c0ce00c148dd15456/transformed/jetified-play-services-base-17.6.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.gms/play-services-base/17.6.0/e02e1f64fe2e9a8e8e4f8f33fc2b07198e7f89c0/play-services-base-17.6.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17/caches/modules-2/files-2.1/com.google.android.gms/play-services-base/17.6.0/e02e1f64fe2e9a8e8e4f8f33fc2b07198e7f89c0/play-services-base-17.6.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>
