@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
+            "outputFile": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Tony\\.gradle\\caches\\transforms-3\\81ccc4f9fde928c75264b65317f0ebeb\\transformed\\appcompat-1.2.0\\res\\values-en-rIN\\values-en-rIN.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
+            "outputFile": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Tony\\.gradle\\caches\\transforms-3\\f6139f5efc3fa9b59e608bc27e6237c2\\transformed\\jetified-play-services-base-17.6.0\\res\\values-zh-rHK\\values.xml",

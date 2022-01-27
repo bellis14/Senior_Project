@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Tony\\.gradle\\caches\\transforms-3\\03266b5c61ddf4d2511dee6e22184dc7\\transformed\\core-1.3.1\\res\\values\\values.xml",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "11,6,4,2,3,9,8,7,12,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -73,25 +73,6 @@
                         "endLines": "295,2994,3478",
                         "endColumns": "11,24,24",
                         "endOffsets": "13835,191461,236366"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\src\\main\\res\\values\\arrays.xml",
-                    "from": {
-                        "startLines": "23,13,3,33,43,28,18,8,38,48",
-                        "startColumns": "2,2,2,2,2,2,2,2,2,2",
-                        "startOffsets": "1069,568,57,1640,2143,1347,811,305,1884,2394",
-                        "endLines": "26,16,6,36,46,31,21,11,41,51",
-                        "endColumns": "17,17,17,17,17,17,17,17,17,17",
-                        "endOffsets": "1341,805,299,1878,2388,1634,1063,562,2137,2647"
-                    },
-                    "to": {
-                        "startLines": "2,6,10,14,18,22,26,30,34,38",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,379,618,862,1102,1349,1638,1892,2151,2406",
-                        "endLines": "5,9,13,17,21,25,29,33,37,41",
-                        "endColumns": "17,17,17,17,17,17,17,17,17,17",
-                        "endOffsets": "374,613,857,1097,1344,1633,1887,2146,2401,2656"
                     }
                 },
                 {
@@ -133,24 +114,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\src\\main\\res\\values\\dimens.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "90,149,206",
-                        "endColumns": "57,55,47",
-                        "endOffsets": "143,200,249"
-                    },
-                    "to": {
-                        "startLines": "500,501,533",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "26530,26588,28894",
-                        "endColumns": "57,55,47",
-                        "endOffsets": "26583,26639,28937"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "2,19,11,13,14,12,15,3,4,8,17,7,5,6,30,28,27,36,29,31,32,33,37,115,94,93,85,84,76,75,103,102,123,122,97,96,88,87,79,78,106,105,125,124,44,43,42,41,40,58,54,92,83,110,74,114,101,69,64,120,129,136,140,134,39,38,145,60,70,65,121,130,22,25,26,23,24,50,141,49,48,47,91,82,109,73,113,100,46,57,53,68,63,119,135,139,128,133,45,144,59,116,18,16,10,9",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -164,6 +128,23 @@
                         "startOffsets": "34981,37385,37481,37605,37791,37992,38108,38187,38295,38407,38548,38625,38803,38858,38980,39072,39165,39248,39327,39450,39543,39639,39736,39819,40005,40141,40275,40390,40503,40621,40737,40848,40951,41062,41165,41288,41410,41519,41627,41738,41848,41957,42062,42171,42276,42359,42463,42566,42656,42746,42842,42913,43027,43133,43240,43347,43455,43565,43681,43800,43910,44029,44116,44212,44301,44390,44479,44569,44649,44764,44882,44991,45109,45173,45291,45413,45515,45615,45747,46049,46151,46289,46425,46539,46639,46741,46843,46949,47057,47169,47297,47387,47507,47631,47739,47857,47969,48093,48197,48307,48415,48518,48721,48796,48938,49008",
                         "endColumns": "70,95,123,185,200,115,78,107,111,140,76,177,54,121,91,92,82,78,122,92,95,96,82,185,135,133,114,112,117,115,110,102,110,102,122,121,108,107,110,109,108,104,108,104,82,103,102,89,89,95,70,113,105,106,106,107,109,115,118,109,118,86,95,88,88,88,89,79,114,117,108,117,63,117,121,101,99,131,301,101,137,135,113,99,101,101,105,107,111,127,89,119,123,107,117,111,123,103,109,107,102,149,74,70,69,69",
                         "endOffsets": "35047,37476,37600,37786,37987,38103,38182,38290,38402,38543,38620,38798,38853,38975,39067,39160,39243,39322,39445,39538,39634,39731,39814,40000,40136,40270,40385,40498,40616,40732,40843,40946,41057,41160,41283,41405,41514,41622,41733,41843,41952,42057,42166,42271,42354,42458,42561,42651,42741,42837,42908,43022,43128,43235,43342,43450,43560,43676,43795,43905,44024,44111,44207,44296,44385,44474,44564,44644,44759,44877,44986,45104,45168,45286,45408,45510,45610,45742,46044,46146,46284,46420,46534,46634,46736,46838,46944,47052,47164,47292,47382,47502,47626,47734,47852,47964,48088,48192,48302,48410,48513,48663,48791,48862,49003,49073"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "65",
+                        "endOffsets": "78"
+                    },
+                    "to": {
+                        "startLines": "766",
+                        "startColumns": "4",
+                        "startOffsets": "49520",
+                        "endColumns": "65",
+                        "endOffsets": "49581"
                     }
                 },
                 {
@@ -198,6 +179,25 @@
                         "startOffsets": "32895,36092",
                         "endColumns": "67,166",
                         "endOffsets": "32958,36254"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\values\\arrays.xml",
+                    "from": {
+                        "startLines": "23,13,3,33,43,28,18,8,38,48",
+                        "startColumns": "2,2,2,2,2,2,2,2,2,2",
+                        "startOffsets": "1069,568,57,1640,2143,1347,811,305,1884,2394",
+                        "endLines": "26,16,6,36,46,31,21,11,41,51",
+                        "endColumns": "17,17,17,17,17,17,17,17,17,17",
+                        "endOffsets": "1341,805,299,1878,2388,1634,1063,562,2137,2647"
+                    },
+                    "to": {
+                        "startLines": "2,6,10,14,18,22,26,30,34,38",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,379,618,862,1102,1349,1638,1892,2151,2406",
+                        "endLines": "5,9,13,17,21,25,29,33,37,41",
+                        "endColumns": "17,17,17,17,17,17,17,17,17,17",
+                        "endOffsets": "374,613,857,1097,1344,1633,1887,2146,2401,2656"
                     }
                 },
                 {
@@ -239,20 +239,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Tony\\StudioProjects\\VisionDemo\\android\\vision-quickstart\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\values\\dimens.xml",
                     "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "65",
-                        "endOffsets": "78"
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "90,149,206",
+                        "endColumns": "57,55,47",
+                        "endOffsets": "143,200,249"
                     },
                     "to": {
-                        "startLines": "766",
-                        "startColumns": "4",
-                        "startOffsets": "49520",
-                        "endColumns": "65",
-                        "endOffsets": "49581"
+                        "startLines": "500,501,533",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "26530,26588,28894",
+                        "endColumns": "57,55,47",
+                        "endOffsets": "26583,26639,28937"
                     }
                 }
             ]

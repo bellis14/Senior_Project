@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Tony\.gradle\caches\transforms-3\ced9ab0ab1369cec308aa06f59f106ac\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.mlkit:barcode-scanning:17.0.1] C:\Users\Tony\.gradle\caches\transforms-3\a33f29b2d3f520be7a1fdfc8d3255f97\transformed\jetified-barcode-scanning-17.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.mlkit:object-detection:16.2.8] C:\Users\Tony\.gradle\caches\transforms-3\ba8ebcf7f2b376b6e20c7f52ed6bbb91\transformed\jetified-object-detection-16.2.8\AndroidManifest.xml:2:1-20:12
@@ -73,31 +73,31 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\To
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Tony\.gradle\caches\transforms-3\60518eebc6466e933fc0f9aaf90798da\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Tony\.gradle\caches\transforms-3\2836f1617ea33c47fc913b46de88e9a1\transformed\jetified-image-1.0.0-beta1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0-rc01] C:\Users\Tony\.gradle\caches\transforms-3\42ab5fe8923ef904b37f578b2d075edf\transformed\jetified-annotation-experimental-1.0.0-rc01\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
 	package
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:5:5-43
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:5:5-43
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:4:5-51
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:4:5-51
 	android:versionCode
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:2:1-120:12
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:2:1-120:12
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:3:5-63
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:3:5-63
 	android:installLocation
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:6:5-35
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:6:5-35
 uses-sdk
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Tony\.gradle\caches\transforms-3\ced9ab0ab1369cec308aa06f59f106ac\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Tony\.gradle\caches\transforms-3\ced9ab0ab1369cec308aa06f59f106ac\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [com.google.mlkit:barcode-scanning:17.0.1] C:\Users\Tony\.gradle\caches\transforms-3\a33f29b2d3f520be7a1fdfc8d3255f97\transformed\jetified-barcode-scanning-17.0.1\AndroidManifest.xml:5:5-44
@@ -236,26 +236,26 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Tony\.gradle\ca
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Tony\.gradle\caches\transforms-3\2836f1617ea33c47fc913b46de88e9a1\transformed\jetified-image-1.0.0-beta1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.0.0-rc01] C:\Users\Tony\.gradle\caches\transforms-3\42ab5fe8923ef904b37f578b2d075edf\transformed\jetified-annotation-experimental-1.0.0-rc01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0-rc01] C:\Users\Tony\.gradle\caches\transforms-3\42ab5fe8923ef904b37f578b2d075edf\transformed\jetified-annotation-experimental-1.0.0-rc01\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
-INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
+INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
 	tools:overrideLibrary
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
 	android:targetSdkVersion
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:12:5-15:63
-		INJECTED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:12:5-15:63
+		INJECTED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml
 uses-feature#android.hardware.camera
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:17:5-18:45
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:17:5-18:45
 	android:required
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:18:20-43
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:18:20-43
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:17:19-57
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:17:19-57
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:20:5-66
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:20:5-66
 MERGED from [com.google.mlkit:object-detection:16.2.8] C:\Users\Tony\.gradle\caches\transforms-3\ba8ebcf7f2b376b6e20c7f52ed6bbb91\transformed\jetified-object-detection-16.2.8\AndroidManifest.xml:8:5-67
 MERGED from [com.google.mlkit:object-detection:16.2.8] C:\Users\Tony\.gradle\caches\transforms-3\ba8ebcf7f2b376b6e20c7f52ed6bbb91\transformed\jetified-object-detection-16.2.8\AndroidManifest.xml:8:5-67
 MERGED from [com.google.mlkit:vision-internal-vkp:18.2.1] C:\Users\Tony\.gradle\caches\transforms-3\be2a402a45fd0a38e0822e39865f15a7\transformed\jetified-vision-internal-vkp-18.2.1\AndroidManifest.xml:8:5-67
@@ -265,21 +265,21 @@ MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Tony\
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Tony\.gradle\caches\transforms-3\523724ccdd1d5fdd1110cf1abd6aef62\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Tony\.gradle\caches\transforms-3\523724ccdd1d5fdd1110cf1abd6aef62\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:20:22-64
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:20:22-64
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:21:5-80
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:21:5-80
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:21:22-78
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:21:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:22:5-79
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:22:22-77
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:22:22-77
 uses-permission#android.permission.CAMERA
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:23:5-64
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:23:5-64
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:23:22-62
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:23:22-62
 application
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:25:5-113:19
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:25:5-113:19
 MERGED from [com.google.mlkit:object-detection:16.2.8] C:\Users\Tony\.gradle\caches\transforms-3\ba8ebcf7f2b376b6e20c7f52ed6bbb91\transformed\jetified-object-detection-16.2.8\AndroidManifest.xml:10:5-18:19
 MERGED from [com.google.mlkit:object-detection:16.2.8] C:\Users\Tony\.gradle\caches\transforms-3\ba8ebcf7f2b376b6e20c7f52ed6bbb91\transformed\jetified-object-detection-16.2.8\AndroidManifest.xml:10:5-18:19
 MERGED from [com.google.mlkit:object-detection-custom:16.3.4] C:\Users\Tony\.gradle\caches\transforms-3\d925dc5b85c86844a9eb5a82cb635ddc\transformed\jetified-object-detection-custom-16.3.4\AndroidManifest.xml:7:5-15:19
@@ -333,135 +333,135 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Tony\.gradle\ca
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.1] C:\Users\Tony\.gradle\caches\transforms-3\03266b5c61ddf4d2511dee6e22184dc7\transformed\core-1.3.1\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:28:9-41
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:28:9-41
 	android:icon
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:27:9-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:27:9-44
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:29:9-47
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:29:9-47
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:26:9-61
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:26:9-61
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:31:9-33:68
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:31:9-33:68
 MERGED from [com.google.android.gms:play-services-basement:17.6.0] C:\Users\Tony\.gradle\caches\transforms-3\4cad9653faefed2b72b9e30e78121a5d\transformed\jetified-play-services-basement-17.6.0\AndroidManifest.xml:23:9-25:69
 MERGED from [com.google.android.gms:play-services-basement:17.6.0] C:\Users\Tony\.gradle\caches\transforms-3\4cad9653faefed2b72b9e30e78121a5d\transformed\jetified-play-services-basement-17.6.0\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:33:13-66
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:33:13-66
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:32:13-58
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:32:13-58
 meta-data#com.google.mlkit.vision.DEPENDENCIES
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:37:9-39:62
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:37:9-39:62
 	android:value
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:39:13-60
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:39:13-60
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:38:13-64
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:38:13-64
 activity#com.google.mlkit.vision.demo.EntryChoiceActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:41:9-49:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:41:9-49:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:43:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:43:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:44:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:44:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:42:13-48
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:42:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:45:13-48:29
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:45:13-48:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:46:17-68
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:46:17-68
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:46:25-66
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:46:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:47:17-76
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:47:17-76
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:47:27-74
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:47:27-74
 activity#com.google.mlkit.vision.demo.java.ChooserActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:51:9-54:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:51:9-54:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:53:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:53:13-36
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:52:13-49
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:52:13-49
 activity#com.google.mlkit.vision.demo.java.LivePreviewActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:56:9-60:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:56:9-60:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:58:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:58:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:59:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:59:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:57:13-53
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:57:13-53
 activity#com.google.mlkit.vision.demo.java.CameraXLivePreviewActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:62:9-66:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:62:9-66:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:64:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:64:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:65:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:65:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:63:13-60
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:63:13-60
 activity#com.google.mlkit.vision.demo.java.CameraXSourceDemoActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:68:9-72:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:68:9-72:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:70:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:70:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:71:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:71:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:69:13-59
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:69:13-59
 activity#com.google.mlkit.vision.demo.java.StillImageActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:74:9-78:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:74:9-78:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:76:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:76:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:77:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:77:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:75:13-52
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:75:13-52
 activity#com.google.mlkit.vision.demo.kotlin.ChooserActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:80:9-83:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:80:9-83:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:82:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:82:13-36
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:81:13-51
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:81:13-51
 activity#com.google.mlkit.vision.demo.kotlin.LivePreviewActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:85:9-89:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:85:9-89:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:87:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:87:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:88:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:88:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:86:13-55
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:86:13-55
 activity#com.google.mlkit.vision.demo.kotlin.CameraXLivePreviewActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:91:9-95:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:91:9-95:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:93:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:93:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:94:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:94:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:92:13-62
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:92:13-62
 activity#com.google.mlkit.vision.demo.kotlin.CameraXSourceDemoActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:97:9-101:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:97:9-101:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:99:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:99:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:100:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:100:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:98:13-61
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:98:13-61
 activity#com.google.mlkit.vision.demo.kotlin.StillImageActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:103:9-107:20
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:103:9-107:20
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:105:13-36
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:105:13-36
 	android:theme
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:106:13-44
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:106:13-44
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:104:13-54
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:104:13-54
 activity#com.google.mlkit.vision.demo.preference.SettingsActivity
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:109:9-111:39
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:109:9-111:39
 	android:exported
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:111:13-37
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:111:13-37
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:110:13-56
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:110:13-56
 queries
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:114:5-118:15
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:114:5-118:15
 intent#action:name:android.media.action.IMAGE_CAPTURE
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:115:9-117:18
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:115:9-117:18
 action#android.media.action.IMAGE_CAPTURE
-ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:116:13-73
+ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:116:13-73
 	android:name
-		ADDED from C:\Users\Tony\StudioProjects\VisionDemo\android\vision-quickstart\app\src\main\AndroidManifest.xml:116:21-70
+		ADDED from C:\Users\Tony\Documents\FacialRecognition\Senior_Project\image_recognition\app\src\main\AndroidManifest.xml:116:21-70
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.mlkit:object-detection:16.2.8] C:\Users\Tony\.gradle\caches\transforms-3\ba8ebcf7f2b376b6e20c7f52ed6bbb91\transformed\jetified-object-detection-16.2.8\AndroidManifest.xml:7:5-79
 MERGED from [com.google.mlkit:vision-internal-vkp:18.2.1] C:\Users\Tony\.gradle\caches\transforms-3\be2a402a45fd0a38e0822e39865f15a7\transformed\jetified-vision-internal-vkp-18.2.1\AndroidManifest.xml:7:5-79
