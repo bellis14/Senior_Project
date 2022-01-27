@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
+
 package com.google.mlkit.vision.demo.kotlin
 
 import android.content.Context
@@ -292,5 +292,3 @@ class CameraXSourceDemoActivity :
     }
   }
 }
-
- */

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
+
 package com.google.mlkit.vision.demo.kotlin
 
 import android.app.Activity
@@ -47,7 +47,7 @@ import com.google.mlkit.vision.demo.kotlin.barcodescanner.BarcodeScannerProcesso
 import com.google.mlkit.vision.demo.kotlin.facedetector.FaceDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.labeldetector.LabelDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.objectdetector.ObjectDetectorProcessor
-//import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
+import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.segmenter.SegmenterProcessor
 import com.google.mlkit.vision.demo.kotlin.textdetector.TextRecognitionProcessor
 import com.google.mlkit.vision.demo.preference.PreferenceUtils
@@ -506,8 +506,6 @@ class StillImageActivity : AppCompatActivity() {
               customAutoMLLabelOptions
             )
         }
-
-        /*
         POSE_DETECTION -> {
           val poseDetectorOptions =
             PreferenceUtils.getPoseDetectorOptionsForStillImage(this)
@@ -523,8 +521,6 @@ class StillImageActivity : AppCompatActivity() {
               runClassification, /* isStreamMode = */ false
             )
         }
-         */
-
         SELFIE_SEGMENTATION -> {
           imageProcessor = SegmenterProcessor(this, /* isStreamMode= */ false)
         }
@@ -578,6 +574,3 @@ class StillImageActivity : AppCompatActivity() {
     private const val REQUEST_CHOOSE_IMAGE = 1002
   }
 }
-
-
- */

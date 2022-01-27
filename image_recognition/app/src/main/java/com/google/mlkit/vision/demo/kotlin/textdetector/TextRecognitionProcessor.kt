@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
+
 package com.google.mlkit.vision.demo.kotlin.textdetector
 
 import android.content.Context
@@ -110,5 +110,3 @@ class TextRecognitionProcessor(private val context: Context, textRecognizerOptio
     }
   }
 }
-
- */

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
+
 package com.google.mlkit.vision.demo.kotlin
 
 import android.content.Context
@@ -51,13 +51,13 @@ import com.google.mlkit.vision.demo.CameraXViewModel
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.R
 import com.google.mlkit.vision.demo.VisionImageProcessor
-//import com.google.mlkit.vision.demo.kotlin.barcodescanner.BarcodeScannerProcessor
+import com.google.mlkit.vision.demo.kotlin.barcodescanner.BarcodeScannerProcessor
 import com.google.mlkit.vision.demo.kotlin.facedetector.FaceDetectorProcessor
-//import com.google.mlkit.vision.demo.kotlin.labeldetector.LabelDetectorProcessor
+import com.google.mlkit.vision.demo.kotlin.labeldetector.LabelDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.objectdetector.ObjectDetectorProcessor
-//import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
+import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.segmenter.SegmenterProcessor
-//import com.google.mlkit.vision.demo.kotlin.textdetector.TextRecognitionProcessor
+import com.google.mlkit.vision.demo.kotlin.textdetector.TextRecognitionProcessor
 import com.google.mlkit.vision.demo.preference.PreferenceUtils
 import com.google.mlkit.vision.demo.preference.SettingsActivity
 import com.google.mlkit.vision.demo.preference.SettingsActivity.LaunchSource
@@ -114,9 +114,9 @@ class CameraXLivePreviewActivity :
     options.add(FACE_DETECTION)
     options.add(BARCODE_SCANNING)
     options.add(IMAGE_LABELING)
-    //options.add(IMAGE_LABELING_CUSTOM)
+    options.add(IMAGE_LABELING_CUSTOM)
     options.add(CUSTOM_AUTOML_LABELING)
-    //options.add(POSE_DETECTION)
+    options.add(POSE_DETECTION)
     options.add(SELFIE_SEGMENTATION)
     options.add(TEXT_RECOGNITION_LATIN)
     options.add(TEXT_RECOGNITION_CHINESE)
@@ -289,7 +289,6 @@ class CameraXLivePreviewActivity :
               )
             ObjectDetectorProcessor(this, customAutoMLODTOptions)
           }
-          /*
           TEXT_RECOGNITION_LATIN -> {
             Log.i(TAG, "Using on-device Text recognition Processor for Latin")
             TextRecognitionProcessor(this, TextRecognizerOptions.Builder().build())
@@ -310,28 +309,19 @@ class CameraXLivePreviewActivity :
             Log.i(TAG, "Using on-device Text recognition Processor for Latin and Korean")
             TextRecognitionProcessor(this, KoreanTextRecognizerOptions.Builder().build())
           }
-
-           */
           FACE_DETECTION -> {
             Log.i(TAG, "Using Face Detector Processor")
             val faceDetectorOptions = PreferenceUtils.getFaceDetectorOptions(this)
             FaceDetectorProcessor(this, faceDetectorOptions)
           }
-          /*
           BARCODE_SCANNING -> {
             Log.i(TAG, "Using Barcode Detector Processor")
             BarcodeScannerProcessor(this)
           }
-
-
           IMAGE_LABELING -> {
             Log.i(TAG, "Using Image Label Detector Processor")
             LabelDetectorProcessor(this, ImageLabelerOptions.DEFAULT_OPTIONS)
           }
-
-           */
-
-          /*
           IMAGE_LABELING_CUSTOM -> {
             Log.i(TAG, "Using Custom Image Label (Birds) Detector Processor")
             val localClassifier =
@@ -350,10 +340,6 @@ class CameraXLivePreviewActivity :
                 .build()
             LabelDetectorProcessor(this, customAutoMLLabelOptions)
           }
-
-           */
-
-          /*
           POSE_DETECTION -> {
             val poseDetectorOptions = PreferenceUtils.getPoseDetectorOptionsForLivePreview(this)
             val shouldShowInFrameLikelihood =
@@ -370,7 +356,7 @@ class CameraXLivePreviewActivity :
               runClassification,
               /* isStreamMode = */ true
             )
-          }*/
+          }
           SELFIE_SEGMENTATION -> SegmenterProcessor(this)
           else -> throw IllegalStateException("Invalid model name")
         }
@@ -506,5 +492,3 @@ class CameraXLivePreviewActivity :
     }
   }
 }
-
- */
