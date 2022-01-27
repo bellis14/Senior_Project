@@ -659,7 +659,7 @@
     <string name="desc_still_image_activity" translatable="false">Vision detectors demo with a still image</string>
     <string name="download_error" translatable="false">Download error</string>
     <string name="java_entry_title" translatable="false">Launch App</string>
-    <string name="kotlin_entry_title" translatable="false">Run the ML Kit quickstart written in Kotlin</string>
+    <string name="kotlin_entry_title" translatable="false">Launch App</string>
     <string name="low_storage_error" translatable="false">Face detector dependencies cannot be downloaded due to low device storage</string>
     <string name="menu_item_settings" translatable="false">Settings</string>
     <string name="no_camera_permission" translatable="false">This application cannot run because it does not have the camera permission.  The application will now exit.</string>

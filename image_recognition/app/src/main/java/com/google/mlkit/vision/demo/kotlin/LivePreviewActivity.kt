@@ -93,17 +93,7 @@ class LivePreviewActivity :
     options.add(OBJECT_DETECTION_CUSTOM)
     options.add(CUSTOM_AUTOML_OBJECT_DETECTION)
     options.add(FACE_DETECTION)
-    options.add(BARCODE_SCANNING)
-    options.add(IMAGE_LABELING)
-    options.add(IMAGE_LABELING_CUSTOM)
-    options.add(CUSTOM_AUTOML_LABELING)
     options.add(POSE_DETECTION)
-    options.add(SELFIE_SEGMENTATION)
-    options.add(TEXT_RECOGNITION_LATIN)
-    options.add(TEXT_RECOGNITION_CHINESE)
-    options.add(TEXT_RECOGNITION_DEVANAGARI)
-    options.add(TEXT_RECOGNITION_JAPANESE)
-    options.add(TEXT_RECOGNITION_KOREAN)
 
     // Creating adapter for spinner
     val dataAdapter = ArrayAdapter(this, R.layout.spinner_style, options)
@@ -200,7 +190,34 @@ class LivePreviewActivity :
             ObjectDetectorProcessor(this, customAutoMLODTOptions)
           )
         }
-        TEXT_RECOGNITION_LATIN -> {
+        POSE_DETECTION -> {
+          val poseDetectorOptions = PreferenceUtils.getPoseDetectorOptionsForLivePreview(this)
+          Log.i(TAG, "Using Pose Detector with options $poseDetectorOptions")
+          val shouldShowInFrameLikelihood =
+            PreferenceUtils.shouldShowPoseDetectionInFrameLikelihoodLivePreview(this)
+          val visualizeZ = PreferenceUtils.shouldPoseDetectionVisualizeZ(this)
+          val rescaleZ = PreferenceUtils.shouldPoseDetectionRescaleZForVisualization(this)
+          val runClassification = PreferenceUtils.shouldPoseDetectionRunClassification(this)
+          cameraSource!!.setMachineLearningFrameProcessor(
+            PoseDetectorProcessor(
+              this,
+              poseDetectorOptions,
+              shouldShowInFrameLikelihood,
+              visualizeZ,
+              rescaleZ,
+              runClassification,
+              /* isStreamMode = */ true
+            )
+          )
+        }
+        FACE_DETECTION -> {
+          Log.i(TAG, "Using Face Detector Processor")
+          val faceDetectorOptions = PreferenceUtils.getFaceDetectorOptions(this)
+          cameraSource!!.setMachineLearningFrameProcessor(
+            FaceDetectorProcessor(this, faceDetectorOptions)
+          )
+        }
+        /*TEXT_RECOGNITION_LATIN -> {
           Log.i(TAG, "Using on-device Text recognition Processor for Latin and Latin")
           cameraSource!!.setMachineLearningFrameProcessor(
             TextRecognitionProcessor(this, TextRecognizerOptions.Builder().build())
@@ -228,13 +245,6 @@ class LivePreviewActivity :
           Log.i(TAG, "Using on-device Text recognition Processor for Latin and Korean")
           cameraSource!!.setMachineLearningFrameProcessor(
             TextRecognitionProcessor(this, KoreanTextRecognizerOptions.Builder().build())
-          )
-        }
-        FACE_DETECTION -> {
-          Log.i(TAG, "Using Face Detector Processor")
-          val faceDetectorOptions = PreferenceUtils.getFaceDetectorOptions(this)
-          cameraSource!!.setMachineLearningFrameProcessor(
-            FaceDetectorProcessor(this, faceDetectorOptions)
           )
         }
         BARCODE_SCANNING -> {
@@ -268,29 +278,10 @@ class LivePreviewActivity :
             LabelDetectorProcessor(this, customAutoMLLabelOptions)
           )
         }
-        POSE_DETECTION -> {
-          val poseDetectorOptions = PreferenceUtils.getPoseDetectorOptionsForLivePreview(this)
-          Log.i(TAG, "Using Pose Detector with options $poseDetectorOptions")
-          val shouldShowInFrameLikelihood =
-            PreferenceUtils.shouldShowPoseDetectionInFrameLikelihoodLivePreview(this)
-          val visualizeZ = PreferenceUtils.shouldPoseDetectionVisualizeZ(this)
-          val rescaleZ = PreferenceUtils.shouldPoseDetectionRescaleZForVisualization(this)
-          val runClassification = PreferenceUtils.shouldPoseDetectionRunClassification(this)
-          cameraSource!!.setMachineLearningFrameProcessor(
-            PoseDetectorProcessor(
-              this,
-              poseDetectorOptions,
-              shouldShowInFrameLikelihood,
-              visualizeZ,
-              rescaleZ,
-              runClassification,
-              /* isStreamMode = */ true
-            )
-          )
-        }
         SELFIE_SEGMENTATION -> {
           cameraSource!!.setMachineLearningFrameProcessor(SegmenterProcessor(this))
-        }
+        }*/
+
         else -> Log.e(TAG, "Unknown model: $model")
       }
     } catch (e: Exception) {
@@ -405,7 +396,8 @@ class LivePreviewActivity :
     private const val OBJECT_DETECTION_CUSTOM = "Custom Object Detection"
     private const val CUSTOM_AUTOML_OBJECT_DETECTION = "Custom AutoML Object Detection (Flower)"
     private const val FACE_DETECTION = "Face Detection"
-    private const val TEXT_RECOGNITION_LATIN = "Text Recognition Latin"
+    private const val POSE_DETECTION = "Pose Detection"
+    /*private const val TEXT_RECOGNITION_LATIN = "Text Recognition Latin"
     private const val TEXT_RECOGNITION_CHINESE = "Text Recognition Chinese"
     private const val TEXT_RECOGNITION_DEVANAGARI = "Text Recognition Devanagari"
     private const val TEXT_RECOGNITION_JAPANESE = "Text Recognition Japanese"
@@ -414,9 +406,8 @@ class LivePreviewActivity :
     private const val IMAGE_LABELING = "Image Labeling"
     private const val IMAGE_LABELING_CUSTOM = "Custom Image Labeling (Birds)"
     private const val CUSTOM_AUTOML_LABELING = "Custom AutoML Image Labeling (Flower)"
-    private const val POSE_DETECTION = "Pose Detection"
     private const val SELFIE_SEGMENTATION = "Selfie Segmentation"
-
+*/
     private const val TAG = "LivePreviewActivity"
     private const val PERMISSION_REQUESTS = 1
     private fun isPermissionGranted(context: Context, permission: String?): Boolean {
