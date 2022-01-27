@@ -13,60 +13,59 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.google.mlkit.vision.demo.java.segmenter;
-
-import android.content.Context;
-import android.util.Log;
-import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.Task;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.demo.GraphicOverlay;
-import com.google.mlkit.vision.demo.java.VisionProcessorBase;
-import com.google.mlkit.vision.demo.preference.PreferenceUtils;
-import com.google.mlkit.vision.segmentation.Segmentation;
-import com.google.mlkit.vision.segmentation.SegmentationMask;
-import com.google.mlkit.vision.segmentation.Segmenter;
-import com.google.mlkit.vision.segmentation.selfie.SelfieSegmenterOptions;
-
-/** A processor to run Segmenter. */
-public class SegmenterProcessor extends VisionProcessorBase<SegmentationMask> {
-
-  private static final String TAG = "SegmenterProcessor";
-
-  private final Segmenter segmenter;
-
-  public SegmenterProcessor(Context context) {
-    this(context, /* isStreamMode= */ true);
-  }
-
-  public SegmenterProcessor(Context context, boolean isStreamMode) {
-    super(context);
-    SelfieSegmenterOptions.Builder optionsBuilder = new SelfieSegmenterOptions.Builder();
-    optionsBuilder.setDetectorMode(
-      isStreamMode ? SelfieSegmenterOptions.STREAM_MODE : SelfieSegmenterOptions.SINGLE_IMAGE_MODE);
-    if (PreferenceUtils.shouldSegmentationEnableRawSizeMask(context)) {
-      optionsBuilder.enableRawSizeMask();
-    }
-
-    SelfieSegmenterOptions options = optionsBuilder.build();
-    segmenter = Segmentation.getClient(options);
-    Log.d(TAG, "SegmenterProcessor created with option: " + options);
-  }
-
-  @Override
-  protected Task<SegmentationMask> detectInImage(InputImage image) {
-    return segmenter.process(image);
-  }
-
-  @Override
-  protected void onSuccess(
-      @NonNull SegmentationMask segmentationMask, @NonNull GraphicOverlay graphicOverlay) {
-    graphicOverlay.add(new SegmentationGraphic(graphicOverlay, segmentationMask));
-  }
-
-  @Override
-  protected void onFailure(@NonNull Exception e) {
-    Log.e(TAG, "Segmentation failed: " + e);
-  }
-}
+//
+//package com.google.mlkit.vision.demo.java.segmenter;
+//
+//import android.content.Context;
+//import android.util.Log;
+//import androidx.annotation.NonNull;
+//import com.google.android.gms.tasks.Task;
+//import com.google.mlkit.vision.common.InputImage;
+//import com.google.mlkit.vision.demo.GraphicOverlay;
+//import com.google.mlkit.vision.demo.preference.PreferenceUtils;
+//import com.google.mlkit.vision.segmentation.Segmentation;
+//import com.google.mlkit.vision.segmentation.SegmentationMask;
+//import com.google.mlkit.vision.segmentation.Segmenter;
+//import com.google.mlkit.vision.segmentation.selfie.SelfieSegmenterOptions;
+//
+///** A processor to run Segmenter. */
+//public class SegmenterProcessor extends VisionProcessorBase<SegmentationMask> {
+//
+//  private static final String TAG = "SegmenterProcessor";
+//
+//  private final Segmenter segmenter;
+//
+//  public SegmenterProcessor(Context context) {
+//    this(context, /* isStreamMode= */ true);
+//  }
+//
+//  public SegmenterProcessor(Context context, boolean isStreamMode) {
+//    super(context);
+//    SelfieSegmenterOptions.Builder optionsBuilder = new SelfieSegmenterOptions.Builder();
+//    optionsBuilder.setDetectorMode(
+//      isStreamMode ? SelfieSegmenterOptions.STREAM_MODE : SelfieSegmenterOptions.SINGLE_IMAGE_MODE);
+//    if (PreferenceUtils.shouldSegmentationEnableRawSizeMask(context)) {
+//      optionsBuilder.enableRawSizeMask();
+//    }
+//
+//    SelfieSegmenterOptions options = optionsBuilder.build();
+//    segmenter = Segmentation.getClient(options);
+//    Log.d(TAG, "SegmenterProcessor created with option: " + options);
+//  }
+//
+//  @Override
+//  protected Task<SegmentationMask> detectInImage(InputImage image) {
+//    return segmenter.process(image);
+//  }
+//
+//  @Override
+//  protected void onSuccess(
+//      @NonNull SegmentationMask segmentationMask, @NonNull GraphicOverlay graphicOverlay) {
+//    graphicOverlay.add(new SegmentationGraphic(graphicOverlay, segmentationMask));
+//  }
+//
+//  @Override
+//  protected void onFailure(@NonNull Exception e) {
+//    Log.e(TAG, "Segmentation failed: " + e);
+//  }
+//}
