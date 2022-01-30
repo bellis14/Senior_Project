@@ -163,7 +163,7 @@ class ChooserActivity :
     private val DESCRIPTION_IDS =
       intArrayOf(
         R.string.desc_camera_source_activity,
-        R.string.app_name
+        R.string.Bluetooth_Device_Selector
       )
   }
 }

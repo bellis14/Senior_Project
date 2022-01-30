@@ -1233,6 +1233,7 @@ layout support_simple_spinner_dropdown_item
 layout toggle_style
 menu camera_button_menu
 mipmap ic_launcher
+string Bluetooth_Device_Selector
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
