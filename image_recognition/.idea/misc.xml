@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tony/Documents/FacialRecognition/Senior_Project/image_recognition/app/src/main/res/drawable/ic_shutter.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Tony/Documents/FacialRecognition/Senior_Project/image_recognition/app/src/main/res/drawable/logo_mlkit.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Tony/Documents/FacialRecognition/Senior_Project/image_recognition/app/src/main/res/drawable/outline_fiber_manual_record_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Tony/Documents/FacialRecognition/Senior_Project/image_recognition/app/src/main/res/layout/activity_chooser.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Tony/Documents/FacialRecognition/Senior_Project/image_recognition/app/src/main/res/layout/activity_vision_entry_choice.xml" value="0.15" />
         <entry key="..\:/Users/Tony/Documents/FacialRecognition/Senior_Project/image_recognition/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.20677083333333332" />

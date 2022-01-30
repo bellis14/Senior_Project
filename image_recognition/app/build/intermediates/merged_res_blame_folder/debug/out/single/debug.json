@@ -36,6 +36,10 @@
         "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\layout\\activity_vision_camerax_live_preview.xml"
     },
     {
+        "merged": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\build\\intermediates\\merged_res\\debug\\drawable_outline_fiber_manual_record_24.xml.flat",
+        "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\drawable\\outline_fiber_manual_record_24.xml"
+    },
+    {
         "merged": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_still_image.xml.flat",
         "source": "C:\\Users\\Tony\\Documents\\FacialRecognition\\Senior_Project\\image_recognition\\app\\src\\main\\res\\layout\\activity_still_image.xml"
     },

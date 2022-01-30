@@ -11,7 +11,10 @@
       android:layout_width="match_parent"
       android:layout_height="0dp"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintBottom_toTopOf="@+id/control"/>
+      app:layout_constraintBottom_toTopOf="@+id/control">
+
+
+  </com.google.mlkit.vision.demo.CameraSourcePreview>
 
   <com.google.mlkit.vision.demo.GraphicOverlay
       android:id="@+id/graphic_overlay"
@@ -22,6 +25,7 @@
       app:layout_constraintTop_toTopOf="@id/preview_view"
       app:layout_constraintBottom_toBottomOf="@id/preview_view"/>
 
+
   <include
       android:id="@+id/settings_button"
       layout="@layout/settings_style"
@@ -29,6 +33,16 @@
       android:layout_height="wrap_content"
       app:layout_constraintRight_toRightOf="@id/preview_view"
       app:layout_constraintTop_toTopOf="@id/preview_view" />
+
+  <ImageButton
+      android:layout_width="96dp"
+      android:layout_height="96dp"
+      android:layout_gravity="center_horizontal"
+      android:background="@drawable/outline_fiber_manual_record_24"
+      app:layout_constraintBottom_toTopOf="@+id/control"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
 
   <LinearLayout
       android:id="@id/control"
@@ -50,7 +64,7 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="0dp"
+        android:layout_width="10dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
