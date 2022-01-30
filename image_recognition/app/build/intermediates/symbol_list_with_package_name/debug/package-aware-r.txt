@@ -854,6 +854,9 @@ drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable ic_record
+drawable ic_record_normal
+drawable ic_record_pressed
 drawable ic_settings_white_24dp
 drawable ic_switch_camera_white_48dp
 drawable ic_switch_camera_white_48dp_inset
@@ -1077,6 +1080,7 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id record
 id rectangles
 id reverseSawtooth
 id right

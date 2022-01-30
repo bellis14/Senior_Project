@@ -35,10 +35,11 @@
       app:layout_constraintTop_toTopOf="@id/preview_view" />
 
   <ImageButton
+      android:id="@+id/record"
       android:layout_width="96dp"
       android:layout_height="96dp"
       android:layout_gravity="center_horizontal"
-      android:background="@drawable/outline_fiber_manual_record_24"
+      android:background="@drawable/ic_record"
       app:layout_constraintBottom_toTopOf="@+id/control"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent" />
