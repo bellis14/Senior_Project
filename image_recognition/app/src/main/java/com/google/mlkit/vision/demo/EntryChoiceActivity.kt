@@ -30,7 +30,8 @@ class EntryChoiceActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_vision_entry_choice)
-
+    intent = Intent(this@EntryChoiceActivity, com.google.mlkit.vision.demo.kotlin.ChooserActivity::class.java)
+    startActivity(intent)
 
 
     findViewById<TextView>(R.id.kotlin_entry_point).setOnClickListener {
@@ -44,7 +45,7 @@ class EntryChoiceActivity : AppCompatActivity() {
   }
 
   fun openSelectDeviceActivity(view: View) {
-    val intent = Intent(this@EntryChoiceActivity, com.google.mlkit.vision.demo.kotlin.SelectDevice::class.java)
+    val intent = Intent(this@EntryChoiceActivity, SelectDevice::class.java)
     startActivity(intent)
   }
 }

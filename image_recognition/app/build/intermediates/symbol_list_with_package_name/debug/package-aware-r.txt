@@ -989,6 +989,7 @@ id direct
 id disableHome
 id disablePostScroll
 id disableScroll
+id disconnect_device
 id dragDown
 id dragEnd
 id dragLeft
@@ -1040,6 +1041,8 @@ id kotlin_entry_point
 id layout
 id left
 id light
+id light_off
+id light_on
 id line1
 id line3
 id linear
@@ -1094,6 +1097,10 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id select_bluetooth_device
+id select_device
+id select_device_list
+id select_device_refresh
 id select_dialog_listview
 id select_image_button
 id select_images_from_local
@@ -1201,7 +1208,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_bluetooth
 layout activity_chooser
+layout activity_select_device
 layout activity_settings
 layout activity_still_image
 layout activity_vision_camerax_live_preview
