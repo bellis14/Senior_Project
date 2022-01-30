@@ -18,8 +18,11 @@ package com.google.mlkit.vision.demo
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import com.google.mlkit.vision.demo.kotlin.SelectDevice
+
 //import com.google.mlkit.vision.demo.java.ChooserActivity
 
 class EntryChoiceActivity : AppCompatActivity() {
@@ -38,5 +41,10 @@ class EntryChoiceActivity : AppCompatActivity() {
         )
       startActivity(intent)
     }
+  }
+
+  fun openSelectDeviceActivity(view: View) {
+    val intent = Intent(this@EntryChoiceActivity, com.google.mlkit.vision.demo.kotlin.SelectDevice::class.java)
+    startActivity(intent)
   }
 }
