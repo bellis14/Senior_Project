@@ -23,14 +23,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
+import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
-import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.annotation.KeepName
@@ -56,6 +50,7 @@ import com.google.mlkit.vision.text.devanagari.DevanagariTextRecognizerOptions
 import com.google.mlkit.vision.text.japanese.JapaneseTextRecognizerOptions
 import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import kotlinx.android.synthetic.main.activity_vision_live_preview.*
 import java.io.IOException
 import java.util.ArrayList
 
@@ -112,6 +107,12 @@ class LivePreviewActivity :
       val intent = Intent(applicationContext, SettingsActivity::class.java)
       intent.putExtra(SettingsActivity.EXTRA_LAUNCH_SOURCE, LaunchSource.LIVE_PREVIEW)
       startActivity(intent)
+    }
+
+    val recordButton = findViewById<ImageButton>(R.id.record)
+    recordButton.setOnClickListener{
+//      val intent = Intent(this, LivePreviewActivity::class.java)
+//      startActivity(intent)
     }
 
     if (allPermissionsGranted()) {

@@ -21,6 +21,7 @@ import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.demo.GraphicOverlay
+import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
 import com.google.mlkit.vision.demo.kotlin.VisionProcessorBase
 import com.google.mlkit.vision.face.Face
 import com.google.mlkit.vision.face.FaceDetection

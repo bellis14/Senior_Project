@@ -854,6 +854,9 @@ drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable ic_record
+drawable ic_record_normal
+drawable ic_record_pressed
 drawable ic_settings_white_24dp
 drawable ic_switch_camera_white_48dp
 drawable ic_switch_camera_white_48dp_inset
@@ -871,6 +874,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable outline_fiber_manual_record_24
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -989,6 +993,7 @@ id direct
 id disableHome
 id disablePostScroll
 id disableScroll
+id disconnect_device
 id dragDown
 id dragEnd
 id dragLeft
@@ -1040,6 +1045,8 @@ id kotlin_entry_point
 id layout
 id left
 id light
+id light_off
+id light_on
 id line1
 id line3
 id linear
@@ -1073,6 +1080,7 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id record
 id rectangles
 id reverseSawtooth
 id right
@@ -1094,6 +1102,10 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id select_bluetooth_device
+id select_device
+id select_device_list
+id select_device_refresh
 id select_dialog_listview
 id select_image_button
 id select_images_from_local
@@ -1201,7 +1213,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_bluetooth
 layout activity_chooser
+layout activity_select_device
 layout activity_settings
 layout activity_still_image
 layout activity_vision_camerax_live_preview
@@ -1224,6 +1238,7 @@ layout support_simple_spinner_dropdown_item
 layout toggle_style
 menu camera_button_menu
 mipmap ic_launcher
+string Bluetooth_Device_Selector
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

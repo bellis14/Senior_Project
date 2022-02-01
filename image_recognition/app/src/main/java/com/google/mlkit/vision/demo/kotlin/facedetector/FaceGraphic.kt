@@ -66,6 +66,14 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     val y = translateY(face.boundingBox.centerY().toFloat())
     canvas.drawCircle(x, y, FACE_POSITION_RADIUS, facePositionPaint)
 
+    // Draw blue dot in the center of the face detected
+    val colorId = Color.BLUE
+    val centerPosColor = Paint()
+    centerPosColor.color = colorId
+    canvas.drawCircle(x, y, 5.0f, centerPosColor)
+
+    // Send the bluetooth data here
+
     // Calculate positions.
     val left = x - scale(face.boundingBox.width() / 2.0f)
     val top = y - scale(face.boundingBox.height() / 2.0f)
