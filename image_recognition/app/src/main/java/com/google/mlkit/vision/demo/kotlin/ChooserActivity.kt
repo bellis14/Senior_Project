@@ -157,11 +157,13 @@ class ChooserActivity :
     private const val PERMISSION_REQUESTS = 1
     private val CLASSES =
       arrayOf<Class<*>>(
-        LivePreviewActivity::class.java
+        LivePreviewActivity::class.java,
+        SelectDevice::class.java
       )
     private val DESCRIPTION_IDS =
       intArrayOf(
-        R.string.desc_camera_source_activity
+        R.string.desc_camera_source_activity,
+        R.string.Bluetooth_Device_Selector
       )
   }
 }

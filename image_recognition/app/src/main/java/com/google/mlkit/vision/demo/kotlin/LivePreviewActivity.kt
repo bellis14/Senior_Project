@@ -19,18 +19,17 @@ package com.google.mlkit.vision.demo.kotlin
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.CamcorderProfile
+import android.media.MediaRecorder
+import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
+import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
-import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
-import android.widget.ToggleButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.annotation.KeepName
@@ -39,25 +38,17 @@ import com.google.mlkit.vision.demo.CameraSource
 import com.google.mlkit.vision.demo.CameraSourcePreview
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.R
-import com.google.mlkit.vision.demo.kotlin.barcodescanner.BarcodeScannerProcessor
 import com.google.mlkit.vision.demo.kotlin.facedetector.FaceDetectorProcessor
-import com.google.mlkit.vision.demo.kotlin.labeldetector.LabelDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.objectdetector.ObjectDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
-import com.google.mlkit.vision.demo.kotlin.segmenter.SegmenterProcessor
-import com.google.mlkit.vision.demo.kotlin.textdetector.TextRecognitionProcessor
 import com.google.mlkit.vision.demo.preference.PreferenceUtils
 import com.google.mlkit.vision.demo.preference.SettingsActivity
 import com.google.mlkit.vision.demo.preference.SettingsActivity.LaunchSource
-import com.google.mlkit.vision.label.custom.CustomImageLabelerOptions
-import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
-import com.google.mlkit.vision.text.chinese.ChineseTextRecognizerOptions
-import com.google.mlkit.vision.text.devanagari.DevanagariTextRecognizerOptions
-import com.google.mlkit.vision.text.japanese.JapaneseTextRecognizerOptions
-import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions
-import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import kotlinx.android.synthetic.main.activity_vision_live_preview.*
+import java.io.File
 import java.io.IOException
-import java.util.ArrayList
+import java.util.*
+
 
 /** Live preview demo for ML Kit APIs. */
 @KeepName
@@ -71,6 +62,9 @@ class LivePreviewActivity :
   private var preview: CameraSourcePreview? = null
   private var graphicOverlay: GraphicOverlay? = null
   private var selectedModel = OBJECT_DETECTION
+  var mrec = MediaRecorder()
+  var recordFlag = 0
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -114,12 +108,29 @@ class LivePreviewActivity :
       startActivity(intent)
     }
 
+    val recordButton = findViewById<ImageButton>(R.id.record)
+
+
+    recordButton.setOnClickListener{
+      if (recordFlag == 0) {
+        recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
+        startRecording()
+        recordFlag++
+      }
+      else {
+        recordButton.setBackgroundResource(R.drawable.ic_record_normal)
+        stopRecording()
+        recordFlag = 0
+      }
+    }
+
     if (allPermissionsGranted()) {
       createCameraSource(selectedModel)
     } else {
       runtimePermissions
     }
   }
+
 
   @Synchronized
   override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -378,6 +389,25 @@ class LivePreviewActivity :
         )
       }
     }
+
+  private fun startRecording() {
+
+
+    val text = "Recording started"
+    val duration = Toast.LENGTH_LONG
+    val toast = Toast.makeText(applicationContext, text, duration)
+    toast.show()
+
+
+  }
+
+  private fun stopRecording() {
+    val text = "Recording stopped"
+    val duration = Toast.LENGTH_LONG
+    val toast = Toast.makeText(applicationContext, text, duration)
+    toast.show()
+
+  }
 
   override fun onRequestPermissionsResult(
     requestCode: Int,
