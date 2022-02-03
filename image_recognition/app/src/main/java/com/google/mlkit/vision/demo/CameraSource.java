@@ -19,12 +19,17 @@ package com.google.mlkit.vision.demo;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import androidx.annotation.Nullable;
+
+import android.media.CamcorderProfile;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -32,11 +37,15 @@ import android.view.WindowManager;
 import androidx.annotation.RequiresPermission;
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
+import android.media.MediaRecorder;
+import android.widget.Toast;
 
 /**
  * Manages the camera and allows UI updates on top of it (e.g. overlaying extra Graphics or
@@ -55,6 +64,8 @@ public class CameraSource {
   public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT = 360;
 
   private static final String TAG = "MIDemoApp:CameraSource";
+
+  private MediaRecorder mrec;
 
   /**
    * The dummy surface texture must be assigned a chosen name. Since we never use an OpenGL context,
@@ -123,6 +134,10 @@ public class CameraSource {
   // Public
   // ==============================================================================================
 
+  public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
+    mrec = mediaRecorder;
+  }
+
   /** Stops the camera and releases the resources of the camera and underlying detector. */
   public void release() {
     synchronized (processorLock) {
@@ -134,6 +149,14 @@ public class CameraSource {
       }
     }
   }
+
+ /* public Uri addVideo(File videoFile) {
+    ContentValues values = new ContentValues(3);
+    values.put(MediaStore.Video.Media.TITLE, "My video title");
+    values.put(MediaStore.Video.Media.MIME_TYPE, "video/mp4");
+    values.put(MediaStore.Video.Media.DATA, videoFile.getAbsolutePath());
+    return Context.getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, values);
+  }*/
 
   /**
    * Opens the camera and starts sending preview frames to the underlying detector. The preview
@@ -151,6 +174,20 @@ public class CameraSource {
     dummySurfaceTexture = new SurfaceTexture(DUMMY_TEXTURE_NAME);
     camera.setPreviewTexture(dummySurfaceTexture);
     camera.startPreview();
+
+    if(mrec != null)
+    {
+      String text = "camera set";
+      camera.unlock();
+      mrec.setCamera(camera);
+      mrec.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+      mrec.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+      mrec.setProfile(CamcorderProfile.get(1));
+      //Finish media recorder setup
+      mrec.start();
+      Toast.makeText(activity.getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
 
     processingThread = new Thread(processingRunnable);
     processingRunnable.setActive(true);
@@ -174,7 +211,6 @@ public class CameraSource {
     camera = createCamera();
     camera.setPreviewDisplay(surfaceHolder);
     camera.startPreview();
-
     processingThread = new Thread(processingRunnable);
     processingRunnable.setActive(true);
     processingThread.start();

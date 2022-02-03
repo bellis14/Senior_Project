@@ -19,6 +19,7 @@ package com.google.mlkit.vision.demo.kotlin
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.hardware.Camera
 import android.media.CamcorderProfile
 import android.media.MediaRecorder
 import android.os.Build
@@ -321,6 +322,7 @@ class LivePreviewActivity :
           Log.d(TAG, "resume: graphOverlay is null")
         }
         preview!!.start(cameraSource, graphicOverlay)
+
       } catch (e: IOException) {
         Log.e(TAG, "Unable to start camera source.", e)
         cameraSource!!.release()
@@ -391,21 +393,22 @@ class LivePreviewActivity :
     }
 
   private fun startRecording() {
+    preview?.stop()
 
-
-    val text = "Recording started"
-    val duration = Toast.LENGTH_LONG
-    val toast = Toast.makeText(applicationContext, text, duration)
-    toast.show()
-
-
+    if (allPermissionsGranted()) {
+      createCameraSource(selectedModel)
+      cameraSource!!.setMediaRecorder(mrec)
+      startCameraSource()
+    }
   }
 
   private fun stopRecording() {
-    val text = "Recording stopped"
-    val duration = Toast.LENGTH_LONG
-    val toast = Toast.makeText(applicationContext, text, duration)
-    toast.show()
+    preview?.stop()
+
+    if (allPermissionsGranted()) {
+      createCameraSource(selectedModel)
+      startCameraSource()
+    }
 
   }
 
