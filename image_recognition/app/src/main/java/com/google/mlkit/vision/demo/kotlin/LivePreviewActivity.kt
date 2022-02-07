@@ -400,6 +400,13 @@ class LivePreviewActivity :
       cameraSource!!.setMediaRecorder(mrec)
       startCameraSource()
     }
+    // The new way to record videos.
+    Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
+      takeVideoIntent.resolveActivity(packageManager)?.also {
+        startActivityForResult(takeVideoIntent, 1)
+      }
+    }
+
   }
 
   private fun stopRecording() {

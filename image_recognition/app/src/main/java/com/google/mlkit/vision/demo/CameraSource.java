@@ -137,11 +137,6 @@ public class CameraSource {
   // Public
   // ==============================================================================================
 
-  public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
-    this.mediaRecorder = mediaRecorder;
-  }
-
-
   /** Stops the camera and releases the resources of the camera and underlying detector. */
   public void release() {
     synchronized (processorLock) {
@@ -181,6 +176,14 @@ public class CameraSource {
     processingRunnable.setActive(true);
     processingThread.start();
     return this;
+  }
+
+
+  // ==============================================================================================
+  // Video Recording functions
+  // ==============================================================================================
+  public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
+    this.mediaRecorder = mediaRecorder;
   }
 
   private void ConfigureMediaRecorder(Camera camera) throws IOException {
