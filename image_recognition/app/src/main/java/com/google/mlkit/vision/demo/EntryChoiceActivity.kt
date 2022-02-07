@@ -34,18 +34,18 @@ class EntryChoiceActivity : AppCompatActivity() {
     startActivity(intent)
 
 
-    findViewById<TextView>(R.id.kotlin_entry_point).setOnClickListener {
-      val intent =
-        Intent(
-          this@EntryChoiceActivity,
-          com.google.mlkit.vision.demo.kotlin.ChooserActivity::class.java
-        )
-      startActivity(intent)
-    }
+//    findViewById<TextView>(R.id.kotlin_entry_point).setOnClickListener {
+//      val intent =
+//        Intent(
+//          this@EntryChoiceActivity,
+//          com.google.mlkit.vision.demo.kotlin.ChooserActivity::class.java
+//        )
+//      startActivity(intent)
+//    }
   }
 
-  fun openSelectDeviceActivity(view: View) {
-    val intent = Intent(this@EntryChoiceActivity, SelectDevice::class.java)
-    startActivity(intent)
-  }
+//  fun openSelectDeviceActivity(view: View) {
+//    val intent = Intent(this@EntryChoiceActivity, SelectDevice::class.java)
+//    startActivity(intent)
+//  }
 }

@@ -403,6 +403,7 @@ class LivePreviewActivity :
   }
 
   private fun stopRecording() {
+    cameraSource!!.mediarecorderRelease()
     preview?.stop()
 
     if (allPermissionsGranted()) {

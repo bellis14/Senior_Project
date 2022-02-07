@@ -1151,6 +1151,7 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textView1
 id time
 id title
 id titleDividerNoCustom
@@ -1222,6 +1223,7 @@ layout activity_vision_camerax_live_preview
 layout activity_vision_cameraxsource_demo
 layout activity_vision_entry_choice
 layout activity_vision_live_preview
+layout bluetooth_adapter_view_layout
 layout custom_dialog
 layout notification_action
 layout notification_action_tombstone

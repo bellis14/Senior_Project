@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 
 import android.media.CamcorderProfile;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Surface;
@@ -41,7 +42,9 @@ import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.IdentityHashMap;
 import java.util.List;
 import android.media.MediaRecorder;
@@ -65,7 +68,7 @@ public class CameraSource {
 
   private static final String TAG = "MIDemoApp:CameraSource";
 
-  private MediaRecorder mrec;
+  private MediaRecorder mediaRecorder;
 
   /**
    * The dummy surface texture must be assigned a chosen name. Since we never use an OpenGL context,
@@ -135,8 +138,9 @@ public class CameraSource {
   // ==============================================================================================
 
   public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
-    mrec = mediaRecorder;
+    this.mediaRecorder = mediaRecorder;
   }
+
 
   /** Stops the camera and releases the resources of the camera and underlying detector. */
   public void release() {
@@ -149,14 +153,6 @@ public class CameraSource {
       }
     }
   }
-
- /* public Uri addVideo(File videoFile) {
-    ContentValues values = new ContentValues(3);
-    values.put(MediaStore.Video.Media.TITLE, "My video title");
-    values.put(MediaStore.Video.Media.MIME_TYPE, "video/mp4");
-    values.put(MediaStore.Video.Media.DATA, videoFile.getAbsolutePath());
-    return Context.getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, values);
-  }*/
 
   /**
    * Opens the camera and starts sending preview frames to the underlying detector. The preview
@@ -175,24 +171,64 @@ public class CameraSource {
     camera.setPreviewTexture(dummySurfaceTexture);
     camera.startPreview();
 
-    if(mrec != null)
-    {
-      String text = "camera set";
-      camera.unlock();
-      mrec.setCamera(camera);
-      mrec.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-      mrec.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-      mrec.setProfile(CamcorderProfile.get(1));
-      //Finish media recorder setup
-      mrec.start();
-      Toast.makeText(activity.getApplicationContext(), text, Toast.LENGTH_SHORT).show();
-    }
+    if(mediaRecorder != null)
+      ConfigureMediaRecorder(camera);
+    else
+      Log.d("MediaRecorder", "MediaRecorder is null.");
 
 
     processingThread = new Thread(processingRunnable);
     processingRunnable.setActive(true);
     processingThread.start();
     return this;
+  }
+
+  private void ConfigureMediaRecorder(Camera camera) throws IOException {
+    //camera.unlock();
+//    mediaRecorder.setCamera(camera);
+//    mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+//    mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+//    mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.MPEG_4));
+//    mediaRecorder.setOutputFile(getOutputMediaFile().toString());
+//    mediaRecorder.prepare();
+
+    //mediaRecorder.start();
+    Toast.makeText(activity.getApplicationContext(), "Recording Started", Toast.LENGTH_SHORT).show();
+  }
+
+  public void mediarecorderRelease(){
+    if (mediaRecorder != null) {
+      mediaRecorder.release();
+      mediaRecorder = null;
+    }
+    Toast.makeText(activity.getApplicationContext(), "Recording Stopped", Toast.LENGTH_SHORT).show();
+  }
+
+  private Uri getOutputMediaFile()
+  {
+    //File mediaStorageDir = new File(Environment.getExternalStorageDirectory()+File.separator+"DCIM/Camera");
+    File mediaStorageDir;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+      mediaStorageDir = new File(Environment.getStorageDirectory()+File.separator+"DCIM/Camera");
+    }
+    else
+      mediaStorageDir = new File("DCIM/Camera");
+
+    File[] files =mediaStorageDir.listFiles();
+
+    if(!mediaStorageDir.exists())
+    {
+      if(!mediaStorageDir.mkdirs())
+      {
+        Log.d("KarmaCam","Failed to create directory");
+        return null;
+      }
+    }
+
+    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+    File file = new File(mediaStorageDir.getPath() + File.separator+ "VID_"+timeStamp+".mp4");
+    return Uri.fromFile(file);
+
   }
 
   /**
