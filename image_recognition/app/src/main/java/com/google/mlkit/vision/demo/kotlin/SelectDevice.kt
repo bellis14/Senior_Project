@@ -47,19 +47,20 @@ class SelectDevice : AppCompatActivity() {
         if (!m_pairedDevices.isEmpty()) {
             for (device: BluetoothDevice in m_pairedDevices) {
                 list.add(device)
-                Log.i("device", ""+device)
+                Log.i("device", ""+device.name)
             }
-        } else {
+        }
+        else {
             Toast.makeText(this, "no paired bluetooth devices found", Toast.LENGTH_SHORT).show()
-
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
+        //val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
+        val adapter = BluetoothDeviceAdapter(this, R.layout.bluetooth_adapter_view_layout, list)
         select_device_list.adapter = adapter
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
             val address: String = device.address
-
+            Log.i("device", ""+address)
             val intent = Intent(this, Bluetooth::class.java)
             intent.putExtra(EXTRA_ADDRESS, address)
             startActivity(intent)
