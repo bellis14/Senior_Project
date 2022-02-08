@@ -22,11 +22,13 @@ import android.graphics.Paint
 import com.google.common.primitives.Ints
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
+import com.google.mlkit.vision.demo.kotlin.facedetector.FaceGraphic
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
 import java.lang.Math.max
 import java.lang.Math.min
 import java.util.Locale
+import kotlin.math.abs
 
 /** Draw the detected pose in preview.  */
 class PoseGraphic internal constructor(
@@ -68,104 +70,133 @@ class PoseGraphic internal constructor(
       return
     }
 
-    // Draw pose classification text.
-    val classificationX = POSE_CLASSIFICATION_TEXT_SIZE * 0.5f
-    for (i in poseClassification.indices) {
-      val classificationY = canvas.height - (
-        POSE_CLASSIFICATION_TEXT_SIZE * 1.5f * (poseClassification.size - i).toFloat()
-        )
-      canvas.drawText(
-        poseClassification[i],
-        classificationX,
-        classificationY,
-        classificationTextPaint
-      )
-    }
+//    // Draws a circle at the position of the detected pose, with the pose's track id below.
+//    val x = translateX(pose.boundingBox.centerX().toFloat())
+//    val y = translateY(pose.boundingBox.centerY().toFloat())
+//    canvas.drawCircle(x, y, FaceGraphic.FACE_POSITION_RADIUS, posePositionPaint)
+//
+//    // Draw blue dot in the center of the pose detected
+//    val colorId = Color.BLUE
+//    val centerPosColor = Paint()
+//    centerPosColor.color = colorId
+//    canvas.drawCircle(x, y, 5.0f, centerPosColor)
+//
+//    // Send the bluetooth data here
+//
+//    // Calculate positions.
+//    val left = x - scale(pose.boundingBox.width() / 2.0f)
+//    val top = y - scale(pose.boundingBox.height() / 2.0f)
+//    val right = x + scale(pose.boundingBox.width() / 2.0f)
+//    val bottom = y + scale(pose.boundingBox.height() / 2.0f)
+//    val lineHeight = FaceGraphic.ID_TEXT_SIZE + FaceGraphic.BOX_STROKE_WIDTH
+//    var yLabelOffset: Float = if (pose.trackingId == null) 0f else -lineHeight
+//
+//    // Decide color based on pose ID
+//    val colorID = if (pose.trackingId == null) 0 else abs(pose.trackingId!! % FaceGraphic.NUM_COLORS)
+//
+//
 
-    // Draw all the points
-    for (landmark in landmarks) {
-      drawPoint(canvas, landmark, whitePaint)
-      if (visualizeZ && rescaleZForVisualization) {
-        zMin = min(zMin, landmark.position3D.z)
-        zMax = max(zMax, landmark.position3D.z)
-      }
-    }
 
+//    // Draw pose classification text.
+//    val classificationX = POSE_CLASSIFICATION_TEXT_SIZE * 0.5f
+//    for (i in poseClassification.indices) {
+//      val classificationY = canvas.height - (
+//        POSE_CLASSIFICATION_TEXT_SIZE * 1.5f * (poseClassification.size - i).toFloat()
+//        )
+//      canvas.drawText(
+//        poseClassification[i],
+//        classificationX,
+//        classificationY,
+//        classificationTextPaint
+//      )
+//    }
+//
+//    // Draw all the points
+//    for (landmark in landmarks) {
+//      drawPoint(canvas, landmark, whitePaint)
+//      if (visualizeZ && rescaleZForVisualization) {
+//        zMin = min(zMin, landmark.position3D.z)
+//        zMax = max(zMax, landmark.position3D.z)
+//      }
+//    }
+//
     val nose = pose.getPoseLandmark(PoseLandmark.NOSE)
     val lefyEyeInner = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_INNER)
-    val lefyEye = pose.getPoseLandmark(PoseLandmark.LEFT_EYE)
-    val leftEyeOuter = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_OUTER)
+//    val lefyEye = pose.getPoseLandmark(PoseLandmark.LEFT_EYE)
+//    val leftEyeOuter = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_OUTER)
     val rightEyeInner = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_INNER)
-    val rightEye = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE)
-    val rightEyeOuter = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_OUTER)
-    val leftEar = pose.getPoseLandmark(PoseLandmark.LEFT_EAR)
-    val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
-    val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
-    val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
+//    val rightEye = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE)
+//    val rightEyeOuter = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_OUTER)
+//    val leftEar = pose.getPoseLandmark(PoseLandmark.LEFT_EAR)
+//    val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
+//    val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
+//    val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
+//
+//    val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
+//    val rightShoulder = pose.getPoseLandmark(PoseLandmark.RIGHT_SHOULDER)
+//    val leftElbow = pose.getPoseLandmark(PoseLandmark.LEFT_ELBOW)
+//    val rightElbow = pose.getPoseLandmark(PoseLandmark.RIGHT_ELBOW)
+//    val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
+//    val rightWrist = pose.getPoseLandmark(PoseLandmark.RIGHT_WRIST)
+//    val leftHip = pose.getPoseLandmark(PoseLandmark.LEFT_HIP)
+//    val rightHip = pose.getPoseLandmark(PoseLandmark.RIGHT_HIP)
+//    val leftKnee = pose.getPoseLandmark(PoseLandmark.LEFT_KNEE)
+//    val rightKnee = pose.getPoseLandmark(PoseLandmark.RIGHT_KNEE)
+//    val leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE)
+//    val rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE)
+//
+//    val leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY)
+//    val rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY)
+//    val leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX)
+//    val rightIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_INDEX)
+//    val leftThumb = pose.getPoseLandmark(PoseLandmark.LEFT_THUMB)
+//    val rightThumb = pose.getPoseLandmark(PoseLandmark.RIGHT_THUMB)
+//    val leftHeel = pose.getPoseLandmark(PoseLandmark.LEFT_HEEL)
+//    val rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL)
+//    val leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX)
+//    val rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX)
+//
+//    // Face
 
-    val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
-    val rightShoulder = pose.getPoseLandmark(PoseLandmark.RIGHT_SHOULDER)
-    val leftElbow = pose.getPoseLandmark(PoseLandmark.LEFT_ELBOW)
-    val rightElbow = pose.getPoseLandmark(PoseLandmark.RIGHT_ELBOW)
-    val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
-    val rightWrist = pose.getPoseLandmark(PoseLandmark.RIGHT_WRIST)
-    val leftHip = pose.getPoseLandmark(PoseLandmark.LEFT_HIP)
-    val rightHip = pose.getPoseLandmark(PoseLandmark.RIGHT_HIP)
-    val leftKnee = pose.getPoseLandmark(PoseLandmark.LEFT_KNEE)
-    val rightKnee = pose.getPoseLandmark(PoseLandmark.RIGHT_KNEE)
-    val leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE)
-    val rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE)
-
-    val leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY)
-    val rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY)
-    val leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX)
-    val rightIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_INDEX)
-    val leftThumb = pose.getPoseLandmark(PoseLandmark.LEFT_THUMB)
-    val rightThumb = pose.getPoseLandmark(PoseLandmark.RIGHT_THUMB)
-    val leftHeel = pose.getPoseLandmark(PoseLandmark.LEFT_HEEL)
-    val rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL)
-    val leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX)
-    val rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX)
-
-    // Face
-    drawLine(canvas, nose, lefyEyeInner, whitePaint)
-    drawLine(canvas, lefyEyeInner, lefyEye, whitePaint)
-    drawLine(canvas, lefyEye, leftEyeOuter, whitePaint)
-    drawLine(canvas, leftEyeOuter, leftEar, whitePaint)
-    drawLine(canvas, nose, rightEyeInner, whitePaint)
-    drawLine(canvas, rightEyeInner, rightEye, whitePaint)
-    drawLine(canvas, rightEye, rightEyeOuter, whitePaint)
-    drawLine(canvas, rightEyeOuter, rightEar, whitePaint)
-    drawLine(canvas, leftMouth, rightMouth, whitePaint)
-
-    drawLine(canvas, leftShoulder, rightShoulder, whitePaint)
-    drawLine(canvas, leftHip, rightHip, whitePaint)
-
-    // Left body
-    drawLine(canvas, leftShoulder, leftElbow, leftPaint)
-    drawLine(canvas, leftElbow, leftWrist, leftPaint)
-    drawLine(canvas, leftShoulder, leftHip, leftPaint)
-    drawLine(canvas, leftHip, leftKnee, leftPaint)
-    drawLine(canvas, leftKnee, leftAnkle, leftPaint)
-    drawLine(canvas, leftWrist, leftThumb, leftPaint)
-    drawLine(canvas, leftWrist, leftPinky, leftPaint)
-    drawLine(canvas, leftWrist, leftIndex, leftPaint)
-    drawLine(canvas, leftIndex, leftPinky, leftPaint)
-    drawLine(canvas, leftAnkle, leftHeel, leftPaint)
-    drawLine(canvas, leftHeel, leftFootIndex, leftPaint)
-
-    // Right body
-    drawLine(canvas, rightShoulder, rightElbow, rightPaint)
-    drawLine(canvas, rightElbow, rightWrist, rightPaint)
-    drawLine(canvas, rightShoulder, rightHip, rightPaint)
-    drawLine(canvas, rightHip, rightKnee, rightPaint)
-    drawLine(canvas, rightKnee, rightAnkle, rightPaint)
-    drawLine(canvas, rightWrist, rightThumb, rightPaint)
-    drawLine(canvas, rightWrist, rightPinky, rightPaint)
-    drawLine(canvas, rightWrist, rightIndex, rightPaint)
-    drawLine(canvas, rightIndex, rightPinky, rightPaint)
-    drawLine(canvas, rightAnkle, rightHeel, rightPaint)
-    drawLine(canvas, rightHeel, rightFootIndex, rightPaint)
+    drawPoint(canvas,nose,whitePaint)
+//    drawLine(canvas, nose, lefyEyeInner, whitePaint)
+//    drawLine(canvas, lefyEyeInner, lefyEye, whitePaint)
+//    drawLine(canvas, lefyEye, leftEyeOuter, whitePaint)
+//    drawLine(canvas, leftEyeOuter, leftEar, whitePaint)
+//    drawLine(canvas, nose, rightEyeInner, whitePaint)
+//    drawLine(canvas, rightEyeInner, rightEye, whitePaint)
+//    drawLine(canvas, rightEye, rightEyeOuter, whitePaint)
+//    drawLine(canvas, rightEyeOuter, rightEar, whitePaint)
+//    drawLine(canvas, leftMouth, rightMouth, whitePaint)
+//
+//    drawLine(canvas, leftShoulder, rightShoulder, whitePaint)
+//    drawLine(canvas, leftHip, rightHip, whitePaint)
+//
+//    // Left body
+//    drawLine(canvas, leftShoulder, leftElbow, leftPaint)
+//    drawLine(canvas, leftElbow, leftWrist, leftPaint)
+//    drawLine(canvas, leftShoulder, leftHip, leftPaint)
+//    drawLine(canvas, leftHip, leftKnee, leftPaint)
+//    drawLine(canvas, leftKnee, leftAnkle, leftPaint)
+//    drawLine(canvas, leftWrist, leftThumb, leftPaint)
+//    drawLine(canvas, leftWrist, leftPinky, leftPaint)
+//    drawLine(canvas, leftWrist, leftIndex, leftPaint)
+//    drawLine(canvas, leftIndex, leftPinky, leftPaint)
+//    drawLine(canvas, leftAnkle, leftHeel, leftPaint)
+//    drawLine(canvas, leftHeel, leftFootIndex, leftPaint)
+//
+//    // Right body
+//    drawLine(canvas, rightShoulder, rightElbow, rightPaint)
+//    drawLine(canvas, rightElbow, rightWrist, rightPaint)
+//    drawLine(canvas, rightShoulder, rightHip, rightPaint)
+//    drawLine(canvas, rightHip, rightKnee, rightPaint)
+//    drawLine(canvas, rightKnee, rightAnkle, rightPaint)
+//    drawLine(canvas, rightWrist, rightThumb, rightPaint)
+//    drawLine(canvas, rightWrist, rightPinky, rightPaint)
+//    drawLine(canvas, rightWrist, rightIndex, rightPaint)
+//    drawLine(canvas, rightIndex, rightPinky, rightPaint)
+//    drawLine(canvas, rightAnkle, rightHeel, rightPaint)
+//    drawLine(canvas, rightHeel, rightFootIndex, rightPaint)
 
     // Draw inFrameLikelihood for all points
     if (showInFrameLikelihood) {

@@ -103,7 +103,15 @@ class PoseDetectorProcessor(
     poseWithClassification: PoseWithClassification,
     graphicOverlay: GraphicOverlay
   ) {
-    graphicOverlay.add(
+    // Probably add code here to send data via bluetooth
+      val centerLandmark = poseWithClassification.pose.getPoseLandmark(0)
+      if (centerLandmark != null) {
+          val center = centerLandmark.position
+          println("(${center.x}, ${center.y})")
+      }
+
+
+      graphicOverlay.add(
       PoseGraphic(
         graphicOverlay,
         poseWithClassification.pose,
