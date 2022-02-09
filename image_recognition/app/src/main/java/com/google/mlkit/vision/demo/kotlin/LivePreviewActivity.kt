@@ -73,7 +73,14 @@ class LivePreviewActivity :
     Log.d(TAG, "onCreate")
     setContentView(R.layout.activity_vision_live_preview)
     m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
-    ConnectToDevice(this).execute()
+    if (m_address == null) {
+      m_address = "hello world"
+      ConnectToDevice(this).execute()
+    }
+    else {
+      ConnectToDevice(this).execute()
+    }
+
 
     preview = findViewById(R.id.preview_view)
     if (preview == null) {
@@ -151,11 +158,11 @@ class LivePreviewActivity :
     override fun doInBackground(vararg p0: Void?): String? {
       try {
         if (m_bluetoothSocket == null || !m_isConnected) {
-          m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-          val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(m_address)
-          m_bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(m_myUUID)
-          BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
-          m_bluetoothSocket!!.connect()
+            m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(m_address)
+            m_bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(m_myUUID)
+            BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
+            m_bluetoothSocket!!.connect()
         }
       } catch (e: IOException) {
         connectSuccess = false
