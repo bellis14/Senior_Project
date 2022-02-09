@@ -18,6 +18,7 @@ package com.google.mlkit.vision.demo;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.media.MediaRecorder;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -173,4 +174,13 @@ public class CameraSourcePreview extends ViewGroup {
     Log.d(TAG, "isPortraitMode returning false by default");
     return false;
   }
+
+  // ==============================================================================================
+  // Video Recording functions
+  // ==============================================================================================
+  public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
+    cameraSource.setMediaRecorder(mediaRecorder);
+    cameraSource.ConfigureMediaRecorder(surfaceView);
+  }
+
 }
