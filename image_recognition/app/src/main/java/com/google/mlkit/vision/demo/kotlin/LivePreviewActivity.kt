@@ -49,6 +49,7 @@ import kotlinx.android.synthetic.main.activity_vision_live_preview.*
 import java.io.File
 import java.io.IOException
 import java.util.*
+import java.util.jar.Manifest
 
 
 /** Live preview demo for ML Kit APIs. */
@@ -63,7 +64,7 @@ class LivePreviewActivity :
   private var preview: CameraSourcePreview? = null
   private var graphicOverlay: GraphicOverlay? = null
   private var selectedModel = OBJECT_DETECTION
-  var mrec = MediaRecorder()
+  var mediaRecorder = MediaRecorder()
   var recordFlag = 0
 
 
@@ -396,16 +397,12 @@ class LivePreviewActivity :
     preview?.stop()
 
     if (allPermissionsGranted()) {
-      createCameraSource(selectedModel)
-      cameraSource!!.setMediaRecorder(mrec)
-      startCameraSource()
+
     }
-    // The new way to record videos.
-    Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
-      takeVideoIntent.resolveActivity(packageManager)?.also {
-        startActivityForResult(takeVideoIntent, 1)
-      }
-    }
+    createCameraSource(selectedModel)
+    startCameraSource()
+    preview!!.setMediaRecorder(mediaRecorder)
+    cameraSource!!.MediaRecorderStart()
 
   }
 
@@ -414,9 +411,10 @@ class LivePreviewActivity :
     preview?.stop()
 
     if (allPermissionsGranted()) {
-      createCameraSource(selectedModel)
-      startCameraSource()
+
     }
+    createCameraSource(selectedModel)
+    startCameraSource()
 
   }
 
