@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.google.mlkit.vision.demo.BluetoothDeviceAdapter
 import com.google.mlkit.vision.demo.R
 import kotlinx.android.synthetic.main.activity_select_device.*
 
@@ -59,11 +60,17 @@ class SelectDevice : AppCompatActivity() {
         select_device_list.adapter = adapter
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
-            val address: String = device.address
-            Log.i("device", ""+address)
-            val intent = Intent(this, Bluetooth::class.java)
-            intent.putExtra(EXTRA_ADDRESS, address)
-            startActivity(intent)
+            if (device.name == "AutoCameraMan") {
+                val address: String = device.address
+                Log.i("device", "" + address)
+                //val intent = Intent(this, Bluetooth::class.java)
+                val intent = Intent(this, LivePreviewActivity::class.java)
+                intent.putExtra(EXTRA_ADDRESS, address)
+                startActivity(intent)
+            }
+            else {
+                Toast.makeText(this, "Select AutoCameraMan", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

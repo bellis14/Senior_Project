@@ -1,4 +1,4 @@
-package com.google.mlkit.vision.demo.kotlin;
+package com.google.mlkit.vision.demo;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-
-import com.google.mlkit.vision.demo.R;
 
 import java.util.ArrayList;
 

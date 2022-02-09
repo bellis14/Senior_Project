@@ -21,9 +21,12 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
+import com.google.mlkit.vision.demo.kotlin.Bluetooth
+import com.google.mlkit.vision.demo.kotlin.LivePreviewActivity
 import com.google.mlkit.vision.face.Face
 import com.google.mlkit.vision.face.FaceLandmark
 import com.google.mlkit.vision.face.FaceLandmark.LandmarkType
+import java.io.IOException
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.max
@@ -57,9 +60,18 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     }
   }
 
+  private fun sendCommand(input: String) {
+    if (LivePreviewActivity.m_bluetoothSocket != null) {
+      try{
+        LivePreviewActivity.m_bluetoothSocket!!.outputStream.write(input.toByteArray())
+      } catch(e: IOException) {
+        e.printStackTrace()
+      }
+    }
+  }
+
   /** Draws the face annotations for position on the supplied canvas. */
   override fun draw(canvas: Canvas) {
-    // Draws a circle at the position of the detected face, with the face's track id below.
 
     // Draws a circle at the position of the detected face, with the face's track id below.
     val x = translateX(face.boundingBox.centerX().toFloat())
@@ -67,12 +79,21 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     canvas.drawCircle(x, y, FACE_POSITION_RADIUS, facePositionPaint)
 
     // Draw blue dot in the center of the face detected
-    val colorId = Color.BLUE
-    val centerPosColor = Paint()
-    centerPosColor.color = colorId
-    canvas.drawCircle(x, y, 5.0f, centerPosColor)
+    val faceColor = Color.BLUE
+    val faceCenterPosColor = Paint()
+    faceCenterPosColor.color = faceColor
+    canvas.drawCircle(x, y, 5.0f, faceCenterPosColor)
+
+    // Draw green dot in the center of the frame
+    val frameCenterColor = Paint()
+    frameCenterColor.color = Color.GREEN
+    canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), 5.0f, frameCenterColor)
+
+    // Compute the x and y difference and tell motors to go up or down
 
     // Send the bluetooth data here
+    sendCommand("A\n")
+    sendCommand("B\n")
 
     // Calculate positions.
     val left = x - scale(face.boundingBox.width() / 2.0f)

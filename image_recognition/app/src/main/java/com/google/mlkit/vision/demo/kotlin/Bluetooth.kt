@@ -17,23 +17,21 @@ import kotlinx.android.synthetic.main.activity_bluetooth.*
 import java.io.IOException
 
 
-
 class Bluetooth : AppCompatActivity() {
 
     companion object {
-        var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
-        var m_bluetoothSocket: BluetoothSocket? = null
-        lateinit var m_progress: ProgressDialog
-        lateinit var m_bluetoothAdapter: BluetoothAdapter
-        var m_isConnected: Boolean = false
-        lateinit var m_address: String
+    var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+    var m_bluetoothSocket: BluetoothSocket? = null
+    lateinit var m_progress: ProgressDialog
+    lateinit var m_bluetoothAdapter: BluetoothAdapter
+    var m_isConnected: Boolean = false
+    lateinit var m_address: String
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bluetooth)
         m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
-        Log.i("ERROR*****************", "CRASHING")
         ConnectToDevice(this).execute()
 
         light_on.setOnClickListener { sendCommand("a") }
