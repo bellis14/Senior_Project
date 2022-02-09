@@ -159,6 +159,14 @@ class PoseGraphic internal constructor(
 //    // Face
 
     drawPoint(canvas,nose,whitePaint)
+
+    // draw center of screen
+    val frameCenterColor = Paint()
+    frameCenterColor.color = Color.GREEN
+    canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), 5.0f, frameCenterColor)
+
+    canvas.drawLine(translateX(nose.position.x),translateY(nose.position.y),(canvas.width / 2).toFloat(),(canvas.height / 2).toFloat(), frameCenterColor)
+
 //    drawLine(canvas, nose, lefyEyeInner, whitePaint)
 //    drawLine(canvas, lefyEyeInner, lefyEye, whitePaint)
 //    drawLine(canvas, lefyEye, leftEyeOuter, whitePaint)
