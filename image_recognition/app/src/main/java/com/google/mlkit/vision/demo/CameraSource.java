@@ -233,7 +233,7 @@ public class CameraSource {
             ".jpeg",                     /* suffix */
             storageDir                   /* directory */
     );
-    return Uri.fromFile(image);
+    return Uri.fromFile(storageDir);
   }
 
 
