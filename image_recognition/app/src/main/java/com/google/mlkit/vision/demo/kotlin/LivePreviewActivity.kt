@@ -16,12 +16,17 @@
 
 package com.google.mlkit.vision.demo.kotlin
 
+import android.app.ProgressDialog
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.Camera
 import android.media.CamcorderProfile
 import android.media.MediaRecorder
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -35,10 +40,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.annotation.KeepName
 import com.google.mlkit.common.model.LocalModel
-import com.google.mlkit.vision.demo.CameraSource
-import com.google.mlkit.vision.demo.CameraSourcePreview
-import com.google.mlkit.vision.demo.GraphicOverlay
-import com.google.mlkit.vision.demo.R
+import com.google.mlkit.vision.demo.*
 import com.google.mlkit.vision.demo.kotlin.facedetector.FaceDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.objectdetector.ObjectDetectorProcessor
 import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
@@ -66,11 +68,12 @@ class LivePreviewActivity :
   var mrec = MediaRecorder()
   var recordFlag = 0
 
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     Log.d(TAG, "onCreate")
     setContentView(R.layout.activity_vision_live_preview)
+    m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
+    ConnectToDevice(this).execute()
 
     preview = findViewById(R.id.preview_view)
     if (preview == null) {
@@ -132,6 +135,45 @@ class LivePreviewActivity :
     }
   }
 
+  private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
+    private var connectSuccess: Boolean = true
+    private val context: Context
+
+    init {
+      this.context = c
+    }
+
+    override fun onPreExecute() {
+      super.onPreExecute()
+      m_progress = ProgressDialog.show(context, "Connecting...", "please wait")
+    }
+
+    override fun doInBackground(vararg p0: Void?): String? {
+      try {
+        if (m_bluetoothSocket == null || !m_isConnected) {
+          m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+          val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(m_address)
+          m_bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(m_myUUID)
+          BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
+          m_bluetoothSocket!!.connect()
+        }
+      } catch (e: IOException) {
+        connectSuccess = false
+        e.printStackTrace()
+      }
+      return null
+    }
+
+    override fun onPostExecute(result: String?) {
+      super.onPostExecute(result)
+      if (!connectSuccess) {
+        Log.i("data", "couldn't connect")
+      } else {
+        m_isConnected = true
+      }
+      m_progress.dismiss()
+    }
+  }
 
   @Synchronized
   override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -433,6 +475,12 @@ class LivePreviewActivity :
   }
 
   companion object {
+    var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+    var m_bluetoothSocket: BluetoothSocket? = null
+    lateinit var m_progress: ProgressDialog
+    lateinit var m_bluetoothAdapter: BluetoothAdapter
+    var m_isConnected: Boolean = false
+    lateinit var m_address: String
     private const val OBJECT_DETECTION = "Object Detection"
     private const val OBJECT_DETECTION_CUSTOM = "Custom Object Detection"
     private const val CUSTOM_AUTOML_OBJECT_DETECTION = "Custom AutoML Object Detection (Flower)"
