@@ -126,12 +126,13 @@ class LivePreviewActivity :
     recordButton.setOnClickListener{
       if (recordFlag == 0) {
         recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
-        startRecording()
+        //startRecording()
+        dispatchTakeVideoIntent()
         recordFlag++
       }
       else {
         recordButton.setBackgroundResource(R.drawable.ic_record_normal)
-        stopRecording()
+        //stopRecording()
         recordFlag = 0
       }
     }
@@ -140,6 +141,16 @@ class LivePreviewActivity :
       createCameraSource(selectedModel)
     } else {
       runtimePermissions
+    }
+  }
+
+
+
+  private fun dispatchTakeVideoIntent() {
+    Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
+      takeVideoIntent.resolveActivity(packageManager)?.also {
+        startActivityForResult(takeVideoIntent, 1)
+      }
     }
   }
 

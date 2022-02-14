@@ -22,6 +22,7 @@ import android.content.pm.PackageManager
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
@@ -63,6 +64,7 @@ class ChooserActivity :
       getRuntimePermissions()
     }
   }
+
 
   override fun onItemClick(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
     val clicked = CLASSES[position]

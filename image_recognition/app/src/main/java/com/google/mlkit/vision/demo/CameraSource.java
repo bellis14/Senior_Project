@@ -228,6 +228,7 @@ public class CameraSource {
     else
       Log.d("dir", "dirExists");
 
+
     File image = File.createTempFile(
             timeStamp,                   /* prefix */
             ".jpeg",                     /* suffix */
