@@ -74,13 +74,13 @@ class LivePreviewActivity :
     Log.d(TAG, "onCreate")
     setContentView(R.layout.activity_vision_live_preview)
     m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
-    if (m_address == null) {
+    /*if (m_address == null) {
       m_address = "hello world"
       ConnectToDevice(this).execute()
     }
     else {
       ConnectToDevice(this).execute()
-    }
+    }*/
 
 
     preview = findViewById(R.id.preview_view)

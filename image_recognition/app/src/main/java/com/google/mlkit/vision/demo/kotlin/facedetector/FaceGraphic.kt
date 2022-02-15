@@ -87,13 +87,30 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     // Draw green dot in the center of the frame
     val frameCenterColor = Paint()
     frameCenterColor.color = Color.GREEN
-    canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), 5.0f, frameCenterColor)
+    val frameCenterX = (canvas.width / 2).toFloat()
+    val frameCenterY = (canvas.height / 2).toFloat()
+    canvas.drawCircle(frameCenterX, frameCenterY, 5.0f, frameCenterColor)
 
     // Compute the x and y difference and tell motors to go up or down
+    val detectedImageX = x
+    val detectedImageY = y
+    val displacementX = abs(detectedImageX - frameCenterX)
+    val displacementY = abs(detectedImageY - frameCenterY)
 
-    // Send the bluetooth data here
-    sendCommand("A\n")
-    sendCommand("B\n")
+    // Perform a pan
+    if (displacementX > displacementY) {
+      if (detectedImageX < frameCenterX)
+        sendCommand("0\n") // pan right
+      else
+        sendCommand("1\n") // pan left
+    }
+    // Perform a tilt
+    else {
+      if (detectedImageY < frameCenterY)
+        sendCommand("2\n") // tilt up
+      else
+        sendCommand("3\n") // tilt down
+    }
 
     // Calculate positions.
     val left = x - scale(face.boundingBox.width() / 2.0f)
