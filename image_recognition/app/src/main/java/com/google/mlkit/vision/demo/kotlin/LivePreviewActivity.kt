@@ -126,13 +126,13 @@ class LivePreviewActivity :
     recordButton.setOnClickListener{
       if (recordFlag == 0) {
         recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
-        //startRecording()
-        dispatchTakeVideoIntent()
+        startRecording()
+//        dispatchTakeVideoIntent()
         recordFlag++
       }
       else {
         recordButton.setBackgroundResource(R.drawable.ic_record_normal)
-        //stopRecording()
+        stopRecording()
         recordFlag = 0
       }
     }

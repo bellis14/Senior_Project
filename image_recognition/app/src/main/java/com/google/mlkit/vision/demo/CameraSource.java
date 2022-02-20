@@ -33,6 +33,7 @@ import android.media.CamcorderProfile;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -185,7 +186,7 @@ public class CameraSource {
     this.mediaRecorder = mediaRecorder;
   }
 
-  public void ConfigureMediaRecorder(SurfaceView surfaceView) throws IOException {
+  public void ConfigureMediaRecorder(Context context, SurfaceView surfaceView) throws IOException {
     if (camera != null)
       mediaRecorder.setCamera(camera);
     else
@@ -193,9 +194,32 @@ public class CameraSource {
     mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
     mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
     mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.DEFAULT));
-//    //mediaRecorder.setOutputFile(Environment.DIRECTORY_MOVIES);
-    mediaRecorder.setOutputFile(createImageFile().toString());
+//    mediaRecorder.setOutputFile(Environment.getExternalStorageDirectory()+"/"+
+//            DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime())+
+//            ".mp4");
+//    File video = createImageFile();
+//    if (!video.exists()) {
+//      video.mkdirs();
+//      Log.d("Storagefile", "file does not exist");
+//    }
+//    else
+//      Log.d("Storagefile", "file exists");
+
+//    final File dir = new File(context.getFilesDir() + "/videos");
+//    dir.mkdirs(); //create folders where write files
+//    final File file = new File(dir, "BlockForTest.mp4");
+//    file.createNewFile();
+//    String uri = "content://com.android.externalstorage.documents/document/primary%3AVideos";
+
+    File newFile = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+      newFile = new File(String.valueOf(context.getExternalMediaDirs()), "videos");
+    }
+//    mediaRecorder.setOutputFile(createImageFile().toString());
+    mediaRecorder.setOutputFile(newFile.getAbsolutePath());
+
     mediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
+
     mediaRecorder.prepare();
     Toast.makeText(activity.getApplicationContext(), "Recording", Toast.LENGTH_SHORT).show();
   }
@@ -216,26 +240,42 @@ public class CameraSource {
   }
 
   public Uri createImageFile() throws IOException {
-    // Create an image file name
+     //Create an image file name
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
             .format(System.currentTimeMillis());
-    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/");
+    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/");
 
     if (!storageDir.exists()) {
       if (!storageDir.mkdirs())
-        Log.d("dir", "dirNotCreated");
+        Log.d("CameraSource", "dirNotCreated");
     }
     else
-      Log.d("dir", "dirExists");
+      Log.d("CameraSource", "dirExists");
 
 
-    File image = File.createTempFile(
+    File video = File.createTempFile(
             timeStamp,                   /* prefix */
-            ".jpeg",                     /* suffix */
+            ".mp4",                     /* suffix */
             storageDir                   /* directory */
     );
+
+//    File storage = new File(Environment.getExternalStorageDirectory()+"/"+
+//            DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime())+
+//            ".mp4");
+//
+//    if (!storage.exists()) {
+//      if (!storage.mkdirs())
+//        Log.d("dir", "dirNotCreated"+Uri.fromFile(storage).toString());
+//      else
+//        Log.d("dir", "Directory created"+Uri.fromFile(storage).toString());
+//    }
+//    else
+//      Log.d("dir", "dirExists");
+
     return Uri.fromFile(storageDir);
+    //return video;
   }
+
 
 
 

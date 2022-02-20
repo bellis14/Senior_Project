@@ -180,7 +180,7 @@ public class CameraSourcePreview extends ViewGroup {
   // ==============================================================================================
   public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
     cameraSource.setMediaRecorder(mediaRecorder);
-    cameraSource.ConfigureMediaRecorder(surfaceView);
+    cameraSource.ConfigureMediaRecorder(context, surfaceView);
   }
 
 }
