@@ -22,9 +22,11 @@ import android.graphics.Paint
 import com.google.common.primitives.Ints
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
+import com.google.mlkit.vision.demo.kotlin.LivePreviewActivity
 import com.google.mlkit.vision.demo.kotlin.facedetector.FaceGraphic
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
+import java.io.IOException
 import java.lang.Math.max
 import java.lang.Math.min
 import java.util.Locale
@@ -64,6 +66,15 @@ class PoseGraphic internal constructor(
     rightPaint.color = Color.YELLOW
   }
 
+  private fun sendCommand(input: String) {
+    if (LivePreviewActivity.m_bluetoothSocket != null) {
+      try{
+        LivePreviewActivity.m_bluetoothSocket!!.outputStream.write(input.toByteArray())
+      } catch(e: IOException) {
+        e.printStackTrace()
+      }
+    }
+  }
   override fun draw(canvas: Canvas) {
     val landmarks = pose.allPoseLandmarks
     if (landmarks.isEmpty()) {
@@ -163,9 +174,29 @@ class PoseGraphic internal constructor(
     // draw center of screen
     val frameCenterColor = Paint()
     frameCenterColor.color = Color.GREEN
-    canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), 5.0f, frameCenterColor)
+    val detectedImageX = translateX(nose.position.x)
+    val detectedImageY = translateY(nose.position.y)
+    val frameCenterX = (canvas.width / 2).toFloat()
+    val frameCenterY = (canvas.height / 2).toFloat()
+    val displacementX = abs(detectedImageX - frameCenterX)
+    val displacementY = abs(detectedImageY - frameCenterY)
 
-    canvas.drawLine(translateX(nose.position.x),translateY(nose.position.y),(canvas.width / 2).toFloat(),(canvas.height / 2).toFloat(), frameCenterColor)
+    // Perform a pan
+    if (displacementX > displacementY) {
+      if (detectedImageX < frameCenterX)
+        sendCommand("0\n") // pan right
+      else
+        sendCommand("1\n") // pan left
+    }
+    // Perform a tilt
+    else {
+      if (detectedImageY < frameCenterY)
+        sendCommand("2\n") // tilt up
+      else
+        sendCommand("3\n") // tilt down
+    }
+    canvas.drawLine(detectedImageX, detectedImageY, frameCenterX, frameCenterY, frameCenterColor)
+    canvas.drawCircle(frameCenterX, frameCenterY, 5.0f, frameCenterColor)
 
 //    drawLine(canvas, nose, lefyEyeInner, whitePaint)
 //    drawLine(canvas, lefyEyeInner, lefyEye, whitePaint)

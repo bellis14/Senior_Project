@@ -73,50 +73,49 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
   /** Draws the face annotations for position on the supplied canvas. */
   override fun draw(canvas: Canvas) {
 
-    // Draws a circle at the position of the detected face, with the face's track id below.
-    val x = translateX(face.boundingBox.centerX().toFloat())
-    val y = translateY(face.boundingBox.centerY().toFloat())
-    canvas.drawCircle(x, y, FACE_POSITION_RADIUS, facePositionPaint)
-
-    // Draw blue dot in the center of the face detected
-    val faceColor = Color.BLUE
-    val faceCenterPosColor = Paint()
-    faceCenterPosColor.color = faceColor
-    canvas.drawCircle(x, y, 5.0f, faceCenterPosColor)
-
-    // Draw green dot in the center of the frame
-    val frameCenterColor = Paint()
-    frameCenterColor.color = Color.GREEN
+    val detectedImagePosX = translateX(face.boundingBox.centerX().toFloat())
+    val detectedImagePosY = translateY(face.boundingBox.centerY().toFloat())
     val frameCenterX = (canvas.width / 2).toFloat()
     val frameCenterY = (canvas.height / 2).toFloat()
+
+    // Draw green dot in the center of the face detected
+    val faceColor = Color.GREEN
+    val faceCenterPosColor = Paint()
+    faceCenterPosColor.color = faceColor
+    canvas.drawCircle(detectedImagePosX, detectedImagePosY, 5.0f, faceCenterPosColor)
+
+    // Draw red dot in the center of the frame
+    val frameCenterColor = Paint()
+    frameCenterColor.color = Color.RED
     canvas.drawCircle(frameCenterX, frameCenterY, 5.0f, frameCenterColor)
 
-    // Compute the x and y difference and tell motors to go up or down
-    val detectedImageX = x
-    val detectedImageY = y
-    val displacementX = abs(detectedImageX - frameCenterX)
-    val displacementY = abs(detectedImageY - frameCenterY)
+    // Draw a green line connecting the center of the face and the center of the frame
+    canvas.drawLine(detectedImagePosX, detectedImagePosY, frameCenterX, frameCenterY, faceCenterPosColor)
+
+    // Compute the x and y difference and tell motors where to move
+    val displacementX = abs(detectedImagePosX - frameCenterX)
+    val displacementY = abs(detectedImagePosY - frameCenterY)
 
     // Perform a pan
     if (displacementX > displacementY) {
-      if (detectedImageX < frameCenterX)
+      if (detectedImagePosX < frameCenterX)
         sendCommand("0\n") // pan right
       else
         sendCommand("1\n") // pan left
     }
     // Perform a tilt
     else {
-      if (detectedImageY < frameCenterY)
+      if (detectedImagePosY < frameCenterY)
         sendCommand("2\n") // tilt up
       else
         sendCommand("3\n") // tilt down
     }
 
     // Calculate positions.
-    val left = x - scale(face.boundingBox.width() / 2.0f)
-    val top = y - scale(face.boundingBox.height() / 2.0f)
-    val right = x + scale(face.boundingBox.width() / 2.0f)
-    val bottom = y + scale(face.boundingBox.height() / 2.0f)
+    val left = detectedImagePosX - scale(face.boundingBox.width() / 2.0f)
+    val top = detectedImagePosY - scale(face.boundingBox.height() / 2.0f)
+    val right = detectedImagePosX + scale(face.boundingBox.width() / 2.0f)
+    val bottom = detectedImagePosY + scale(face.boundingBox.height() / 2.0f)
     val lineHeight = ID_TEXT_SIZE + BOX_STROKE_WIDTH
     var yLabelOffset: Float = if (face.trackingId == null) 0f else -lineHeight
 
@@ -157,6 +156,7 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     }
 
     yLabelOffset = yLabelOffset - 3 * lineHeight
+    /*
     textWidth =
       Math.max(
         textWidth,
@@ -180,6 +180,7 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
       )
 
     // Draw labels
+
     canvas.drawRect(
       left - BOX_STROKE_WIDTH,
       top + yLabelOffset,
@@ -187,6 +188,7 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
       top,
       labelPaints[colorID]
     )
+    */
     yLabelOffset += ID_TEXT_SIZE
     canvas.drawRect(left, top, right, bottom, boxPaints[colorID])
     if (face.trackingId != null) {
@@ -273,12 +275,13 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
       )
     }
 
+    /*
     canvas.drawText("EulerX: " + face.headEulerAngleX, left, top + yLabelOffset, idPaints[colorID])
     yLabelOffset += lineHeight
     canvas.drawText("EulerY: " + face.headEulerAngleY, left, top + yLabelOffset, idPaints[colorID])
     yLabelOffset += lineHeight
     canvas.drawText("EulerZ: " + face.headEulerAngleZ, left, top + yLabelOffset, idPaints[colorID])
-
+    */
     // Draw facial landmarks
     drawFaceLandmark(canvas, FaceLandmark.LEFT_EYE)
     drawFaceLandmark(canvas, FaceLandmark.RIGHT_EYE)
