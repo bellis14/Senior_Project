@@ -15,3 +15,4 @@
 
 # Video Recording Resources
 * https://codingwithsaud.medium.com/android-the-perfect-and-easy-way-to-make-screen-recorder-fcda630048d7
+* https://stackoverflow.com/questions/14118624/android-media-recording-using-threads
