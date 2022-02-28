@@ -73,8 +73,13 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
   /** Draws the face annotations for position on the supplied canvas. */
   override fun draw(canvas: Canvas) {
 
-    val detectedImagePosX = translateX(face.boundingBox.centerX().toFloat())
-    val detectedImagePosY = translateY(face.boundingBox.centerY().toFloat())
+    val detectedImagePosXdraw = translateX(face.boundingBox.centerX().toFloat())
+    val detectedImagePosYdraw = translateY(face.boundingBox.centerY().toFloat())
+
+    val detectedImagePosX = face.boundingBox.centerX().toFloat()
+    val detectedImagePosY = face.boundingBox.centerY().toFloat()
+
+
     val frameCenterX = (canvas.width / 2).toFloat()
     val frameCenterY = (canvas.height / 2).toFloat()
 
@@ -82,7 +87,7 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     val faceColor = Color.GREEN
     val faceCenterPosColor = Paint()
     faceCenterPosColor.color = faceColor
-    canvas.drawCircle(detectedImagePosX, detectedImagePosY, 5.0f, faceCenterPosColor)
+    canvas.drawCircle(detectedImagePosXdraw, detectedImagePosYdraw, 5.0f, faceCenterPosColor)
 
     // Draw red dot in the center of the frame
     val frameCenterColor = Paint()
@@ -90,32 +95,35 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     canvas.drawCircle(frameCenterX, frameCenterY, 5.0f, frameCenterColor)
 
     // Draw a green line connecting the center of the face and the center of the frame
-    canvas.drawLine(detectedImagePosX, detectedImagePosY, frameCenterX, frameCenterY, faceCenterPosColor)
+    canvas.drawLine(detectedImagePosXdraw, detectedImagePosYdraw, frameCenterX, frameCenterY, faceCenterPosColor)
 
     // Compute the x and y difference and tell motors where to move
     val displacementX = abs(detectedImagePosX - frameCenterX)
     val displacementY = abs(detectedImagePosY - frameCenterY)
 
+
+    val xBuff = 150
+    val yBuff = 200
     // Perform a pan
-    if (displacementX > displacementY) {
-      if (detectedImagePosX < frameCenterX)
-        sendCommand("0\n") // pan right
-      else
-        sendCommand("1\n") // pan left
-    }
+//    if (displacementX > displacementY) {
+    if (detectedImagePosX < frameCenterX-xBuff)
+      sendCommand("0\n") // pan right
+    else if (detectedImagePosX > frameCenterX+xBuff)
+      sendCommand("1\n") // pan left
+//    }
     // Perform a tilt
-    else {
-      if (detectedImagePosY < frameCenterY)
-        sendCommand("2\n") // tilt up
-      else
-        sendCommand("3\n") // tilt down
-    }
+//    else {
+//      if (detectedImagePosY < frameCenterY)
+//        sendCommand("2\n") // tilt up
+//      else
+//        sendCommand("3\n") // tilt down
+//    }
 
     // Calculate positions.
-    val left = detectedImagePosX - scale(face.boundingBox.width() / 2.0f)
-    val top = detectedImagePosY - scale(face.boundingBox.height() / 2.0f)
-    val right = detectedImagePosX + scale(face.boundingBox.width() / 2.0f)
-    val bottom = detectedImagePosY + scale(face.boundingBox.height() / 2.0f)
+    val left = detectedImagePosXdraw - scale(face.boundingBox.width() / 2.0f)
+    val top = detectedImagePosYdraw - scale(face.boundingBox.height() / 2.0f)
+    val right = detectedImagePosXdraw + scale(face.boundingBox.width() / 2.0f)
+    val bottom = detectedImagePosYdraw + scale(face.boundingBox.height() / 2.0f)
     val lineHeight = ID_TEXT_SIZE + BOX_STROKE_WIDTH
     var yLabelOffset: Float = if (face.trackingId == null) 0f else -lineHeight
 

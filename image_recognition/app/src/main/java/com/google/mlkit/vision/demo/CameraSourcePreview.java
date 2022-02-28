@@ -162,6 +162,10 @@ public class CameraSourcePreview extends ViewGroup {
     }
   }
 
+  public SurfaceView getSurfaceView() {
+    return surfaceView;
+  }
+
   private boolean isPortraitMode() {
     int orientation = context.getResources().getConfiguration().orientation;
     if (orientation == Configuration.ORIENTATION_LANDSCAPE) {

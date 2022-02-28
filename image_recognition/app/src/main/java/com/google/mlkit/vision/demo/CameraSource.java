@@ -17,6 +17,9 @@
 package com.google.mlkit.vision.demo;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.os.Environment.DIRECTORY_MOVIES;
+
+import static java.lang.Thread.sleep;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -33,13 +36,14 @@ import android.media.CamcorderProfile;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import androidx.annotation.RequiresPermission;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 
@@ -186,42 +190,21 @@ public class CameraSource {
     this.mediaRecorder = mediaRecorder;
   }
 
-  public void ConfigureMediaRecorder(Context context, SurfaceView surfaceView) throws IOException {
-    if (camera != null)
+  public void ConfigureMediaRecorder(SurfaceView surfaceView) throws IOException {
+    if (camera != null) {
+      camera.unlock();
       mediaRecorder.setCamera(camera);
-    else
-      Toast.makeText(activity.getApplicationContext(), "Camera Null", Toast.LENGTH_SHORT).show();
-    mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-    mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-    mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.DEFAULT));
-//    mediaRecorder.setOutputFile(Environment.getExternalStorageDirectory()+"/"+
-//            DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime())+
-//            ".mp4");
-//    File video = createImageFile();
-//    if (!video.exists()) {
-//      video.mkdirs();
-//      Log.d("Storagefile", "file does not exist");
-//    }
-//    else
-//      Log.d("Storagefile", "file exists");
-
-//    final File dir = new File(context.getFilesDir() + "/videos");
-//    dir.mkdirs(); //create folders where write files
-//    final File file = new File(dir, "BlockForTest.mp4");
-//    file.createNewFile();
-//    String uri = "content://com.android.externalstorage.documents/document/primary%3AVideos";
-
-    File newFile = null;
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-      newFile = new File(String.valueOf(context.getExternalMediaDirs()), "videos");
     }
-//    mediaRecorder.setOutputFile(createImageFile().toString());
-    mediaRecorder.setOutputFile(newFile.getAbsolutePath());
-
+    else
+      //Toast.makeText(activity.getApplicationContext(), "Camera Null", Toast.LENGTH_SHORT).show();
+    mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER); //CAMCORDER
+    mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA); //CAMERA
+    mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+    //mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.THREE_GPP));
+    mediaRecorder.setOutputFile("/sdcard/DCIM/Camera/video_example.mp4");
     mediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
-
     mediaRecorder.prepare();
-    Toast.makeText(activity.getApplicationContext(), "Recording", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(activity.getApplicationContext(), "Recording", Toast.LENGTH_SHORT).show();
   }
 
   public void mediarecorderRelease(){
@@ -236,46 +219,30 @@ public class CameraSource {
   public void MediaRecorderStart(){
     if (mediaRecorder != null)
       mediaRecorder.start();
-    Toast.makeText(activity.getApplicationContext(), "recording started", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(activity.getApplicationContext(), "recording started", Toast.LENGTH_SHORT).show();
   }
 
   public Uri createImageFile() throws IOException {
-     //Create an image file name
+    // Create an image file name
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
             .format(System.currentTimeMillis());
-    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/");
+    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/");
 
     if (!storageDir.exists()) {
       if (!storageDir.mkdirs())
-        Log.d("CameraSource", "dirNotCreated");
+        Log.d("dir", "dirNotCreated");
     }
     else
-      Log.d("CameraSource", "dirExists");
+      Log.d("dir", "dirExists");
 
 
-    File video = File.createTempFile(
+    File image = File.createTempFile(
             timeStamp,                   /* prefix */
-            ".mp4",                     /* suffix */
+            ".jpeg",                     /* suffix */
             storageDir                   /* directory */
     );
-
-//    File storage = new File(Environment.getExternalStorageDirectory()+"/"+
-//            DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime())+
-//            ".mp4");
-//
-//    if (!storage.exists()) {
-//      if (!storage.mkdirs())
-//        Log.d("dir", "dirNotCreated"+Uri.fromFile(storage).toString());
-//      else
-//        Log.d("dir", "Directory created"+Uri.fromFile(storage).toString());
-//    }
-//    else
-//      Log.d("dir", "dirExists");
-
     return Uri.fromFile(storageDir);
-    //return video;
   }
-
 
 
 
