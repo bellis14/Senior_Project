@@ -12,9 +12,11 @@ BluetoothSerial SerialBT;
 //static const int tiltServoPin = 18; //printed 18 on the board
 //static const int panServoPin = 5; //printed 5 on the board
 Servo_ESP32 tiltServo, panServo;
-int panAngle = 0;
+int panAngle = 90;
+int prevPanAngle =90;
 int tiltAngle = 0;
-int angleStep = 5;
+int prevTiltAngle = 0;
+int angleStep = 1;
 int angleMin = 0;
 int angleMax = 180;
  
@@ -23,6 +25,14 @@ void setup() {
   SerialBT.begin("AutoCameraMan"); //Bluetooth device name
   tiltServo.attach(tiltServoPin); 
   panServo.attach(panServoPin);
+  
+  panServo.write(0);
+  delay(1000);
+  panServo.write(270);
+  delay(1000);
+  panServo.write(panAngle);
+  delay(1000);
+  
 }
  
 void loop() {
@@ -50,7 +60,11 @@ void loop() {
       default:  break;
     }
   }
-  delay(20);
+  if (prevPanAngle != panAngle){
+  panServo.write(panAngle);
+  Serial.println(panAngle);
+  tiltServo.write(tiltAngle);
+  }
 }
 
 
@@ -66,7 +80,6 @@ void tiltUp()
     Serial.println("tiltDown");
     if (tiltAngle < 180) {
       tiltAngle += angleStep;
-      tiltServo.write(tiltAngle);
     }
     
 }
@@ -82,7 +95,6 @@ void tiltDown()
     Serial.println("tiltDown");
     if (tiltAngle > 0) {
       tiltAngle -= angleStep;
-      tiltServo.write(tiltAngle);
     }
 }
 
@@ -96,8 +108,8 @@ void panRight()
     // Want to get a full 270 degrees out of pan
     Serial.println("panRight");
     if (panAngle < 180) {
+      prevPanAngle = panAngle;
       panAngle += angleStep;
-      panServo.write(panAngle);
     }
 }
 
@@ -109,7 +121,7 @@ void panLeft()
     }*/
     Serial.println("panLeft");
     if (panAngle > 0) {
+      prevPanAngle = panAngle;
       panAngle -= angleStep;
-      panServo.write(panAngle);
     }
 }
