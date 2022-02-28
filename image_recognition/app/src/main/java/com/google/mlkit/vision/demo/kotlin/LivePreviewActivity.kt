@@ -66,8 +66,8 @@ class LivePreviewActivity :
     super.onCreate(savedInstanceState)
     Log.d(TAG, "onCreate")
     setContentView(R.layout.activity_vision_live_preview)
-    //m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
-    //ConnectToDevice(this).execute()
+    m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
+    ConnectToDevice(this).execute()
 
     preview = findViewById(R.id.preview_view)
     if (preview == null) {
@@ -115,6 +115,8 @@ class LivePreviewActivity :
         val r1 = StartRecordingRunnable(mediaRecorder , preview, cameraSource)
         val thread = Thread(r1)
         thread.start()
+        //startRecording()
+        //dispatchTakeVideoIntent()
         recordFlag++
       }
       else {
