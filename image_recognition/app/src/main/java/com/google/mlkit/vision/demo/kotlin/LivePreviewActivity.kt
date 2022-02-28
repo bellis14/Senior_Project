@@ -23,13 +23,9 @@ import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.hardware.Camera
-import android.media.CamcorderProfile
 import android.media.MediaRecorder
 import android.os.AsyncTask
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
@@ -47,11 +43,8 @@ import com.google.mlkit.vision.demo.kotlin.posedetector.PoseDetectorProcessor
 import com.google.mlkit.vision.demo.preference.PreferenceUtils
 import com.google.mlkit.vision.demo.preference.SettingsActivity
 import com.google.mlkit.vision.demo.preference.SettingsActivity.LaunchSource
-import kotlinx.android.synthetic.main.activity_vision_live_preview.*
-import java.io.File
 import java.io.IOException
 import java.util.*
-import java.util.jar.Manifest
 
 
 /** Live preview demo for ML Kit APIs. */
@@ -119,13 +112,17 @@ class LivePreviewActivity :
     recordButton.setOnClickListener{
       if (recordFlag == 0) {
         recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
-        //startRecording()
-        dispatchTakeVideoIntent()
+        val r1 = StartRecordingRunnable(mediaRecorder , preview, cameraSource)
+        val thread = Thread(r1)
+        thread.start()
         recordFlag++
       }
       else {
         recordButton.setBackgroundResource(R.drawable.ic_record_normal)
-        //stopRecording()
+        val r2 =
+          StopRecordingRunnable(mediaRecorder)
+        val thread2 = Thread(r2)
+        thread2.start()
         recordFlag = 0
       }
     }

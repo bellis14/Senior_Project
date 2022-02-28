@@ -17,6 +17,9 @@
 package com.google.mlkit.vision.demo;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.os.Environment.DIRECTORY_MOVIES;
+
+import static java.lang.Thread.sleep;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -39,6 +42,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import androidx.annotation.RequiresPermission;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 
@@ -186,18 +191,20 @@ public class CameraSource {
   }
 
   public void ConfigureMediaRecorder(SurfaceView surfaceView) throws IOException {
-    if (camera != null)
+    if (camera != null) {
+      camera.unlock();
       mediaRecorder.setCamera(camera);
+    }
     else
-      Toast.makeText(activity.getApplicationContext(), "Camera Null", Toast.LENGTH_SHORT).show();
-    mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-    mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-    mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.DEFAULT));
-//    //mediaRecorder.setOutputFile(Environment.DIRECTORY_MOVIES);
-    mediaRecorder.setOutputFile(createImageFile().toString());
+      //Toast.makeText(activity.getApplicationContext(), "Camera Null", Toast.LENGTH_SHORT).show();
+    mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER); //CAMCORDER
+    mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA); //CAMERA
+    mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+    //mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.THREE_GPP));
+    mediaRecorder.setOutputFile("/sdcard/DCIM/Camera/video_example.mp4");
     mediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
     mediaRecorder.prepare();
-    Toast.makeText(activity.getApplicationContext(), "Recording", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(activity.getApplicationContext(), "Recording", Toast.LENGTH_SHORT).show();
   }
 
   public void mediarecorderRelease(){
@@ -212,7 +219,7 @@ public class CameraSource {
   public void MediaRecorderStart(){
     if (mediaRecorder != null)
       mediaRecorder.start();
-    Toast.makeText(activity.getApplicationContext(), "recording started", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(activity.getApplicationContext(), "recording started", Toast.LENGTH_SHORT).show();
   }
 
   public Uri createImageFile() throws IOException {
