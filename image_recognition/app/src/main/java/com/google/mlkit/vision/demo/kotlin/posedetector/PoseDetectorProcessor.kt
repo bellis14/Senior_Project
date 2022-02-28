@@ -107,6 +107,17 @@ class PoseDetectorProcessor(
       val centerLandmark = poseWithClassification.pose.getPoseLandmark(0)
       if (centerLandmark != null) {
           val center = centerLandmark.position
+
+//          if (center.x > TARGET_X)
+//              sendCommand("0\n") // pan right
+//          if (center.x < TARGET_X)
+//              sendCommand("1\n") // pan left
+//          if (center.y > TARGET_Y)
+//              sendCommand("2\n") // tilt up
+//          if (center.y > TARGET_Y)
+//              sendCommand("3\n") // tilt down
+
+
           println("(${center.x}, ${center.y})")
       }
 
@@ -134,5 +145,7 @@ class PoseDetectorProcessor(
 
   companion object {
     private val TAG = "PoseDetectorProcessor"
+    private val TARGET_X = 1536/2 // screen width
+    private val TARGET_Y = 2048/3 // 2/3 of screen height
   }
 }

@@ -73,8 +73,8 @@ class LivePreviewActivity :
     super.onCreate(savedInstanceState)
     Log.d(TAG, "onCreate")
     setContentView(R.layout.activity_vision_live_preview)
-    //m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
-    //ConnectToDevice(this).execute()
+    m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
+    ConnectToDevice(this).execute()
 
     preview = findViewById(R.id.preview_view)
     if (preview == null) {
@@ -119,8 +119,8 @@ class LivePreviewActivity :
     recordButton.setOnClickListener{
       if (recordFlag == 0) {
         recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
-        //startRecording()
-        dispatchTakeVideoIntent()
+        startRecording()
+//        dispatchTakeVideoIntent()
         recordFlag++
       }
       else {
