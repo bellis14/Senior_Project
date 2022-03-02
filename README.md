@@ -11,8 +11,11 @@
 * [Servo DS3225 spec sheet](https://dsservo.com/en/d_file/RDS3225%20datasheet.pdf)
 * [Wiring Diagram of board and servos](https://create.arduino.cc/projecthub/zee9309/presentation-slide-switcher-bot-36b8f6)
 * [mlkit sample apps](https://github.com/googlesamples/mlkit)
+* [iOS development setup if you don't have an apple laptop](https://www.youtube.com/watch?v=-5FpROxjHsw)
 
 
 # Video Recording Resources
 * https://codingwithsaud.medium.com/android-the-perfect-and-easy-way-to-make-screen-recorder-fcda630048d7
 * https://stackoverflow.com/questions/14118624/android-media-recording-using-threads
+* Solution to use multiple camera streams simultaneously
+* https://developer.android.com/training/camera2/multiple-camera-streams-simultaneously
