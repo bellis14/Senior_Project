@@ -27,6 +27,7 @@ public class StopRecordingRunnable implements Runnable {
     public void run() {
         Log.i("Media", "Stop in RUN");
         recorder.stop();
+        recorder.release();
         Log.i("Media", "Stop out of RUN");
 
     }

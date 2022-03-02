@@ -15,12 +15,14 @@ public class StartRecordingRunnable implements Runnable {
     private CameraSource cameraSource;
     private CameraSourcePreview preview;
     private String selectedModel;
+    private GraphicOverlay graphicOverlay;
 
-    public StartRecordingRunnable( MediaRecorder r , CameraSourcePreview preview, CameraSource cameraSource) {
+    public StartRecordingRunnable( MediaRecorder r , CameraSourcePreview preview, CameraSource cameraSource, GraphicOverlay graphicOverlay) {
         Log.i("Media", "start cons");
         this.recorder = r;
         this.cameraSource = cameraSource;
         this.preview = preview;
+        this.graphicOverlay = graphicOverlay;
     }
 
     public void run() {
@@ -37,14 +39,22 @@ public class StartRecordingRunnable implements Runnable {
     public void startRecording() throws IOException {
         Log.i("Media", "IN Method start Recording");
         Log.i("Media", "create variable");
+
+        recorder.setCamera(cameraSource.getCamera());
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         Log.i("Media", "1");
+
+        recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+        //recorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.DEFAULT));
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
         Log.i("Media", "2");
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         Log.i("Media", "3");
         recorder.setOutputFile("/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4");
         Log.i("Media", "/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4");
+
+
         try{
             Log.i("Media", "prepare");
             recorder.prepare();

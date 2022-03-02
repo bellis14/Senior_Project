@@ -17,15 +17,13 @@
 package com.google.mlkit.vision.demo;
 
 import static android.content.Context.MODE_PRIVATE;
-import static android.os.Environment.DIRECTORY_MOVIES;
-
-import static java.lang.Thread.sleep;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -36,14 +34,13 @@ import android.media.CamcorderProfile;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import androidx.annotation.RequiresPermission;
-import androidx.core.app.ActivityCompat;
-
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 
@@ -56,6 +53,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Random;
+
 import android.media.MediaRecorder;
 import android.widget.Toast;
 
@@ -190,59 +189,48 @@ public class CameraSource {
     this.mediaRecorder = mediaRecorder;
   }
 
-  public void ConfigureMediaRecorder(SurfaceView surfaceView) throws IOException {
-    if (camera != null) {
-      camera.unlock();
-      mediaRecorder.setCamera(camera);
-    }
-    else
-      //Toast.makeText(activity.getApplicationContext(), "Camera Null", Toast.LENGTH_SHORT).show();
-    mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER); //CAMCORDER
-    mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA); //CAMERA
-    mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
-    //mediaRecorder.setProfile(CamcorderProfile.get(MediaRecorder.OutputFormat.THREE_GPP));
-    mediaRecorder.setOutputFile("/sdcard/DCIM/Camera/video_example.mp4");
-    mediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
-    mediaRecorder.prepare();
-    //Toast.makeText(activity.getApplicationContext(), "Recording", Toast.LENGTH_SHORT).show();
-  }
-
-  public void mediarecorderRelease(){
-    if (mediaRecorder != null) {
-      mediaRecorder.stop();
-      mediaRecorder.release();
-      mediaRecorder = null;
-    }
-    //Toast.makeText(activity.getApplicationContext(), "Recording Stopped", Toast.LENGTH_SHORT).show();
-  }
-
-  public void MediaRecorderStart(){
-    if (mediaRecorder != null)
-      mediaRecorder.start();
-    //Toast.makeText(activity.getApplicationContext(), "recording started", Toast.LENGTH_SHORT).show();
+  public Camera getCamera(){
+    camera.unlock();
+    return camera;
   }
 
   public Uri createImageFile() throws IOException {
-    // Create an image file name
+     //Create an image file name
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
             .format(System.currentTimeMillis());
-    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/");
+    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/");
 
     if (!storageDir.exists()) {
       if (!storageDir.mkdirs())
-        Log.d("dir", "dirNotCreated");
+        Log.d("CameraSource", "dirNotCreated");
     }
     else
-      Log.d("dir", "dirExists");
+      Log.d("CameraSource", "dirExists");
 
 
-    File image = File.createTempFile(
+    File video = File.createTempFile(
             timeStamp,                   /* prefix */
-            ".jpeg",                     /* suffix */
+            ".mp4",                     /* suffix */
             storageDir                   /* directory */
     );
+
+//    File storage = new File(Environment.getExternalStorageDirectory()+"/"+
+//            DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime())+
+//            ".mp4");
+//
+//    if (!storage.exists()) {
+//      if (!storage.mkdirs())
+//        Log.d("dir", "dirNotCreated"+Uri.fromFile(storage).toString());
+//      else
+//        Log.d("dir", "Directory created"+Uri.fromFile(storage).toString());
+//    }
+//    else
+//      Log.d("dir", "dirExists");
+
     return Uri.fromFile(storageDir);
+    //return video;
   }
+
 
 
 
@@ -765,6 +753,19 @@ public class CameraSource {
         // The code below needs to run outside of synchronization, because this will allow
         // the camera to add pending frame(s) while we are running detection on the current
         // frame.
+//        int flag = 0;
+//        if (data != null && flag == 0)
+//        {
+//          Log.i("byte", "convert bytebuffer to bitmap");
+//
+//          data.rewind();
+//
+//          Bitmap bitmap = Bitmap.createBitmap(540, 719, Bitmap.Config.ARGB_8888);
+//
+//          bitmap.copyPixelsFromBuffer(data);
+//          SaveImage(bitmap);
+//          flag = 1;
+//        }
 
         try {
           synchronized (processorLock) {
@@ -783,6 +784,31 @@ public class CameraSource {
           camera.addCallbackBuffer(data.array());
         }
       }
+    }
+  }
+
+  private void SaveImage(Bitmap finalBitmap) {
+    Log.i("byte", "in saveImage");
+
+    String root = "sdcard/DCIM/Camera";
+    File myDir = new File(root + "/saved_images");
+    myDir.mkdirs();
+    Random generator = new Random();
+    int n = 10000;
+    n = generator.nextInt(n);
+    String fname = "Image-"+ n +".jpg";
+    File file = new File (myDir, fname);
+    if (file.exists ()) file.delete ();
+    try {
+      Log.i("byte", "dir created and about to save image");
+      FileOutputStream out = new FileOutputStream(file);
+      finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+      out.flush();
+      out.close();
+
+    } catch (Exception e) {
+      Log.i("byte", "DIR NOT CREATED!!!!");
+      e.printStackTrace();
     }
   }
 

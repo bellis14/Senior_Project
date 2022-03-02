@@ -138,7 +138,7 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
         max(
           textWidth,
           idPaints[colorID].measureText(
-            String.format(Locale.US, "Happiness: %.2f", face.smilingProbability)
+            String.format(Locale.US, "Hppineass: %.2f", face.smilingProbability)
           )
         )
     }

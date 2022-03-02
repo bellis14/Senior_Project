@@ -81,9 +81,9 @@ class LivePreviewActivity :
 
     val spinner = findViewById<Spinner>(R.id.spinner)
     val options: MutableList<String> = ArrayList()
-    options.add(OBJECT_DETECTION)
-    options.add(OBJECT_DETECTION_CUSTOM)
-    options.add(CUSTOM_AUTOML_OBJECT_DETECTION)
+    //options.add(OBJECT_DETECTION)
+    //options.add(OBJECT_DETECTION_CUSTOM)
+    //options.add(CUSTOM_AUTOML_OBJECT_DETECTION)
     options.add(FACE_DETECTION)
     options.add(POSE_DETECTION)
 
@@ -112,11 +112,12 @@ class LivePreviewActivity :
     recordButton.setOnClickListener{
       if (recordFlag == 0) {
         recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
-        val r1 = StartRecordingRunnable(mediaRecorder , preview, cameraSource)
+        val r1 = StartRecordingRunnable(mediaRecorder , preview, cameraSource, graphicOverlay)
         val thread = Thread(r1)
         thread.start()
         //startRecording()
-        //dispatchTakeVideoIntent()
+
+
         recordFlag++
       }
       else {
@@ -136,15 +137,6 @@ class LivePreviewActivity :
     }
   }
 
-
-
-  private fun dispatchTakeVideoIntent() {
-    Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
-      takeVideoIntent.resolveActivity(packageManager)?.also {
-        startActivityForResult(takeVideoIntent, 1)
-      }
-    }
-  }
 
   private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
     private var connectSuccess: Boolean = true
@@ -232,29 +224,29 @@ class LivePreviewActivity :
             ObjectDetectorProcessor(this, objectDetectorOptions)
           )
         }
-        OBJECT_DETECTION_CUSTOM -> {
-          Log.i(TAG, "Using Custom Object Detector Processor")
-          val localModel =
-            LocalModel.Builder().setAssetFilePath("custom_models/object_labeler.tflite").build()
-          val customObjectDetectorOptions =
-            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(this, localModel)
-          cameraSource!!.setMachineLearningFrameProcessor(
-            ObjectDetectorProcessor(this, customObjectDetectorOptions)
-          )
-        }
-        CUSTOM_AUTOML_OBJECT_DETECTION -> {
-          Log.i(TAG, "Using Custom AutoML Object Detector Processor")
-          val customAutoMLODTLocalModel =
-            LocalModel.Builder().setAssetManifestFilePath("automl/manifest.json").build()
-          val customAutoMLODTOptions =
-            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(
-              this,
-              customAutoMLODTLocalModel
-            )
-          cameraSource!!.setMachineLearningFrameProcessor(
-            ObjectDetectorProcessor(this, customAutoMLODTOptions)
-          )
-        }
+//        OBJECT_DETECTION_CUSTOM -> {
+//          Log.i(TAG, "Using Custom Object Detector Processor")
+//          val localModel =
+//            LocalModel.Builder().setAssetFilePath("custom_models/object_labeler.tflite").build()
+//          val customObjectDetectorOptions =
+//            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(this, localModel)
+//          cameraSource!!.setMachineLearningFrameProcessor(
+//            ObjectDetectorProcessor(this, customObjectDetectorOptions)
+//          )
+//        }
+//        CUSTOM_AUTOML_OBJECT_DETECTION -> {
+//          Log.i(TAG, "Using Custom AutoML Object Detector Processor")
+//          val customAutoMLODTLocalModel =
+//            LocalModel.Builder().setAssetManifestFilePath("automl/manifest.json").build()
+//          val customAutoMLODTOptions =
+//            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(
+//              this,
+//              customAutoMLODTLocalModel
+//            )
+//          cameraSource!!.setMachineLearningFrameProcessor(
+//            ObjectDetectorProcessor(this, customAutoMLODTOptions)
+//          )
+//        }
         POSE_DETECTION -> {
           val poseDetectorOptions = PreferenceUtils.getPoseDetectorOptionsForLivePreview(this)
           Log.i(TAG, "Using Pose Detector with options $poseDetectorOptions")
@@ -447,26 +439,19 @@ class LivePreviewActivity :
 
   private fun startRecording() {
     preview?.stop()
-
-    if (allPermissionsGranted()) {
-
-    }
     createCameraSource(selectedModel)
     startCameraSource()
-    preview!!.setMediaRecorder(mediaRecorder)
-    cameraSource!!.MediaRecorderStart()
-
   }
 
   private fun stopRecording() {
-    cameraSource!!.mediarecorderRelease()
-    preview?.stop()
-
-    if (allPermissionsGranted()) {
-
-    }
-    createCameraSource(selectedModel)
-    startCameraSource()
+//    cameraSource!!.mediarecorderRelease()
+//    preview?.stop()
+//
+//    if (allPermissionsGranted()) {
+//
+//    }
+//    createCameraSource(selectedModel)
+//    startCameraSource()
 
   }
 
@@ -489,9 +474,9 @@ class LivePreviewActivity :
     lateinit var m_bluetoothAdapter: BluetoothAdapter
     var m_isConnected: Boolean = false
     lateinit var m_address: String
-    private const val OBJECT_DETECTION = "Object Detection"
-    private const val OBJECT_DETECTION_CUSTOM = "Custom Object Detection"
-    private const val CUSTOM_AUTOML_OBJECT_DETECTION = "Custom AutoML Object Detection (Flower)"
+     private const val OBJECT_DETECTION = "Object Detection"
+    // private const val OBJECT_DETECTION_CUSTOM = "Custom Object Detection"
+    // private const val CUSTOM_AUTOML_OBJECT_DETECTION = "Custom AutoML Object Detection (Flower)"
     private const val FACE_DETECTION = "Face Detection"
     private const val POSE_DETECTION = "Pose Detection"
     /*private const val TEXT_RECOGNITION_LATIN = "Text Recognition Latin"
