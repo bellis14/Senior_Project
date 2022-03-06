@@ -25,7 +25,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
+import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
+import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import androidx.annotation.Nullable;
@@ -44,9 +46,12 @@ import androidx.annotation.RequiresPermission;
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,6 +82,7 @@ public class CameraSource {
   private static final String TAG = "MIDemoApp:CameraSource";
 
   private MediaRecorder mediaRecorder;
+  public int flag = 0;
 
   /**
    * The dummy surface texture must be assigned a chosen name. Since we never use an OpenGL context,
@@ -190,49 +196,16 @@ public class CameraSource {
   }
 
   public Camera getCamera(){
-    camera.unlock();
     return camera;
   }
 
-  public Uri createImageFile() throws IOException {
-     //Create an image file name
-    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
-            .format(System.currentTimeMillis());
-    File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/");
-
-    if (!storageDir.exists()) {
-      if (!storageDir.mkdirs())
-        Log.d("CameraSource", "dirNotCreated");
-    }
-    else
-      Log.d("CameraSource", "dirExists");
-
-
-    File video = File.createTempFile(
-            timeStamp,                   /* prefix */
-            ".mp4",                     /* suffix */
-            storageDir                   /* directory */
-    );
-
-//    File storage = new File(Environment.getExternalStorageDirectory()+"/"+
-//            DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime())+
-//            ".mp4");
-//
-//    if (!storage.exists()) {
-//      if (!storage.mkdirs())
-//        Log.d("dir", "dirNotCreated"+Uri.fromFile(storage).toString());
-//      else
-//        Log.d("dir", "Directory created"+Uri.fromFile(storage).toString());
-//    }
-//    else
-//      Log.d("dir", "dirExists");
-
-    return Uri.fromFile(storageDir);
-    //return video;
+  public void SetFlag(){
+    flag = 1;
   }
 
-
-
+  public void ReleaseFlag(){
+    flag = 0;
+  }
 
   /**
    * Opens the camera and starts sending preview frames to the underlying detector. The supplied
@@ -633,6 +606,12 @@ public class CameraSource {
   private class CameraPreviewCallback implements Camera.PreviewCallback {
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
+
+      if (data != null && flag != 0)
+      {
+        Log.i("byte", "convert bytebuffer to bitmap");
+        SaveImage(data, camera);
+      }
       processingRunnable.setNextFrame(data, camera);
     }
   }
@@ -662,6 +641,7 @@ public class CameraSource {
     // This lock guards all of the member variables below.
     private final Object lock = new Object();
     private boolean active = true;
+    byte[] byt;
 
     // These pending variables hold the state associated with the new frame awaiting processing.
     private ByteBuffer pendingFrameData;
@@ -682,6 +662,7 @@ public class CameraSource {
      */
     @SuppressWarnings("ByteBufferBackingArray")
     void setNextFrame(byte[] data, Camera camera) {
+
       synchronized (lock) {
         if (pendingFrameData != null) {
           camera.addCallbackBuffer(pendingFrameData.array());
@@ -753,19 +734,7 @@ public class CameraSource {
         // The code below needs to run outside of synchronization, because this will allow
         // the camera to add pending frame(s) while we are running detection on the current
         // frame.
-//        int flag = 0;
-//        if (data != null && flag == 0)
-//        {
-//          Log.i("byte", "convert bytebuffer to bitmap");
-//
-//          data.rewind();
-//
-//          Bitmap bitmap = Bitmap.createBitmap(540, 719, Bitmap.Config.ARGB_8888);
-//
-//          bitmap.copyPixelsFromBuffer(data);
-//          SaveImage(bitmap);
-//          flag = 1;
-//        }
+
 
         try {
           synchronized (processorLock) {
@@ -787,28 +756,43 @@ public class CameraSource {
     }
   }
 
-  private void SaveImage(Bitmap finalBitmap) {
-    Log.i("byte", "in saveImage");
+  private void SaveImage(byte[] data, Camera camera) {
+    Log.d("byte", "in saveImage");
+    Camera.Parameters parameters = camera.getParameters();
+    int imageFormat = parameters.getPreviewFormat();
+    if (imageFormat == ImageFormat.NV21)
+    {
+      Log.d("byte", "dir created and about to save image");
+      Rect rect = new Rect(0, 0, previewSize.getWidth(), previewSize.getHeight());
+      YuvImage img = new YuvImage(data, ImageFormat.NV21, previewSize.getWidth(), previewSize.getHeight(), null);
+      OutputStream outStream = null;
 
-    String root = "sdcard/DCIM/Camera";
-    File myDir = new File(root + "/saved_images");
-    myDir.mkdirs();
-    Random generator = new Random();
-    int n = 10000;
-    n = generator.nextInt(n);
-    String fname = "Image-"+ n +".jpg";
-    File file = new File (myDir, fname);
-    if (file.exists ()) file.delete ();
-    try {
-      Log.i("byte", "dir created and about to save image");
-      FileOutputStream out = new FileOutputStream(file);
-      finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-      out.flush();
-      out.close();
 
-    } catch (Exception e) {
-      Log.i("byte", "DIR NOT CREATED!!!!");
-      e.printStackTrace();
+      String root = "sdcard/DCIM/Camera";
+      File myDir = new File(root + "/saved_images");
+      myDir.mkdirs();
+      Random generator = new Random();
+      int n = 10000;
+      n = generator.nextInt(n);
+      String fname = "Image-"+ n +".jpg";
+      File file = new File (myDir, fname);
+      if (file.exists ()) file.delete ();
+
+      try
+      {
+        outStream = new FileOutputStream(file);
+        img.compressToJpeg(rect, 100, outStream);
+        outStream.flush();
+        outStream.close();
+      }
+      catch (FileNotFoundException e)
+      {
+        e.printStackTrace();
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
     }
   }
 

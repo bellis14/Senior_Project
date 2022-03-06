@@ -67,7 +67,7 @@ class LivePreviewActivity :
     Log.d(TAG, "onCreate")
     setContentView(R.layout.activity_vision_live_preview)
     m_address = intent.getStringExtra(SelectDevice.EXTRA_ADDRESS).toString()
-    ConnectToDevice(this).execute()
+    //ConnectToDevice(this).execute()
 
     preview = findViewById(R.id.preview_view)
     if (preview == null) {
@@ -117,13 +117,12 @@ class LivePreviewActivity :
         thread.start()
         //startRecording()
 
-
         recordFlag++
       }
       else {
         recordButton.setBackgroundResource(R.drawable.ic_record_normal)
         val r2 =
-          StopRecordingRunnable(mediaRecorder)
+          StopRecordingRunnable(mediaRecorder, cameraSource)
         val thread2 = Thread(r2)
         thread2.start()
         recordFlag = 0
@@ -444,6 +443,7 @@ class LivePreviewActivity :
   }
 
   private fun stopRecording() {
+
 //    cameraSource!!.mediarecorderRelease()
 //    preview?.stop()
 //
