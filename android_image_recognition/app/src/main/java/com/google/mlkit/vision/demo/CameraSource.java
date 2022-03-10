@@ -63,6 +63,8 @@ import java.util.Random;
 import android.media.MediaRecorder;
 import android.widget.Toast;
 
+
+
 /**
  * Manages the camera and allows UI updates on top of it (e.g. overlaying extra Graphics or
  * displaying extra information). This receives preview frames from the camera at a specified rate,
@@ -195,16 +197,20 @@ public class CameraSource {
     this.mediaRecorder = mediaRecorder;
   }
 
-  public Camera getCamera(){
-    return camera;
-  }
 
-  public void SetFlag(){
-    flag = 1;
-  }
+  public Camera getCamera(){ return camera; }
 
-  public void ReleaseFlag(){
-    flag = 0;
+  public void SetFlag(){ flag = 1; }
+
+  public void ReleaseFlag(){ flag = 0; }
+
+  public void CreateVideo(String fileName){
+    Log.d("byte", "Image Directory " + fileName);
+    //take photos in file and convert to mp4
+
+    String exe;
+    exe = "-y -i sdcard/DCIM/Camera/saved_images/image-%d.jpg sdcard/DCIM/Camera/final.mp4";
+    //FFmpeg.executeAsync();
   }
 
   /**
@@ -606,12 +612,13 @@ public class CameraSource {
   private class CameraPreviewCallback implements Camera.PreviewCallback {
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
-
-      if (data != null && flag != 0)
+      // Save image logic.
+      if (data != null && flag == 1)
       {
         Log.i("byte", "convert bytebuffer to bitmap");
         SaveImage(data, camera);
       }
+
       processingRunnable.setNextFrame(data, camera);
     }
   }
@@ -756,7 +763,9 @@ public class CameraSource {
     }
   }
 
-  private void SaveImage(byte[] data, Camera camera) {
+  /** This is called by CameraPreviewCallback passing frames from the camera
+   *  one at a time to be saved to the specified directory */
+  private String SaveImage(byte[] data, Camera camera) {
     Log.d("byte", "in saveImage");
     Camera.Parameters parameters = camera.getParameters();
     int imageFormat = parameters.getPreviewFormat();
@@ -767,13 +776,12 @@ public class CameraSource {
       YuvImage img = new YuvImage(data, ImageFormat.NV21, previewSize.getWidth(), previewSize.getHeight(), null);
       OutputStream outStream = null;
 
-
-      String root = "sdcard/DCIM/Camera";
-      File myDir = new File(root + "/saved_images");
-      myDir.mkdirs();
       Random generator = new Random();
       int n = 10000;
       n = generator.nextInt(n);
+      String root = "sdcard/DCIM/Camera";
+      File myDir = new File(root + "/saved_images");
+      myDir.mkdirs();
       String fname = "Image-"+ n +".jpg";
       File file = new File (myDir, fname);
       if (file.exists ()) file.delete ();
@@ -782,6 +790,7 @@ public class CameraSource {
       {
         outStream = new FileOutputStream(file);
         img.compressToJpeg(rect, 100, outStream);
+
         outStream.flush();
         outStream.close();
       }
@@ -793,7 +802,9 @@ public class CameraSource {
       {
         e.printStackTrace();
       }
+      return myDir.getAbsolutePath();
     }
+    return "did not save video";
   }
 
   /** Cleans up graphicOverlay and child classes can do their cleanups as well . */

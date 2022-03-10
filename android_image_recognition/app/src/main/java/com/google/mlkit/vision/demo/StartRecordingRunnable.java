@@ -39,6 +39,7 @@ public class StartRecordingRunnable implements Runnable {
     public void run() {
         // TODO Auto-generated method stub
         Log.i("Media", "IN RUN start Recording");
+        //Set flag to 1 to start saving frames into directory "sdcard/DCIM/Camera/saved_images"
         cameraSource.SetFlag();
         try {
             startRecording();
@@ -51,6 +52,7 @@ public class StartRecordingRunnable implements Runnable {
     public void startRecording() throws IOException {
         Log.i("Media", "IN Method start Recording");
         Log.i("Media", "create variable");
+
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         Log.i("Media", "1");
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);

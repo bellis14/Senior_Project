@@ -28,9 +28,14 @@ public class StopRecordingRunnable implements Runnable {
 
     public void run() {
         Log.i("Media", "Stop in RUN");
+        //Set the record flag to 0 to signal the thread to stop saving frames
         cameraSource.ReleaseFlag();
+
+
+        //Use the frames saved in "sdcard/DCIM/Camera/saved_images" and convert to mp4
+        cameraSource.CreateVideo("sdcard/DCIM/Camera/saved_images"); //Path hardcoded for now
         recorder.stop();
-        recorder.release();
+        recorder.reset();
         Log.i("Media", "Stop out of RUN");
 
     }
