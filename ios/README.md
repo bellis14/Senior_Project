@@ -1,4 +1,23 @@
- * [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
+# Setting up for Development 
+If you don't have a mac computer then you can either set up a virtual machine using virtualbox or VMware workstation. The other option is to use the mac lab down in the library. There is a way to configure virtualbox and VMware to perform more smoothly but when we attempted to use it the performance was really bad in terms of their being lag. You would try to move your mouse somewhere and it would take a solid five seconds to move. Using the mac lab has been the best option so far. The drawback of using the mac lab is you can't use sudo commands to download stuff. If you need to download something you will have to find a work around that doesn't require sudo. 
+
+## Steps for setting up development on mac lab computer
+* Download Xcode
+* Download cocoapods. Use homebrew not gem.
+  * Download Homebrew with these commands. You can find the same commands [here](https://docs.brew.sh/Installation#untar-anywhere)
+    * mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+    * Add the path: export PATH="/Users/coolasacucumber/Downloads/homebrew/bin:$PATH" 
+    * The path above will be different for you. I decided to make the homebrew directory in the downloads folder. 
+    * eval "$(homebrew/bin/brew shellenv)"
+    * brew update --force --quiet
+    * chmod -R go-w "$(brew --prefix)/share/zsh"
+  * brew install cocoapods
+* Use cocoapods to import the dependencies in the Podfile
+  * Change into the ios directory.'
+  * run the command: pod install
+
+## Setting up virtual machine
+* [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
 
 
 # ML Kit Vision Quickstart Sample App
