@@ -1,3 +1,6 @@
+ * [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
+
+
 # ML Kit Vision Quickstart Sample App
 
 ## Introduction
