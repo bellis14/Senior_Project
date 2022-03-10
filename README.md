@@ -4,6 +4,6 @@
 
 # Useful Links
 
-* [mlkit sample apps](https://github.com/googlesamples/mlkit)
+* [The code for the ios app and android app were found from here.](https://github.com/googlesamples/mlkit)
 
 
