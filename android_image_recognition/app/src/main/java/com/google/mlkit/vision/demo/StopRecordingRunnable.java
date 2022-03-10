@@ -11,9 +11,11 @@ import java.io.File;
 
 public class StopRecordingRunnable implements Runnable {
     private MediaRecorder recorder;
+    private CameraSource cameraSource;
 
-    public StopRecordingRunnable(MediaRecorder recorder2) {
+    public StopRecordingRunnable(MediaRecorder recorder2, CameraSource cameraSource) {
         Log.i("Media", "Stop in Cos");
+        this.cameraSource = cameraSource;
         // TODO Auto-generated constructor stub
         try {
             this.recorder = recorder2;
@@ -26,6 +28,7 @@ public class StopRecordingRunnable implements Runnable {
 
     public void run() {
         Log.i("Media", "Stop in RUN");
+        cameraSource.ReleaseFlag();
         recorder.stop();
         recorder.release();
         Log.i("Media", "Stop out of RUN");
