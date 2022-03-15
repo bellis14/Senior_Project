@@ -18,7 +18,11 @@ If you don't have a mac computer then you can either set up a virtual machine us
 * Setting up your iphone device
   * Do not use the iOS simulators if you are using M1 chip mac computers. Feel free to try it. If it works great!
   * Follow this [video](https://www.youtube.com/watch?v=bqh6YaMxgbE) setting up your iphone device. 
-  * If after setting up the device you get this error "Showing Recent Messages Failed to register bundle identifier: The app identifier "com.google.mlkit.quickstart.VisionExample" cannot be registered to your development team because it is not available. Change your bundle identifier to a unique string to try again." then you need to go into the targets and select the Signings and Capabilities tab and change the Build Identifier from com.google.mlkit.quickstart.VisionExample to something different. I changed it to com.google.mlkit.quickstart.VisionExample222 and hit the try again button. After that it worked for me and then I was able to finish setting up the iphone device by going into the iphones settings >general>VPN & Device Management and then selecting the developer app as was mentioned in the above video. After this last step you should be able to run the app successfully.
+  * If after setting up the device you get this error: 
+  
+  "Showing Recent Messages Failed to register bundle identifier: The app identifier "com.google.mlkit.quickstart.VisionExample" cannot be registered to your development team because it is not available. Change your bundle identifier to a unique string to try again." 
+  
+  then you need to go into the targets and select the Signings and Capabilities tab and change the Build Identifier from com.google.mlkit.quickstart.VisionExample to something different. I changed it to com.google.mlkit.quickstart.VisionExample222 and hit the try again button. After that it worked for me and then I was able to finish setting up the iphone device by going into the iphones settings >general>VPN & Device Management and then selecting the developer app as was mentioned in the above video. After this last step you should be able to run the app successfully.
 
 ## Debugging for setting up development on mac lab computers
 https://alexandernadein.medium.com/undefined-symbols-and-where-to-find-them-b98f16f5f805
