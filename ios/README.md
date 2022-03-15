@@ -1,4 +1,4 @@
-# Setting up for Development 
+## Setting up for Development 
 If you don't have a mac computer then you can either set up a virtual machine using virtualbox or VMware workstation. The other option is to use the mac lab down in the library. There is a way to configure virtualbox and VMware to perform more smoothly but when we attempted to use it the performance was really bad in terms of their being lag. You would try to move your mouse somewhere and it would take a solid five seconds to move. Using the mac lab has been the best option so far. The drawback of using the mac lab is you can't use sudo commands to download stuff. If you need to download something you will have to find a work around that doesn't require sudo. 
 
 ## Steps for setting up development on mac lab computer
@@ -19,8 +19,9 @@ If you don't have a mac computer then you can either set up a virtual machine us
 ## Setting up virtual machine
 * [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
 
-##Debugging
+## Debugging
 https://alexandernadein.medium.com/undefined-symbols-and-where-to-find-them-b98f16f5f805
+https://githubhot.com/repo/googlesamples/mlkit/issues/398
 
 
 # ML Kit Vision Quickstart Sample App
