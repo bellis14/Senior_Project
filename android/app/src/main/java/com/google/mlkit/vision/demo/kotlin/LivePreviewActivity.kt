@@ -120,7 +120,7 @@ class LivePreviewActivity :
       }
       else {
         recordButton.setBackgroundResource(R.drawable.ic_record_normal)
-        val r2 = StopRecordingRunnable(mediaRecorder, cameraSource)
+        val r2 = StopRecordingRunnable(mediaRecorder, cameraSource, this)
         val thread2 = Thread(r2)
         thread2.start()
         recordFlag = 0

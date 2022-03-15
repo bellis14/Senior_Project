@@ -18,6 +18,9 @@ package com.google.mlkit.vision.demo;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static com.arthenica.mobileffmpeg.FFmpeg.RETURN_CODE_CANCEL;
+import static com.arthenica.mobileffmpeg.FFmpeg.RETURN_CODE_SUCCESS;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -43,6 +46,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import androidx.annotation.RequiresPermission;
+
+import com.arthenica.mobileffmpeg.Config;
+import com.arthenica.mobileffmpeg.FFmpeg;
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 
@@ -100,24 +106,20 @@ public class CameraSource {
   private static final float ASPECT_RATIO_TOLERANCE = 0.01f;
 
   protected Activity activity;
-
   private Camera camera;
-
   private int facing = CAMERA_FACING_BACK;
 
   /** Rotation of the device, and thus the associated preview images captured from the device. */
   private int rotationDegrees;
-
   private Size previewSize;
-
   private static final float REQUESTED_FPS = 30.0f;
   private static final boolean REQUESTED_AUTO_FOCUS = true;
+
 
   // This instance needs to be held onto to avoid GC of its underlying resources. Even though it
   // isn't used outside of the method that creates it, it still must have hard references maintained
   // to it.
   private SurfaceTexture dummySurfaceTexture;
-
   private final GraphicOverlay graphicOverlay;
 
   /**
@@ -204,13 +206,49 @@ public class CameraSource {
 
   public void ReleaseFlag(){ flag = 0; }
 
-  public void CreateVideo(String fileName){
-    Log.d("byte", "Image Directory " + fileName);
-    //take photos in file and convert to mp4
 
-    String exe;
-    exe = "-y -i sdcard/DCIM/Camera/saved_images/image-%d.jpg sdcard/DCIM/Camera/final.mp4";
-    //FFmpeg.executeAsync();
+  public void CreateVideo(String fileName, Context context){
+    Log.d("byte", "Image Directory " + fileName);
+
+    //take photos in file and convert to mp4
+//    int rc = FFmpeg.execute("-y -i sdcard/DCIM/Camera/saved_images/image%.jpg sdcard/DCIM/Camera/final.mp4");
+    int rc = FFmpeg.execute("-r 1/5 -start_number 2 -i sdcard/DCIM/Camera/saved_images/image%d.jpg -c:v libx264 -r 30 -pix_fmt yuv420p sdcard/DCIM/Camera/final.mp4");
+
+
+
+    if (rc == RETURN_CODE_SUCCESS) {
+      Log.d("ffmpeg", "FFmpeg Success");
+    } else if (rc == RETURN_CODE_CANCEL) {
+      Log.d("ffmpeg", "FFmpeg Cancelled");
+    } else {
+      Log.d(Config.TAG, String.format("Command execution failed with rc=%d and the output below.", rc));
+    }
+
+    // This takes the above command and executes it.
+//    FFmpeg ffmpeg = FFmpeg.getInstance(context);
+//    try {
+//      // to execute "ffmpeg -version" command you just need to pass "-version"
+//      ffmpeg.execute(exe, new ExecuteBinaryResponseHandler() {
+//
+//        @Override
+//        public void onStart() {}
+//
+//        @Override
+//        public void onProgress(String message) {}
+//
+//        @Override
+//        public void onFailure(String message) {}
+//
+//        @Override
+//        public void onSuccess(String message) {}
+//
+//        @Override
+//        public void onFinish() {}
+//      });
+//    } catch (FFmpegCommandAlreadyRunningException e) {
+//      // Handle if FFmpeg is already running
+//      Log.d("ffmpeg", "FFmpeg already running");
+//    }
   }
 
   /**
@@ -782,7 +820,7 @@ public class CameraSource {
       String root = "sdcard/DCIM/Camera";
       File myDir = new File(root + "/saved_images");
       myDir.mkdirs();
-      String fname = "Image-"+ n +".jpg";
+      String fname = "Image"+ n +".png";
       File file = new File (myDir, fname);
       if (file.exists ()) file.delete ();
 

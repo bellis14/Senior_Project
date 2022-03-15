@@ -1,5 +1,6 @@
 package com.google.mlkit.vision.demo;
 
+import android.content.Context;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.Log;
@@ -12,10 +13,12 @@ import java.io.File;
 public class StopRecordingRunnable implements Runnable {
     private MediaRecorder recorder;
     private CameraSource cameraSource;
+    private Context context;
 
-    public StopRecordingRunnable(MediaRecorder recorder2, CameraSource cameraSource) {
+    public StopRecordingRunnable(MediaRecorder recorder2, CameraSource cameraSource, Context context) {
         Log.i("Media", "Stop in Cos");
         this.cameraSource = cameraSource;
+        this.context = context;
         // TODO Auto-generated constructor stub
         try {
             this.recorder = recorder2;
@@ -33,7 +36,7 @@ public class StopRecordingRunnable implements Runnable {
 
 
         //Use the frames saved in "sdcard/DCIM/Camera/saved_images" and convert to mp4
-        cameraSource.CreateVideo("sdcard/DCIM/Camera/saved_images"); //Path hardcoded for now
+        cameraSource.CreateVideo("sdcard/DCIM/Camera/saved_images", context); //Path hardcoded for now
         recorder.stop();
         recorder.reset();
         Log.i("Media", "Stop out of RUN");
