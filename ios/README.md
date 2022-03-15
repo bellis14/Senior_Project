@@ -6,7 +6,7 @@ If you don't have a mac computer then you can either set up a virtual machine us
 * Download cocoapods. Use homebrew not gem.
   * Download Homebrew with these commands. You can find the same commands [here](https://docs.brew.sh/Installation#untar-anywhere)
     * mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-    * Add the path: export PATH="/Users/coolasacucumber/Downloads/homebrew/bin:$PATH" 
+    * (You will have to run this command any time you want to run pod install and you closed the terminal. Add the path: export PATH="/Users/coolasacucumber/Downloads/homebrew/bin:$PATH" 
     * The path above will be different for you. I decided to make the homebrew directory in the downloads folder. 
     * eval "$(homebrew/bin/brew shellenv)"
     * brew update --force --quiet
@@ -16,13 +16,13 @@ If you don't have a mac computer then you can either set up a virtual machine us
   * Change into the ios directory.'
   * run the command: pod install
 
-## Setting up virtual machine
-* [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
-
-## Debugging
+## Debugging for setting up development on mac lab computers
 https://alexandernadein.medium.com/undefined-symbols-and-where-to-find-them-b98f16f5f805
 https://githubhot.com/repo/googlesamples/mlkit/issues/398
+https://developer.apple.com/forums/thread/130493
 
+## Setting up virtual machine
+* [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
 
 # ML Kit Vision Quickstart Sample App
 
