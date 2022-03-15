@@ -19,6 +19,9 @@ If you don't have a mac computer then you can either set up a virtual machine us
 ## Setting up virtual machine
 * [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
 
+##Debugging
+https://alexandernadein.medium.com/undefined-symbols-and-where-to-find-them-b98f16f5f805
+
 
 # ML Kit Vision Quickstart Sample App
 
