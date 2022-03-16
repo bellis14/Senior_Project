@@ -210,7 +210,6 @@
 				33F2A5E01FECA02E7BF69322 /* Pods-VisionExampleObjC.debug.xcconfig */,
 				28481A4BC07A16F6059744B9 /* Pods-VisionExampleObjC.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -585,6 +584,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33F2A5E01FECA02E7BF69322 /* Pods-VisionExampleObjC.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36VJT5425P;
@@ -601,6 +602,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28481A4BC07A16F6059744B9 /* Pods-VisionExampleObjC.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36VJT5425P;
@@ -730,6 +733,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 114CA3AED885488FB2191FD9 /* Pods-VisionExample.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36VJT5425P;
@@ -750,6 +755,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 039B6D7D9DC36B5EB0DDCFA4 /* Pods-VisionExample.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36VJT5425P;
