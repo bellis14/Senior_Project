@@ -91,6 +91,7 @@ public class CameraSource {
 
   private MediaRecorder mediaRecorder;
   public int flag = 0;
+  public int n = 0;
 
   /**
    * The dummy surface texture must be assigned a chosen name. Since we never use an OpenGL context,
@@ -215,7 +216,7 @@ public class CameraSource {
     n = generator.nextInt(n);
 
     //take photos in file and convert to mp4
-    int rc = FFmpeg.execute("-y -i sdcard/DCIM/Camera/saved_images/image%d.jpg -i /sdcard/DCIM/Camera/AA_1647464867213.mp4 sdcard/DCIM/Camera/final" + n + ".mp4");
+    int rc = FFmpeg.execute("-y -i sdcard/DCIM/Camera/saved_images/images%2d.jpg -i /sdcard/DCIM/Camera/AA_1647464867213.mp4 sdcard/DCIM/Camera/final" + n + ".mp4");
 //    int rc = FFmpeg.execute("-r 1/5 -start_number 2 -i sdcard/DCIM/Camera/saved_images/image2359.jpg -c:v libx264 -r 30 -pix_fmt yuv420p sdcard/DCIM/Camera/final.mp4");
 //    /sdcard/DCIM/Camera/AA_1647464867213.mp4
 
@@ -227,6 +228,8 @@ public class CameraSource {
     } else {
       Log.d(Config.TAG, String.format("Command execution failed with rc=%d and the output below.", rc));
     }
+
+
   }
 
   /**
@@ -790,35 +793,32 @@ public class CameraSource {
     {
 
       Log.d("byte", "dir created and about to save image");
-//      Rect rect = new Rect(0, 0, previewSize.getWidth(), previewSize.getHeight());
-//      YuvImage img = new YuvImage(data, ImageFormat.NV21, previewSize.getWidth(), previewSize.getHeight(), null);
-//      OutputStream outStream = null;
-
-      Random generator = new Random();
-      int n = 10000;
-      n = generator.nextInt(n);
+      int width = parameters.getPreviewSize().width;
+      int height = parameters.getPreviewSize().height;
+//      Random generator = new Random();
+//      int n = 100;
+//      n = generator.nextInt(n);
       String root = "sdcard/DCIM/Camera";
       File myDir = new File(root + "/saved_images");
       myDir.mkdirs();
-      String fname = "image"+ n +".jpg";
+      n += 1;
+      String fname = "image0"+ n +".jpg";
       File file = new File (myDir, fname);
-      if (file.exists ())
-        file.delete ();
+
+//      if (file.exists())
+//      {
+//        n = n + 1;
+//        fname = "image"+ n +".jpg";
+//        file = new File (myDir, fname);
+//      }
+
 
       try
       {
-        int width = parameters.getPreviewSize().width;
-        int height = parameters.getPreviewSize().height;
         OutputStream fos = new FileOutputStream(file);
         YuvImage yuvImage = new YuvImage(data, ImageFormat.NV21, width, height, null);
         yuvImage.compressToJpeg(new Rect(0, 0, width, height), 100, fos);
         fos.close();
-
-//        outStream = new FileOutputStream(file);
-//        img.compressToJpeg(rect, 100, outStream);
-//
-//        outStream.flush();
-//        outStream.close();
       }
       catch (FileNotFoundException e)
       {
