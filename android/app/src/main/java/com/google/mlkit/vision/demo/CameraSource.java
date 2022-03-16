@@ -210,10 +210,14 @@ public class CameraSource {
   public void CreateVideo(String fileName, Context context){
     Log.d("byte", "Image Directory " + fileName);
 
-    //take photos in file and convert to mp4
-//    int rc = FFmpeg.execute("-y -i sdcard/DCIM/Camera/saved_images/image%.jpg sdcard/DCIM/Camera/final.mp4");
-    int rc = FFmpeg.execute("-r 1/5 -start_number 2 -i sdcard/DCIM/Camera/saved_images/image%d.jpg -c:v libx264 -r 30 -pix_fmt yuv420p sdcard/DCIM/Camera/final.mp4");
+    Random generator = new Random();
+    int n = 10000;
+    n = generator.nextInt(n);
 
+    //take photos in file and convert to mp4
+    int rc = FFmpeg.execute("-y -i sdcard/DCIM/Camera/saved_images/image%d.jpg -i /sdcard/DCIM/Camera/AA_1647464867213.mp4 sdcard/DCIM/Camera/final" + n + ".mp4");
+//    int rc = FFmpeg.execute("-r 1/5 -start_number 2 -i sdcard/DCIM/Camera/saved_images/image2359.jpg -c:v libx264 -r 30 -pix_fmt yuv420p sdcard/DCIM/Camera/final.mp4");
+//    /sdcard/DCIM/Camera/AA_1647464867213.mp4
 
 
     if (rc == RETURN_CODE_SUCCESS) {
@@ -223,32 +227,6 @@ public class CameraSource {
     } else {
       Log.d(Config.TAG, String.format("Command execution failed with rc=%d and the output below.", rc));
     }
-
-    // This takes the above command and executes it.
-//    FFmpeg ffmpeg = FFmpeg.getInstance(context);
-//    try {
-//      // to execute "ffmpeg -version" command you just need to pass "-version"
-//      ffmpeg.execute(exe, new ExecuteBinaryResponseHandler() {
-//
-//        @Override
-//        public void onStart() {}
-//
-//        @Override
-//        public void onProgress(String message) {}
-//
-//        @Override
-//        public void onFailure(String message) {}
-//
-//        @Override
-//        public void onSuccess(String message) {}
-//
-//        @Override
-//        public void onFinish() {}
-//      });
-//    } catch (FFmpegCommandAlreadyRunningException e) {
-//      // Handle if FFmpeg is already running
-//      Log.d("ffmpeg", "FFmpeg already running");
-//    }
   }
 
   /**
@@ -807,12 +785,14 @@ public class CameraSource {
     Log.d("byte", "in saveImage");
     Camera.Parameters parameters = camera.getParameters();
     int imageFormat = parameters.getPreviewFormat();
+
     if (imageFormat == ImageFormat.NV21)
     {
+
       Log.d("byte", "dir created and about to save image");
-      Rect rect = new Rect(0, 0, previewSize.getWidth(), previewSize.getHeight());
-      YuvImage img = new YuvImage(data, ImageFormat.NV21, previewSize.getWidth(), previewSize.getHeight(), null);
-      OutputStream outStream = null;
+//      Rect rect = new Rect(0, 0, previewSize.getWidth(), previewSize.getHeight());
+//      YuvImage img = new YuvImage(data, ImageFormat.NV21, previewSize.getWidth(), previewSize.getHeight(), null);
+//      OutputStream outStream = null;
 
       Random generator = new Random();
       int n = 10000;
@@ -820,17 +800,25 @@ public class CameraSource {
       String root = "sdcard/DCIM/Camera";
       File myDir = new File(root + "/saved_images");
       myDir.mkdirs();
-      String fname = "Image"+ n +".png";
+      String fname = "image"+ n +".jpg";
       File file = new File (myDir, fname);
-      if (file.exists ()) file.delete ();
+      if (file.exists ())
+        file.delete ();
 
       try
       {
-        outStream = new FileOutputStream(file);
-        img.compressToJpeg(rect, 100, outStream);
+        int width = parameters.getPreviewSize().width;
+        int height = parameters.getPreviewSize().height;
+        OutputStream fos = new FileOutputStream(file);
+        YuvImage yuvImage = new YuvImage(data, ImageFormat.NV21, width, height, null);
+        yuvImage.compressToJpeg(new Rect(0, 0, width, height), 100, fos);
+        fos.close();
 
-        outStream.flush();
-        outStream.close();
+//        outStream = new FileOutputStream(file);
+//        img.compressToJpeg(rect, 100, outStream);
+//
+//        outStream.flush();
+//        outStream.close();
       }
       catch (FileNotFoundException e)
       {
@@ -844,6 +832,7 @@ public class CameraSource {
     }
     return "did not save video";
   }
+
 
   /** Cleans up graphicOverlay and child classes can do their cleanups as well . */
   private void cleanScreen() {
