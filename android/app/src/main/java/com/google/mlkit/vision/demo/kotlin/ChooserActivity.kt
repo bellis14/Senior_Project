@@ -157,14 +157,13 @@ class ChooserActivity :
   companion object {
     private const val TAG = "ChooserActivity"
     private const val PERMISSION_REQUESTS = 1
+    // This is left as an arry of options in case future teams want to add more options.9869
     private val CLASSES =
       arrayOf<Class<*>>(
-        LivePreviewActivity::class.java,
         SelectDevice::class.java
       )
     private val DESCRIPTION_IDS =
       intArrayOf(
-        R.string.desc_camera_source_activity,
         R.string.Bluetooth_Device_Selector
       )
   }
