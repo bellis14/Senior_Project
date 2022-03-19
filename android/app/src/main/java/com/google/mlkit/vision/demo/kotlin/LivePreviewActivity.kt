@@ -81,9 +81,9 @@ class LivePreviewActivity :
 
     val spinner = findViewById<Spinner>(R.id.spinner)
     val options: MutableList<String> = ArrayList()
-    //options.add(OBJECT_DETECTION)
-    //options.add(OBJECT_DETECTION_CUSTOM)
-    //options.add(CUSTOM_AUTOML_OBJECT_DETECTION)
+    /*options.add(OBJECT_DETECTION)
+    options.add(OBJECT_DETECTION_CUSTOM)
+    options.add(CUSTOM_AUTOML_OBJECT_DETECTION)*/
     options.add(FACE_DETECTION)
     options.add(POSE_DETECTION)
 
@@ -110,11 +110,11 @@ class LivePreviewActivity :
 
 
     recordButton.setOnClickListener{
+      val r1 = StartRecordingRunnable(mediaRecorder , preview, cameraSource, graphicOverlay)
+      val thread = Thread(r1)
 
       if (recordFlag == 0) {
         recordButton.setBackgroundResource(R.drawable.ic_record_pressed)
-        val r1 = StartRecordingRunnable(mediaRecorder , preview, cameraSource, graphicOverlay)
-        val thread = Thread(r1)
         thread.start()
         recordFlag++
       }
@@ -221,29 +221,29 @@ class LivePreviewActivity :
             ObjectDetectorProcessor(this, objectDetectorOptions)
           )
         }
-//        OBJECT_DETECTION_CUSTOM -> {
-//          Log.i(TAG, "Using Custom Object Detector Processor")
-//          val localModel =
-//            LocalModel.Builder().setAssetFilePath("custom_models/object_labeler.tflite").build()
-//          val customObjectDetectorOptions =
-//            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(this, localModel)
-//          cameraSource!!.setMachineLearningFrameProcessor(
-//            ObjectDetectorProcessor(this, customObjectDetectorOptions)
-//          )
-//        }
-//        CUSTOM_AUTOML_OBJECT_DETECTION -> {
-//          Log.i(TAG, "Using Custom AutoML Object Detector Processor")
-//          val customAutoMLODTLocalModel =
-//            LocalModel.Builder().setAssetManifestFilePath("automl/manifest.json").build()
-//          val customAutoMLODTOptions =
-//            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(
-//              this,
-//              customAutoMLODTLocalModel
-//            )
-//          cameraSource!!.setMachineLearningFrameProcessor(
-//            ObjectDetectorProcessor(this, customAutoMLODTOptions)
-//          )
-//        }
+        /*OBJECT_DETECTION_CUSTOM -> {
+          Log.i(TAG, "Using Custom Object Detector Processor")
+          val localModel =
+            LocalModel.Builder().setAssetFilePath("custom_models/object_labeler.tflite").build()
+          val customObjectDetectorOptions =
+            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(this, localModel)
+          cameraSource!!.setMachineLearningFrameProcessor(
+            ObjectDetectorProcessor(this, customObjectDetectorOptions)
+          )
+        }
+        CUSTOM_AUTOML_OBJECT_DETECTION -> {
+          Log.i(TAG, "Using Custom AutoML Object Detector Processor")
+          val customAutoMLODTLocalModel =
+            LocalModel.Builder().setAssetManifestFilePath("automl/manifest.json").build()
+          val customAutoMLODTOptions =
+            PreferenceUtils.getCustomObjectDetectorOptionsForLivePreview(
+              this,
+              customAutoMLODTLocalModel
+            )
+          cameraSource!!.setMachineLearningFrameProcessor(
+            ObjectDetectorProcessor(this, customAutoMLODTOptions)
+          )
+        }*/
         POSE_DETECTION -> {
           val poseDetectorOptions = PreferenceUtils.getPoseDetectorOptionsForLivePreview(this)
           Log.i(TAG, "Using Pose Detector with options $poseDetectorOptions")
@@ -433,25 +433,6 @@ class LivePreviewActivity :
         )
       }
     }
-
-  private fun startRecording() {
-    preview?.stop()
-    createCameraSource(selectedModel)
-    startCameraSource()
-  }
-
-  private fun stopRecording() {
-
-//    cameraSource!!.mediarecorderRelease()
-//    preview?.stop()
-//
-//    if (allPermissionsGranted()) {
-//
-//    }
-//    createCameraSource(selectedModel)
-//    startCameraSource()
-
-  }
 
   override fun onRequestPermissionsResult(
     requestCode: Int,

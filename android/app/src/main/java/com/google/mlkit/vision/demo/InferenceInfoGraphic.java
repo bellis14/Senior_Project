@@ -33,7 +33,7 @@ public class InferenceInfoGraphic extends GraphicOverlay.Graphic {
   private final long detectorLatency;
 
   // Only valid when a stream of input images is being processed. Null for single image mode.
-  @Nullable private final Integer framesPerSecond;
+  @Nullable public final Integer framesPerSecond;
   private boolean showLatencyInfo = true;
 
   public InferenceInfoGraphic(

@@ -63,6 +63,7 @@ public class GraphicOverlay extends View {
   private float postScaleHeightOffset;
   private boolean isImageFlipped;
   private boolean needUpdateTransformation = true;
+  public int framesRate;
 
   /**
    * Base class for a custom graphics object to be rendered within the graphic overlay. Subclass

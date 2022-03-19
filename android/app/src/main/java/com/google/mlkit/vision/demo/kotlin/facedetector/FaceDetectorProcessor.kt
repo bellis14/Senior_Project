@@ -35,6 +35,7 @@ class FaceDetectorProcessor(context: Context, detectorOptions: FaceDetectorOptio
   VisionProcessorBase<List<Face>>(context) {
 
   private val detector: FaceDetector
+  public val fps = framesPerSecond
 
   init {
     val options = detectorOptions

@@ -179,12 +179,5 @@ public class CameraSourcePreview extends ViewGroup {
     return false;
   }
 
-  // ==============================================================================================
-  // Video Recording functions
-  // ==============================================================================================
-  public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
-    cameraSource.setMediaRecorder(mediaRecorder);
-    //cameraSource.ConfigureMediaRecorder(context, surfaceView);
-  }
 
 }

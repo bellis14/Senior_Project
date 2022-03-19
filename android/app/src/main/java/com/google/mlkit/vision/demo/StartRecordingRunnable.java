@@ -22,7 +22,6 @@ public class StartRecordingRunnable implements Runnable {
     private MediaRecorder recorder;
     private CameraSource cameraSource;
     private CameraSourcePreview preview;
-    private String selectedModel;
     private GraphicOverlay graphicOverlay;
     private Camera camera;
 
@@ -46,6 +45,7 @@ public class StartRecordingRunnable implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 
@@ -60,6 +60,7 @@ public class StartRecordingRunnable implements Runnable {
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         Log.i("Media", "3");
         recorder.setOutputFile("/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4");
+        cameraSource.fileName = "/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4";
         Log.i("Media", "/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4");
 
         try{

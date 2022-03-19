@@ -85,7 +85,7 @@ abstract class VisionProcessorBase<T>(context: Context) : VisionImageProcessor {
 
   // Frame count that have been processed so far in an one second interval to calculate FPS.
   private var frameProcessedInOneSecondInterval = 0
-  private var framesPerSecond = 0
+  public var framesPerSecond = 0
 
   // To keep the latest images and its metadata.
   @GuardedBy("this") private var latestImage: ByteBuffer? = null

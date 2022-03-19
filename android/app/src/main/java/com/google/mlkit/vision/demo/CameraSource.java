@@ -21,13 +21,18 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.arthenica.mobileffmpeg.FFmpeg.RETURN_CODE_CANCEL;
 import static com.arthenica.mobileffmpeg.FFmpeg.RETURN_CODE_SUCCESS;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.round;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.graphics.YuvImage;
@@ -53,6 +58,7 @@ import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -89,9 +95,13 @@ public class CameraSource {
 
   private static final String TAG = "MIDemoApp:CameraSource";
 
-  private MediaRecorder mediaRecorder;
   public int flag = 0;
   public int n = 0;
+  public String fileName;
+  public int num;
+  public float frameRate;
+  public int startTime;
+  public int endTime;
 
   /**
    * The dummy surface texture must be assigned a chosen name. Since we never use an OpenGL context,
@@ -108,7 +118,7 @@ public class CameraSource {
 
   protected Activity activity;
   private Camera camera;
-  private int facing = CAMERA_FACING_BACK;
+  public int facing = CAMERA_FACING_BACK;
 
   /** Rotation of the device, and thus the associated preview images captured from the device. */
   private int rotationDegrees;
@@ -192,44 +202,26 @@ public class CameraSource {
     return this;
   }
 
-
-  // ==============================================================================================
-  // Video Recording functions
-  // ==============================================================================================
-  public void setMediaRecorder(MediaRecorder mediaRecorder) throws IOException {
-    this.mediaRecorder = mediaRecorder;
-  }
-
-
   public Camera getCamera(){ return camera; }
 
-  public void SetFlag(){ flag = 1; }
-
-  public void ReleaseFlag(){ flag = 0; }
-
-
-  public void CreateVideo(String fileName, Context context){
-    Log.d("byte", "Image Directory " + fileName);
-
+  public void SetFlag(){
     Random generator = new Random();
-    int n = 10000;
-    n = generator.nextInt(n);
+    num = 10000;
+    num = generator.nextInt(num);
+    startTime = (int)System.currentTimeMillis();
 
-    //take photos in file and convert to mp4
-    int rc = FFmpeg.execute("-y -i sdcard/DCIM/Camera/saved_images/images%2d.jpg -i /sdcard/DCIM/Camera/AA_1647464867213.mp4 sdcard/DCIM/Camera/final" + n + ".mp4");
-//    int rc = FFmpeg.execute("-r 1/5 -start_number 2 -i sdcard/DCIM/Camera/saved_images/image2359.jpg -c:v libx264 -r 30 -pix_fmt yuv420p sdcard/DCIM/Camera/final.mp4");
-//    /sdcard/DCIM/Camera/AA_1647464867213.mp4
+    flag = 1;
+  }
 
+  public void ReleaseFlag(){
+    // This is to calculate the framerate so the sound matches the video being created in StopRecordingRunnable
+    endTime = abs((int)System.currentTimeMillis());
+    float time = (abs(startTime) - abs(endTime));
+    float seconds = time/1000;
+    frameRate = round((n/seconds) + 0.5F)+1;
 
-    if (rc == RETURN_CODE_SUCCESS) {
-      Log.d("ffmpeg", "FFmpeg Success");
-    } else if (rc == RETURN_CODE_CANCEL) {
-      Log.d("ffmpeg", "FFmpeg Cancelled");
-    } else {
-      Log.d(Config.TAG, String.format("Command execution failed with rc=%d and the output below.", rc));
-    }
-
-
+    Log.d("FPS", "frame rate " + frameRate + " end time " + endTime + " start time " + startTime + " n " + n + " time " + seconds);
+    flag = 0;
   }
 
   /**
@@ -440,7 +432,7 @@ public class CameraSource {
     for (SizePair sizePair : validPreviewSizes) {
       Size size = sizePair.preview;
       int diff =
-          Math.abs(size.getWidth() - desiredWidth) + Math.abs(size.getHeight() - desiredHeight);
+          abs(size.getWidth() - desiredWidth) + abs(size.getHeight() - desiredHeight);
       if (diff < minDiff) {
         selectedPair = sizePair;
         minDiff = diff;
@@ -493,7 +485,7 @@ public class CameraSource {
       // picture later.
       for (Camera.Size pictureSize : supportedPictureSizes) {
         float pictureAspectRatio = (float) pictureSize.width / (float) pictureSize.height;
-        if (Math.abs(previewAspectRatio - pictureAspectRatio) < ASPECT_RATIO_TOLERANCE) {
+        if (abs(previewAspectRatio - pictureAspectRatio) < ASPECT_RATIO_TOLERANCE) {
           validPreviewSizes.add(new SizePair(previewSize, pictureSize));
           break;
         }
@@ -537,7 +529,7 @@ public class CameraSource {
     List<int[]> previewFpsRangeList = camera.getParameters().getSupportedPreviewFpsRange();
     for (int[] range : previewFpsRangeList) {
       int upperBoundDiff =
-          Math.abs(desiredPreviewFpsScaled - range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
+          abs(desiredPreviewFpsScaled - range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
       int lowerBound = range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX];
       if (upperBoundDiff <= minUpperBoundDiff && lowerBound <= minLowerBound) {
         selectedFpsRange = range;
@@ -788,36 +780,41 @@ public class CameraSource {
     Log.d("byte", "in saveImage");
     Camera.Parameters parameters = camera.getParameters();
     int imageFormat = parameters.getPreviewFormat();
+    int width = parameters.getPreviewSize().width;
+    int height = parameters.getPreviewSize().height;
+
+
 
     if (imageFormat == ImageFormat.NV21)
     {
 
       Log.d("byte", "dir created and about to save image");
-      int width = parameters.getPreviewSize().width;
-      int height = parameters.getPreviewSize().height;
-//      Random generator = new Random();
-//      int n = 100;
-//      n = generator.nextInt(n);
+
+
       String root = "sdcard/DCIM/Camera";
       File myDir = new File(root + "/saved_images");
       myDir.mkdirs();
-      n += 1;
-      String fname = "image0"+ n +".jpg";
+      n = n + 1;
+      String fname = "img" + num +"_"+ n + ".jpg";
       File file = new File (myDir, fname);
 
-//      if (file.exists())
-//      {
-//        n = n + 1;
-//        fname = "image"+ n +".jpg";
-//        file = new File (myDir, fname);
-//      }
+      //Convert the data byte array to a yuvImage
+      ByteArrayOutputStream os = new ByteArrayOutputStream();
+      YuvImage yuvImage = new YuvImage(data, ImageFormat.NV21, width, height, null);
+      yuvImage.compressToJpeg(new Rect(0, 0, width, height), 100, os);
+
+      //Convert the yuvImage to bitmap and rotate 90 degrees. without this the image is saved sideways.
+      Matrix matrix = new Matrix();
+      matrix.postRotate(90);
+      byte[] bytes = os.toByteArray();
+      Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+      Bitmap image = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
 
       try
       {
         OutputStream fos = new FileOutputStream(file);
-        YuvImage yuvImage = new YuvImage(data, ImageFormat.NV21, width, height, null);
-        yuvImage.compressToJpeg(new Rect(0, 0, width, height), 100, fos);
+        image.compress(Bitmap.CompressFormat.JPEG, 50, fos);
         fos.close();
       }
       catch (FileNotFoundException e)
@@ -832,6 +829,9 @@ public class CameraSource {
     }
     return "did not save video";
   }
+
+
+
 
 
   /** Cleans up graphicOverlay and child classes can do their cleanups as well . */
