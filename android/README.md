@@ -1,12 +1,3 @@
-# Video Recording Resources
-* https://codingwithsaud.medium.com/android-the-perfect-and-easy-way-to-make-screen-recorder-fcda630048d7
-* https://stackoverflow.com/questions/14118624/android-media-recording-using-threads
-* Solution to use multiple camera streams simultaneously
-* https://developer.android.com/training/camera2/multiple-camera-streams-simultaneously
-
-
-
-
 # ML Kit Vision Quickstart Sample App
 
 ## Introduction
@@ -90,3 +81,43 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+
+# Video / Audio Recording Resources
+One major pillar of this application is the ability to record a video while the application is tracking a face.
+The purpose of writing this is to document how that was accomplished as well as the various issues that were encounter along the way so as to help future developers better understand the task at hand.
+
+**The Goal
+The goal when we set out was to create an application that could track a face or person while recording video in the background. Below will outline the various ways the internet has attempted to solve this issues as well as the solution that was implemented here. 
+
+##Standard Video Recording
+https://developer.android.com/training/camera/videobasics This is a link to Android official documentation that outlines the standard way to record video. This does not work in this specific application and the reason this does not is because it hijacks the camera from the core functionality of the application. It essentially switches to a new application temporarily pausing everything else.
+
+##MediaRecorder Solution
+https://developer.android.com/guide/topics/media/mediarecorder This link is androids second more involved way of recording video. This solution works for audio recording because no other part of the code is using the microphone, so complete control of the microphone does not affect the rest of the application. This however does not work for video recording for a similar reason as the standard recording solution. Trying to record video with the media recorder also steal the camera from the core application functionality eliminating its ability to preform any type of image recognition. 
+
+##Present Solution
+The current solution has been to use the MediaRecorder object to record sound on a background thread while at the same time saving frames already being captured by the camera for image recognition. This solution involves two threaded classes that interface to Runnable: StopRecordingRunnable and StartRecordingRunnable. These handle the starting and stopping of the audio recording as well as the creation of the video. 
+The creation of the video involves taking the frames that have been saved to a unique directory within the phones storage, and taking the most recent audio recording and putting them together using a library called FFmpeg. Documentation and links are below. The following objects and methods are used in this process and can be studied to gain a better understanding of how this whole process works. 
+
+LivePreviewActivity
+-	recordButton.setOnClickListener
+This is the logic that handels the record button toggling from white to red. As well as kick off the video recording functionality by creating a StartRecordingRunnable thread and starting it.
+StartRecordingRunnable
+-	This object is responsible for setting a recording flag that exists in CameraSource, and setting up the media Recorder object for audio and starting it. 
+StopRecordingRunnable
+-	This object is responsible for bringing it all together. It releases the recording flag to signal CameraSource to stop saving frames. It releases the mediaRecorder to stop recording audio, and it takes the frames and audio and creates a binary executable that is used by FFmpeg to create a final video. It also cleans up memory by deleting all of the frames after the video is created.
+CameraSource
+-	This object is a major component of the core functionality of the application. It is responsible for setting up the camera for use by the application. This is why the camera frames are saved here. 
+-	onPreviewFrame This method is a part of the camera hardware and is called every time the camera has a new frame. This method checks to see if the recording flag is true and if it is it passes the frame in the form of a byte array to the SaveImage method. 
+-	SaveImage this method takes a byte array and converts it into a YuvImage. The YuvImage is then converted into a bitmap, then creates a matrix to rotate the bitmap 90 degrees, then the bitmap is converted into a jpg to be saved. There is probably a better way to do this but this is what worked. 
+-	In CameraSource ther is a global variable numFrames, this variable is important because it keeps track of the number of frames that are saved during a recording session. This is needed to save the frames in numerical order as well as to calculate the frame rate to be used in video creation later.
+FFmpeg
+-	This library is added in the manifests file and is used to create a video with the file of frames that are saved when the record button is pushed. 
+-	Below are useful links for using FFmpeg
+-	https://www.geeksforgeeks.org/how-to-use-ffmpeg-in-android-with-example/
+-	https://github.com/tanersener/mobile-ffmpeg
+-	https://codingpoint.tech/how-to-use-ffmpeg-in-android/
+ 
+
+* Solution to use multiple camera streams simultaneously
+* https://developer.android.com/training/camera2/multiple-camera-streams-simultaneously
