@@ -89,13 +89,13 @@ The purpose of writing this is to document how that was accomplished as well as 
 **The Goal
 The goal when we set out was to create an application that could track a face or person while recording video in the background. Below will outline the various ways the internet has attempted to solve this issues as well as the solution that was implemented here. 
 
-##Standard Video Recording
+Standard Video Recording
 https://developer.android.com/training/camera/videobasics This is a link to Android official documentation that outlines the standard way to record video. This does not work in this specific application and the reason this does not is because it hijacks the camera from the core functionality of the application. It essentially switches to a new application temporarily pausing everything else.
 
-##MediaRecorder Solution
+MediaRecorder Solution
 https://developer.android.com/guide/topics/media/mediarecorder This link is androids second more involved way of recording video. This solution works for audio recording because no other part of the code is using the microphone, so complete control of the microphone does not affect the rest of the application. This however does not work for video recording for a similar reason as the standard recording solution. Trying to record video with the media recorder also steal the camera from the core application functionality eliminating its ability to preform any type of image recognition. 
 
-##Present Solution
+Present Solution
 The current solution has been to use the MediaRecorder object to record sound on a background thread while at the same time saving frames already being captured by the camera for image recognition. This solution involves two threaded classes that interface to Runnable: StopRecordingRunnable and StartRecordingRunnable. These handle the starting and stopping of the audio recording as well as the creation of the video. 
 The creation of the video involves taking the frames that have been saved to a unique directory within the phones storage, and taking the most recent audio recording and putting them together using a library called FFmpeg. Documentation and links are below. The following objects and methods are used in this process and can be studied to gain a better understanding of how this whole process works. 
 
