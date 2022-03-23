@@ -11,7 +11,7 @@ We did the development for the iphone app on xcode which requires macOS. If you 
     * eval "$(homebrew/bin/brew shellenv)"
     * brew update --force --quiet
     * chmod -R go-w "$(brew --prefix)/share/zsh"
-  * brew install cocoapods
+  * brew install cocoapods (This will take forever just fyi)
 * Use cocoapods to import the dependencies in the Podfile
   * Clone the senior project repository into your workspace
   * Change into the ios directory of the repository.
