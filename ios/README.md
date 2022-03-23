@@ -34,10 +34,10 @@ https://developer.apple.com/forums/thread/130493
 ## Setting up virtual machine
 * [iOS development setup using a virtual machine on VMware workstation](https://www.youtube.com/watch?v=-5FpROxjHsw)
 
-# ML Kit Vision Quickstart Sample App
-
 # Bluetooth Resources
 * Download [this](https://developer.apple.com/documentation/corebluetooth/using_core_bluetooth_classic). Its apples code for connecting bluetooth devices.
+
+# ML Kit Vision Quickstart Sample App
 
 ## Introduction
 
