@@ -36,6 +36,9 @@ https://developer.apple.com/forums/thread/130493
 
 # ML Kit Vision Quickstart Sample App
 
+# Bluetooth Resources
+* Download [this](https://developer.apple.com/documentation/corebluetooth/using_core_bluetooth_classic). Its apples code for connecting bluetooth devices.
+
 ## Introduction
 
 This ML Kit Vision iOS Quickstart app demonstrates how to use and integrate various vision based ML Kit features into your app.
