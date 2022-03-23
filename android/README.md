@@ -118,7 +118,4 @@ This is the logic that handels the record button toggling from white to red. As 
 -	https://www.geeksforgeeks.org/how-to-use-ffmpeg-in-android-with-example/
 -	https://github.com/tanersener/mobile-ffmpeg
 -	https://codingpoint.tech/how-to-use-ffmpeg-in-android/
- 
-
-* Solution to use multiple camera streams simultaneously
-* https://developer.android.com/training/camera2/multiple-camera-streams-simultaneously
+- https://ffmpeg.org/
