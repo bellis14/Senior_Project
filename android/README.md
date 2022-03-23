@@ -105,7 +105,7 @@ This is the logic that handels the record button toggling from white to red. As 
 
 ### StartRecordingRunnable
 -	This object is responsible for setting a recording flag that exists in CameraSource, and setting up the media Recorder object for audio and starting it. 
-StopRecordingRunnable
+### StopRecordingRunnable
 -	This object is responsible for bringing it all together. It releases the recording flag to signal CameraSource to stop saving frames. It releases the mediaRecorder to stop recording audio, and it takes the frames and audio and creates a binary executable that is used by FFmpeg to create a final video. It also cleans up memory by deleting all of the frames after the video is created.
 ### CameraSource
 -	This object is a major component of the core functionality of the application. It is responsible for setting up the camera for use by the application. This is why the camera frames are saved here. 
