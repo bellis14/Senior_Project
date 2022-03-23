@@ -13,7 +13,8 @@ We did the development for the iphone app on xcode which requires macOS. If you 
     * chmod -R go-w "$(brew --prefix)/share/zsh"
   * brew install cocoapods
 * Use cocoapods to import the dependencies in the Podfile
-  * Change into the ios directory.
+  * Clone the senior project repository into your workspace
+  * Change into the ios directory of the repository.
   * run the command: pod install
 * Setting up your iphone device
   * Do not use the iOS simulators if you are using M1 chip mac computers. Feel free to try it. If it works great!
