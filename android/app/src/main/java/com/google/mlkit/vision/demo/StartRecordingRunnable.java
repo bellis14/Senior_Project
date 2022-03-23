@@ -59,9 +59,10 @@ public class StartRecordingRunnable implements Runnable {
         Log.i("Media", "2");
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         Log.i("Media", "3");
-        recorder.setOutputFile("/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4");
-        cameraSource.fileName = "/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4";
-        Log.i("Media", "/sdcard/DCIM/Camera/AA_" + System.currentTimeMillis() + ".mp4");
+        String audioFile = "/sdcard/DCIM/Camera/AA_"+System.currentTimeMillis();
+        recorder.setOutputFile(audioFile + ".mp4");
+        cameraSource.fileName = audioFile + ".mp4";
+        Log.i("Media", audioFile + ".mp4");
 
         try{
             Log.i("Media", "prepare");

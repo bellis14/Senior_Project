@@ -63,6 +63,7 @@ class SelectDevice : AppCompatActivity() {
             if (device.name == "AutoCameraMan") {
                 val address: String = device.address
                 Log.i("device", "" + address)
+
                 //val intent = Intent(this, Bluetooth::class.java)
                 val intent = Intent(this, LivePreviewActivity::class.java)
                 intent.putExtra(EXTRA_ADDRESS, address)

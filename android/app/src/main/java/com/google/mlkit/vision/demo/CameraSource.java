@@ -96,7 +96,7 @@ public class CameraSource {
   private static final String TAG = "MIDemoApp:CameraSource";
 
   public int flag = 0;
-  public int n = 0;
+  public int numFrames = 0;
   public String fileName;
   public int num;
   public float frameRate;
@@ -218,9 +218,9 @@ public class CameraSource {
     endTime = abs((int)System.currentTimeMillis());
     float time = (abs(startTime) - abs(endTime));
     float seconds = time/1000;
-    frameRate = round((n/seconds) + 0.5F)+1;
+    frameRate = round((numFrames/seconds) + 0.5F)+1;
 
-    Log.d("FPS", "frame rate " + frameRate + " end time " + endTime + " start time " + startTime + " n " + n + " time " + seconds);
+    Log.d("FPS", "frame rate " + frameRate + " end time " + endTime + " start time " + startTime + " n " + numFrames + " time " + seconds);
     flag = 0;
   }
 
@@ -782,7 +782,7 @@ public class CameraSource {
     int imageFormat = parameters.getPreviewFormat();
     int width = parameters.getPreviewSize().width;
     int height = parameters.getPreviewSize().height;
-
+    int cameraFacing = getCameraFacing();
 
 
     if (imageFormat == ImageFormat.NV21)
@@ -794,8 +794,8 @@ public class CameraSource {
       String root = "sdcard/DCIM/Camera";
       File myDir = new File(root + "/saved_images");
       myDir.mkdirs();
-      n = n + 1;
-      String fname = "img" + num +"_"+ n + ".jpg";
+      numFrames = numFrames + 1;
+      String fname = "img" + num +"_"+ numFrames + ".jpg";
       File file = new File (myDir, fname);
 
       //Convert the data byte array to a yuvImage
@@ -803,12 +803,22 @@ public class CameraSource {
       YuvImage yuvImage = new YuvImage(data, ImageFormat.NV21, width, height, null);
       yuvImage.compressToJpeg(new Rect(0, 0, width, height), 100, os);
 
-      //Convert the yuvImage to bitmap and rotate 90 degrees. without this the image is saved sideways.
-      Matrix matrix = new Matrix();
-      matrix.postRotate(90);
-      byte[] bytes = os.toByteArray();
-      Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-      Bitmap image = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+      Bitmap image;
+      if (cameraFacing == CameraInfo.CAMERA_FACING_BACK) {
+        //Convert the yuvImage to bitmap and rotate 90 degrees. without this the image is saved sideways.
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        byte[] bytes = os.toByteArray();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        image = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+      }
+      else {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(-90);
+        byte[] bytes = os.toByteArray();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        image = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+      }
 
 
       try

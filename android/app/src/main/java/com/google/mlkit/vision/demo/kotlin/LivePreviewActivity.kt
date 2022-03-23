@@ -34,6 +34,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.common.annotation.KeepName
 import com.google.mlkit.common.model.LocalModel
 import com.google.mlkit.vision.demo.*
@@ -135,6 +136,7 @@ class LivePreviewActivity :
   }
 
 
+
   private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
     private var connectSuccess: Boolean = true
     private val context: Context
@@ -168,6 +170,7 @@ class LivePreviewActivity :
       super.onPostExecute(result)
       if (!connectSuccess) {
         Log.i("data", "couldn't connect")
+
       } else {
         m_isConnected = true
       }
