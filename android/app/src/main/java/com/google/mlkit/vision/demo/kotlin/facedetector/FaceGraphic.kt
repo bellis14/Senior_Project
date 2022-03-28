@@ -19,9 +19,9 @@ package com.google.mlkit.vision.demo.kotlin.facedetector
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.util.Log
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
-import com.google.mlkit.vision.demo.kotlin.Bluetooth
 import com.google.mlkit.vision.demo.kotlin.LivePreviewActivity
 import com.google.mlkit.vision.face.Face
 import com.google.mlkit.vision.face.FaceLandmark
@@ -102,22 +102,44 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
     val displacementY = abs(detectedImagePosY - frameCenterY)
 
 
-    val xBuff = 150
-    val yBuff = 200
-    // Perform a pan
-//    if (displacementX > displacementY) {
-    if (detectedImagePosX < frameCenterX-xBuff)
-      sendCommand("0\n") // pan right
-    else if (detectedImagePosX > frameCenterX+xBuff)
-      sendCommand("1\n") // pan left
-//    }
-    // Perform a tilt
-//    else {
-//      if (detectedImagePosY < frameCenterY)
-//        sendCommand("2\n") // tilt up
-//      else
-//        sendCommand("3\n") // tilt down
-//    }
+    // Perform a PAN
+      // Tilt Left
+    if (detectedImagePosXdraw < frameCenterX-X_BUFF) {
+      if (isImageFlipped)
+        sendCommand(PAN_ANTI_CLOCKWISE)
+      else {
+        sendCommand(PAN_CLOCKWISE) // pan clockwise (right)
+        Log.d("pan1", "pan clockwise - $detectedImagePosXdraw")
+      }
+    }
+      // Tilt Right
+    else if (detectedImagePosXdraw > frameCenterX+X_BUFF) {
+      if (isImageFlipped)
+        sendCommand(PAN_CLOCKWISE)
+      else {
+        sendCommand(PAN_ANTI_CLOCKWISE)
+        Log.d("pan2", "pan counterclockwise - $detectedImagePosXdraw")
+      }
+    }
+
+
+    // Perform a TILT
+      // Tilt Down
+    if (detectedImagePosYdraw < frameCenterY-Y_BUFF) {
+      if (isImageFlipped)
+        sendCommand(TILT_CLOCKWISE)
+      else
+        sendCommand(TILT_ANTI_CLOCKWISE)
+    }
+      // Tilt Up
+    else if (detectedImagePosYdraw > frameCenterY+Y_BUFF) {
+      if (isImageFlipped)
+        sendCommand(TILT_ANTI_CLOCKWISE)
+      else
+        sendCommand(TILT_CLOCKWISE)
+    }
+
+
 
     // Calculate positions.
     val left = detectedImagePosXdraw - scale(face.boundingBox.width() / 2.0f)
@@ -328,5 +350,21 @@ class FaceGraphic constructor(overlay: GraphicOverlay?, private val face: Face) 
         intArrayOf(Color.WHITE, Color.BLACK),
         intArrayOf(Color.BLACK, Color.GREEN)
       )
+
+    /*
+    These are assuming the phone screen is facing out with the tilt motor to
+    its right when looking at the phone screen.
+     */
+    // Looking down at pan motor
+    private const val PAN_CLOCKWISE =       "0\n"
+    private const val PAN_ANTI_CLOCKWISE =  "1\n"
+
+    // Looking at the bottom of the tilt motor (outside of motor)
+    private const val TILT_CLOCKWISE =      "2\n"
+    private const val TILT_ANTI_CLOCKWISE = "3\n"
+
+    // Buffers to prevent oscillations from overcorrecting (may need additional tuning)
+    private const val X_BUFF = 75
+    private const val Y_BUFF = 130
   }
 }

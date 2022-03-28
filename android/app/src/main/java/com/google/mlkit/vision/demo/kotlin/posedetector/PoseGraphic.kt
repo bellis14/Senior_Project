@@ -19,11 +19,11 @@ package com.google.mlkit.vision.demo.kotlin.posedetector
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.util.Log
 import com.google.common.primitives.Ints
 import com.google.mlkit.vision.demo.GraphicOverlay
 import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
 import com.google.mlkit.vision.demo.kotlin.LivePreviewActivity
-import com.google.mlkit.vision.demo.kotlin.facedetector.FaceGraphic
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
 import java.io.IOException
@@ -34,12 +34,12 @@ import kotlin.math.abs
 
 /** Draw the detected pose in preview.  */
 class PoseGraphic internal constructor(
-  overlay: GraphicOverlay,
-  private val pose: Pose,
-  private val showInFrameLikelihood: Boolean,
-  private val visualizeZ: Boolean,
-  private val rescaleZForVisualization: Boolean,
-  private val poseClassification: List<String>
+        overlay: GraphicOverlay,
+        private val pose: Pose,
+        private val showInFrameLikelihood: Boolean,
+        private val visualizeZ: Boolean,
+        private val rescaleZForVisualization: Boolean,
+        private val poseClassification: List<String>
 ) : Graphic(overlay) {
   private var zMin = java.lang.Float.MAX_VALUE
   private var zMax = java.lang.Float.MIN_VALUE
@@ -84,7 +84,7 @@ class PoseGraphic internal constructor(
 //    // Draws a circle at the position of the detected pose, with the pose's track id below.
 //    val x = translateX(pose.boundingBox.centerX().toFloat())
 //    val y = translateY(pose.boundingBox.centerY().toFloat())
-//    canvas.drawCircle(x, y, FaceGraphic.FACE_POSITION_RADIUS, posePositionPaint)
+//    canvas.drawCircle(x, y, FACE_POSITION_RADIUS, posePositionPaint)
 //
 //    // Draw blue dot in the center of the pose detected
 //    val colorId = Color.BLUE
@@ -99,11 +99,11 @@ class PoseGraphic internal constructor(
 //    val top = y - scale(pose.boundingBox.height() / 2.0f)
 //    val right = x + scale(pose.boundingBox.width() / 2.0f)
 //    val bottom = y + scale(pose.boundingBox.height() / 2.0f)
-//    val lineHeight = FaceGraphic.ID_TEXT_SIZE + FaceGraphic.BOX_STROKE_WIDTH
+//    val lineHeight = ID_TEXT_SIZE + BOX_STROKE_WIDTH
 //    var yLabelOffset: Float = if (pose.trackingId == null) 0f else -lineHeight
 //
 //    // Decide color based on pose ID
-//    val colorID = if (pose.trackingId == null) 0 else abs(pose.trackingId!! % FaceGraphic.NUM_COLORS)
+//    val colorID = if (pose.trackingId == null) 0 else abs(pose.trackingId!! % NUM_COLORS)
 //
 //
 
@@ -181,20 +181,44 @@ class PoseGraphic internal constructor(
     val displacementX = abs(detectedImageX - frameCenterX)
     val displacementY = abs(detectedImageY - frameCenterY)
 
-    // Perform a pan
-    if (displacementX > displacementY) {
-      if (detectedImageX < frameCenterX)
-        sendCommand("0\n") // pan right
-      else
-        sendCommand("1\n") // pan left
+
+    // Perform a PAN
+    // Tilt Left
+    if (detectedImageX < frameCenterX - X_BUFF) {
+      if (isImageFlipped)
+        sendCommand(PAN_ANTI_CLOCKWISE)
+      else {
+        sendCommand(PAN_CLOCKWISE) // pan clockwise (right)
+        Log.d("pan1", "pan clockwise - $detectedImageX")
+      }
     }
-    // Perform a tilt
-    else {
-      if (detectedImageY < frameCenterY)
-        sendCommand("2\n") // tilt up
-      else
-        sendCommand("3\n") // tilt down
+    // Tilt Right
+    else if (detectedImageX > frameCenterX+X_BUFF) {
+      if (isImageFlipped)
+        sendCommand(PAN_CLOCKWISE)
+      else {
+        sendCommand(PAN_ANTI_CLOCKWISE)
+        Log.d("pan2", "pan counterclockwise - $detectedImageX")
+      }
     }
+
+
+    // Perform a TILT
+    // Tilt Down
+    if (detectedImageY < frameCenterY- Y_BUFF) {
+      if (isImageFlipped)
+        sendCommand(TILT_CLOCKWISE)
+      else
+        sendCommand(TILT_ANTI_CLOCKWISE)
+    }
+    // Tilt Up
+    else if (detectedImageY > frameCenterY+ Y_BUFF) {
+      if (isImageFlipped)
+        sendCommand(TILT_ANTI_CLOCKWISE)
+      else
+        sendCommand(TILT_CLOCKWISE)
+    }
+
     canvas.drawLine(detectedImageX, detectedImageY, frameCenterX, frameCenterY, frameCenterColor)
     canvas.drawCircle(frameCenterX, frameCenterY, 5.0f, frameCenterColor)
 
@@ -327,5 +351,21 @@ class PoseGraphic internal constructor(
     private val IN_FRAME_LIKELIHOOD_TEXT_SIZE = 30.0f
     private val STROKE_WIDTH = 10.0f
     private val POSE_CLASSIFICATION_TEXT_SIZE = 60.0f
+
+    /*
+    These are assuming the phone screen is facing out with the tilt motor to
+    its right when looking at the phone screen.
+     */
+    // Looking down at pan motor
+    private const val PAN_CLOCKWISE =       "0\n"
+    private const val PAN_ANTI_CLOCKWISE =  "1\n"
+
+    // Looking at the bottom of the tilt motor (outside of motor)
+    private const val TILT_CLOCKWISE =      "2\n"
+    private const val TILT_ANTI_CLOCKWISE = "3\n"
+
+    // Buffers to prevent oscillations from overcorrecting (may need additional tuning)
+    private const val X_BUFF = 75
+    private const val Y_BUFF = 130
   }
 }
