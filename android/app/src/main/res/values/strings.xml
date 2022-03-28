@@ -19,6 +19,7 @@
     <string name="select_image" translatable="false">Select image</string>
     <string name="custom_object_detection" translatable="false">Custom Object Detector</string>
     <string name="Bluetooth_Device_Selector" translatable="false">Connect to AutoCameraMan Base</string>
+    <string name="Live_Preview_activity" translatable="false">Launch Detector Activity</string>
 
     <!-- Settings related strings. -->
     <string name="pref_screen" translatable="false">ps</string>
