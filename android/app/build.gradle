@@ -139,7 +139,6 @@ dependencies {
     implementation "com.google.android.odml:image:1.0.0-beta1"
 
     // FFmpeg is used to create a video file from a file full of images
-//    implementation 'com.writingminds:FFmpegAndroid:0.3.2'
     implementation 'com.arthenica:mobile-ffmpeg-full:4.2.2.LTS'
 
 }
