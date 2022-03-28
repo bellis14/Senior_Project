@@ -59,7 +59,7 @@ class FaceDetectorProcessor(context: Context, detectorOptions: FaceDetectorOptio
   }
 
   override fun onSuccess(faces: List<Face>, graphicOverlay: GraphicOverlay) {
-    println(faces)
+    Log.d("onSuccess", "Success")
     for (face in faces) {
       graphicOverlay.add(FaceGraphic(graphicOverlay, face))
       logExtrasForTesting(face)
