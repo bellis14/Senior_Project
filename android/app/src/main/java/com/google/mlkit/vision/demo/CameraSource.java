@@ -627,7 +627,8 @@ public class CameraSource {
       if (data != null && flag == 1)
       {
         Log.i("byte", "convert bytebuffer to bitmap");
-        SaveImage(data, camera);
+        processingRunnable.SaveImage(data, camera);
+        //SaveImage(data, camera);
       }
 
       processingRunnable.setNextFrame(data, camera);
@@ -772,11 +773,76 @@ public class CameraSource {
         }
       }
     }
+
+    public String SaveImage(byte[] data, Camera camera) {
+      Log.d("byte", "in saveImage");
+      Camera.Parameters parameters = camera.getParameters();
+      int imageFormat = parameters.getPreviewFormat();
+      int width = parameters.getPreviewSize().width;
+      int height = parameters.getPreviewSize().height;
+      int cameraFacing = getCameraFacing();
+
+
+      if (imageFormat == ImageFormat.NV21)
+      {
+
+        Log.d("byte", "dir created and about to save image");
+
+
+        String root = "sdcard/DCIM/Camera";
+        File myDir = new File(root + "/saved_images");
+        myDir.mkdirs();
+        numFrames = numFrames + 1;
+        String fname = "img" + num +"_"+ numFrames + ".jpg";
+        File file = new File (myDir, fname);
+
+        //Convert the data byte array to a yuvImage
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        YuvImage yuvImage = new YuvImage(data, ImageFormat.NV21, width, height, null);
+        yuvImage.compressToJpeg(new Rect(0, 0, width, height), 100, os);
+
+        Bitmap image;
+        if (cameraFacing == CameraInfo.CAMERA_FACING_BACK) {
+          //Convert the yuvImage to bitmap and rotate 90 degrees. without this the image is saved sideways.
+          Matrix matrix = new Matrix();
+          matrix.postRotate(90);
+          byte[] bytes = os.toByteArray();
+          Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+          image = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        }
+        else {
+          Matrix matrix = new Matrix();
+          matrix.postRotate(-90);
+          byte[] bytes = os.toByteArray();
+          Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+          image = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        }
+
+
+        try
+        {
+          OutputStream fos = new FileOutputStream(file);
+          image.compress(Bitmap.CompressFormat.JPEG, 50, fos);
+          fos.close();
+        }
+        catch (FileNotFoundException e)
+        {
+          e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+          e.printStackTrace();
+        }
+        return myDir.getAbsolutePath();
+      }
+      return "did not save video";
+    }
+
   }
 
   /** This is called by CameraPreviewCallback passing frames from the camera
    *  one at a time to be saved to the specified directory */
-  private String SaveImage(byte[] data, Camera camera) {
+  /*private String SaveImage(byte[] data, Camera camera) {
     Log.d("byte", "in saveImage");
     Camera.Parameters parameters = camera.getParameters();
     int imageFormat = parameters.getPreviewFormat();
@@ -839,7 +905,7 @@ public class CameraSource {
     }
     return "did not save video";
   }
-
+*/
 
 
 
