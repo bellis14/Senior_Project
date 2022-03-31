@@ -1,6 +1,6 @@
 # Android Studio Set Up and App Installation
 
-### [Install Android Studio](https://developer.android.com/studio/install) and follow the instructions
+### Install Android Studio and follow [the instructions](https://developer.android.com/studio/install)
 
 ### Clone [Repository]()
 * From Android Studio select *File* -> *New* -> *Project From Version Control*
