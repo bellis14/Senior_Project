@@ -5,7 +5,7 @@
 ### Clone [Repository]()
 * From Android Studio select *File* -> *New* -> *Project From Version Control*
 * Copy the link to clone the repository
-![Clone Repo]()
+![Clone Repo](https://github.com/bellis14/Senior_Project/blob/main/clone_repo.png)
 * Paste link in URL textbox in Android Studio
 
 ### Build the Project
