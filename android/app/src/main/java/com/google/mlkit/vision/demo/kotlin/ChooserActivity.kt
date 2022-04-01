@@ -160,12 +160,12 @@ class ChooserActivity :
     // This is left as an arry of options in case future teams want to add more options
     private val CLASSES =
       arrayOf<Class<*>>(
-        LivePreviewActivity::class.java,
+        //LivePreviewActivity::class.java,
         SelectDevice::class.java
       )
     private val DESCRIPTION_IDS =
       intArrayOf(
-        R.string.Live_Preview_activity,
+        //R.string.Live_Preview_activity,
         R.string.Bluetooth_Device_Selector
       )
   }
