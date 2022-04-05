@@ -1,7 +1,7 @@
 # Hardware code
 
 ## Description
-* The AutoCameraMan arduino file is used to broadcoast bluetooth classic to an android phone. This code successfully connects to the AutoCameraMan app and will receive motor instructions when the app is set to facial or pose detection. When the instructions are received the code will function with good motor control.
+* The AutoCameraMan arduino file is the code that is downloaded onto the ESP32 to run the project. This file is used to broadcoast bluetooth classic to an android phone. This code successfully connects to the AutoCameraMan app and will receive motor instructions when the app is set to facial or pose detection. When the instructions are received the code will function with good motor control. iPhone devices can also connect to bluetooth classic. 
 * The BLE_Server file is used to broadcoast a bluetooth low energy signal. iPhone and Android can connect to both bluetooth low energy (BLE) and bluetooth classic. Bluetooth classic is easier to implement than BLE.   
 
 ## Research 
