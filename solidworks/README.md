@@ -1,4 +1,3 @@
-# Solidworks
 # SolidWorks
 * If you are not familiar with SoidWorks, please review the following materials before opening the files
 * [SolidWorks Configuration Help Webpage](https://help.solidworks.com/2020/English/SolidWorks/sldworks/c_Configurations_Overview.htm)
