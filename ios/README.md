@@ -20,7 +20,7 @@ At the end of this setup you should be able to build and run the app on your iph
 * Setting up your iphone device
   * Do not use the iOS simulators if you are using M1 chip mac computers. Feel free to try it. If it works great!
   * Follow this [video](https://www.youtube.com/watch?v=bqh6YaMxgbE) setting up your iphone device. 
-  * If after setting up the device you get this error: 
+  * If after setting up the device you get this error when trying to run the app: 
   
      "Showing Recent Messages Failed to register bundle identifier: The app identifier "com.google.mlkit.quickstart.VisionExample" cannot be registered to your development team because it is not available. Change your bundle identifier to a unique string to try again." 
   
