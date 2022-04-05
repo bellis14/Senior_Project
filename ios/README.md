@@ -1,7 +1,7 @@
 # Setting up for Development 
 We did the development for the iphone app on xcode which requires macOS. If you don't have a mac computer then you can either set up a virtual machine using virtualbox or VMware workstation. You can also attempt to dual boot macOS onto the computer you are currently using. You just need to make sure your laptop meets the requirements for this option. The other option is to use the mac lab down in the library. There is a way to configure virtualbox and VMware to perform more smoothly but when we attempted to use it the performance was really bad in terms of their being lag. You would try to move your mouse somewhere and it would take a solid five seconds to move. The drawback of using the mac lab is you can't use sudo commands to download stuff. If you need to download something you will have to find a work around that doesn't require sudo. As of now the IT department has revoked admin access which means you can't download xcode. It is currently downloaded on computer 4 in the mac lab if you want to use that one. That is the computer that was used for development.
 
-## Steps for setting up development on mac lab computer
+## Steps for setting up development on mac computer
 At the end of this setup you should be able to build and run the app on your iphone device. This means you are ready to begin adding the functionality of bluetooth. There is a link down below in the section labeled Bluetooth Resources. Go to the link in that section and hit the download button. This will download the code that apple offers to connect to bluetooth classic devices.  
 * Download Xcode
 * Download cocoapods. Use homebrew not gem.
